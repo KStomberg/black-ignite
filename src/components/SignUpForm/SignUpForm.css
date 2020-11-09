@@ -1,0 +1,58 @@
+.signUp {
+    background-color: goldenrod;
+}
+
+.input {
+    width: 250px;
+    height: 35px;
+    border: medium solid black;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.textbox {
+    width: 250px;
+    border: medium solid black;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 5px 2px;
+}
+
+.detailParagraph {
+    font-size: 22px;
+    width: 310px;
+    margin: auto;
+}
+
+.details {
+    width: 300px;
+    margin: auto;
+    margin-left: 0px;
+}
+
+.inputDesc {
+    display: inline-flex;
+    margin-left: 8px;
+    margin-bottom: 4px;
+    font-size: 22px;
+}
+
+.submitBtn {
+    color: goldenrod;
+    background: black;
+    width: 150px;
+    height: 45px;
+    border: 0 solid black;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+}
+
+.cancelBtn {
+    font-size: 35px;
+    float: right;
+}

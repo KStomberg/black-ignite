@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 #react-root {
   height: 100%;
@@ -14,17 +14,17 @@ img {
   max-width: 100%;
 }
 
-/* --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Container
--------------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------
 
 .container {
   padding: 20px;
 }
 
-/* --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Button
--------------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------
 
 .btn {
   display: inline-block;
@@ -59,7 +59,7 @@ Button
   text-decoration: none;
 }
 
-/* This line makes the "Register" and "Login" buttons look like links */
+This line makes the "Register" and "Login" buttons look like links
 .btn_asLink {
   padding: 0;
   border-width: 0;
@@ -76,9 +76,9 @@ Button
   color: #008183;
 }
 
-/* --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Alert
--------------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------
 
 .alert {
   box-sizing: border-box;
@@ -91,9 +91,9 @@ Alert
   font-size: 0.8rem;
 }
 
-/* --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Form Treatment
--------------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------
 
 .formPanel {
   box-sizing: border-box;
@@ -109,4 +109,46 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
+} */
+
+
+
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

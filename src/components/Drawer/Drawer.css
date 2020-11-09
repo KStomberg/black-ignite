@@ -1,0 +1,8 @@
+#drawer-btn{
+    bottom: 0;
+    position: fixed;
+    font-size: 50px;
+}
+.drawer{
+    background-color: #F1BA45;
+}
