@@ -112,9 +112,12 @@ input {
 } */
 
 
-
+html, body, #react-root{
+  background-color: #F1BA45;
+}
 .App {
   text-align: center;
+  
   
 }
 
