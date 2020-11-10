@@ -1,0 +1,23 @@
+.talkImages{
+    height: 200px;
+    width: 200px;
+}
+.talkGallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin: 0;
+}
+.talkDiv{
+    margin: 10px;
+}
+.popUpDescription{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}
