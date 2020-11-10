@@ -4,10 +4,38 @@ import {Grid} from '@material-ui/core';
 import './SignUpForm.css';
 
 function SignUpForm() {
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [instagram, setInstagram] = useState('NA');
+    const [linkedIn, setLinkedIn] = useState('NA');
+    const [comments, setComments] = useState('NA');
     const dispatch = useDispatch();
+
+    const onChange = (event, propertyName) => {
+        propertyName(event.target.value);
+    }
+
+    const submitTalk = () => {
+        let objectToSend = {
+            fullName: fullName,
+            email: email,
+            instagram: instagram,
+            linkedIn: linkedIn,
+            comments: comments
+        }
+
+        dispatch({
+            type: 'CREATE_TALK',
+            payload: objectToSend
+        });
+    }
 
     return (
         <div className="signUp">
+
+            {/* onClick={} */}
+            <button className="cancelBtn">✖</button>
+
             <Grid
                 container
                 direction="row"
@@ -38,9 +66,9 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 <input
-                                    placeholder="First Last"
                                     type="text"
                                     className="input"
+                                    onChange={(event) => onChange(event, "setFullName")}
                                     required
                                 />
                             </Grid>
@@ -56,9 +84,9 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 <input
-                                    placeholder="email@example.com"
                                     type="text"
                                     className="input"
+                                    onChange={(event) => onChange(event, "setEmail")}
                                     required
                                 />
                             </Grid>
@@ -74,9 +102,9 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 <input
-                                    placeholder="@instagram"
                                     type="text"
                                     className="input"
+                                    onChange={(event) => onChange(event, "setInstagram")}
                                 />
                             </Grid>
                         </Grid>
@@ -91,9 +119,9 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 <input
-                                    placeholder="https://www.linkedin.com/in/EXAMPLE"
                                     type="text"
                                     className="input"
+                                    onChange={(event) => onChange(event, "setLinkedIn")}
                                 />
                             </Grid>
                         </Grid>
@@ -112,6 +140,7 @@ function SignUpForm() {
                                     rows="3"
                                     cols="23"
                                     className="textbox"
+                                    onChange={(event) => onChange(event, "setComments")}
                                 />
                             </Grid>
                         </Grid>
@@ -134,16 +163,22 @@ function SignUpForm() {
                             </Grid>
                         </Grid>
 
-                        <p className="details">
-                            videos must be below 100MB
-                        </p>
+                        <Grid
+                            container
+                            direction="row"
+                            justify="center"
+                        >
+                            <Grid item>
+                                <p>
+                                    videos must be below 100MB
+                                </p>
+                            </Grid>
+                        </Grid>
 
-                        <input type="submit" value="submit" className="submitBtn"/>
+                        <input type="submit" value="submit" className="submitBtn" onClick={submitTalk}/>
                     </form>
                 </Grid>
             </Grid>
-
-            <h1 className="cancelBtn">✖</h1>
         </div>
     );
 }
