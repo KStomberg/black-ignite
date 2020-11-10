@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
 import './SignUpForm.css';
@@ -32,9 +32,6 @@ function SignUpForm() {
 
     return (
         <div className="signUp">
-
-            {/* onClick={} */}
-            <button className="cancelBtn">✖</button>
 
             <Grid
                 container
