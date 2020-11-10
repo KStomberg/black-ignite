@@ -4,8 +4,8 @@
 }
 
 .input {
-    width: 290px;
-    height: 35px;
+    width: 260px;
+    height: 30px;
     border: medium solid black;
     border-radius: 6px;
     font-size: 18px;
@@ -13,7 +13,7 @@
 }
 
 .textbox {
-    width: 290px;
+    width: 260px;
     border: medium solid black;
     border-radius: 6px;
     font-size: 18px;
@@ -22,7 +22,7 @@
 }
 
 .detailParagraph {
-    font-size: 22px;
+    font-size: 20px;
     width: 290px;
     margin: auto;
 }
@@ -32,15 +32,11 @@
     margin-left: 0px;
 }
 
-.vidmb {
-    
-}
-
 .inputDesc {
     display: inline-flex;
     margin-left: 8px;
     margin-bottom: 4px;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .submitBtn {
@@ -54,4 +50,17 @@
     font-weight: bold;
     display: block;
     margin: auto;
+}
+
+.uploadBtn {
+    border: 2px dashed red;
+    background-color: transparent;
+    border-radius: 10px;
+    width: 270px;
+    height: 90px;
+}
+
+.uploadBtnText {
+    font-size: 20px;
+    justify-content: flex-start;
 }

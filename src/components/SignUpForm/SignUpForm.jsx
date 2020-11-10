@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
+import UploadIcon from './UploadIcon.png';
 import './SignUpForm.css';
 
 function SignUpForm() {
+    const [category, setCategory] = useState('');
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [instagram, setInstagram] = useState('NA');
@@ -50,6 +52,12 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 {/* Drop-Down for Categories */}
+                                <input
+                                    type="text"
+                                    className="input"
+                                    onChange={(event) => onChange(event, "setCategory")}
+                                    required
+                                />
                             </Grid>
                         </Grid>
 
@@ -157,6 +165,21 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 {/* Drop Zone for Video Upload */}
+                                <button className="uploadBtn">
+                                    <Grid
+                                        container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                    >
+                                        <Grid item xs={4}>
+                                            <img alt="upload" src={UploadIcon} width="60"/>
+                                        </Grid>
+                                        <Grid item xs={8}>
+                                            <p className="uploadBtnText">upload video from my device</p>
+                                        </Grid>
+                                    </Grid>
+                                </button>
                             </Grid>
                         </Grid>
 
