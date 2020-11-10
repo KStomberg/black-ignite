@@ -112,6 +112,10 @@ import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Homepage from '../Homepage/Homepage';
 import EditCategory from '../EditCategory/EditCategory';
+import ManageJuror from '../ManageJuror/ManageJuror';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterForm from '../RegisterForm/RegisterForm';
+
 function App() {
   return (
     <Router>
@@ -129,7 +133,25 @@ function App() {
               path="/edittalk"
               component={EditCategory}
             />
-
+              <Route
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/managejuror"
+              component={ManageJuror}
+            />
+                <Route
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/register"
+              component={RegisterForm}
+            />
+           
+            <ProtectedRoute
+              
+              exact
+              path="/login"
+              component={LoginPage}
+            />
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
