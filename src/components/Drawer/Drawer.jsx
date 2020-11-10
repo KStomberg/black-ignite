@@ -16,6 +16,15 @@ const useStyles = makeStyles({
     },
     btn: {
         borderRadius: 100,
+    },
+    cancelBtn: {
+        fontSize: 35,
+        marginRight: 250,
+        paddingTop: 10,
+        right: 0,
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        border: 'none',
     }
 });
 
@@ -41,6 +50,7 @@ export default function SwipeableTemporaryDrawer() {
           role="presentation"
         >
           <List>
+            <Button onClick={toggleDrawer(anchor, false)} className={classes.cancelBtn}>✖</Button>
             <SignUpForm />
           </List>
         </div>
