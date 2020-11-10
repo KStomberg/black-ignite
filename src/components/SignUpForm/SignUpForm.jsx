@@ -5,43 +5,49 @@ import UploadIcon from './UploadIcon.png';
 import './SignUpForm.css';
 
 function SignUpForm() {
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState();
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [instagram, setInstagram] = useState('NA');
     const [linkedIn, setLinkedIn] = useState('NA');
+    const [twitter, setTwitter] = useState('NA');
     const [comments, setComments] = useState('NA');
+    // 
+    const [file, setFile] = useState('FILE');
+    // 
     const dispatch = useDispatch();
 
-    const onChange = (event, propertyName) => {
-        propertyName(event.target.value);
-    }
+    // Submitting form
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
 
-    const submitTalk = () => {
         let objectToSend = {
+            category: category,
             fullName: fullName,
             email: email,
             instagram: instagram,
             linkedIn: linkedIn,
-            comments: comments
+            twitter: twitter,
+            comments: comments,
+            file: file
         }
+        console.log("objectToSend:", objectToSend);
 
         dispatch({
-            type: 'CREATE_TALK',
+            type: 'CREATE_SUBMISSION',
             payload: objectToSend
         });
-    }
+    } // end handleSubmit
 
     return (
         <div className="signUp">
-
             <Grid
                 container
                 direction="row"
                 justify="center"
             >
                 <Grid item>
-                    <form className="form">
+                    <form className="form" onSubmit={handleSubmit}>
                         <Grid 
                             container
                             direction="column"
@@ -55,7 +61,7 @@ function SignUpForm() {
                                 <input
                                     type="text"
                                     className="input"
-                                    onChange={(event) => onChange(event, "setCategory")}
+                                    onChange={e => setCategory(e.target.value)}
                                     required
                                 />
                             </Grid>
@@ -73,7 +79,7 @@ function SignUpForm() {
                                 <input
                                     type="text"
                                     className="input"
-                                    onChange={(event) => onChange(event, "setFullName")}
+                                    onChange={e => setFullName(e.target.value)}
                                     required
                                 />
                             </Grid>
@@ -91,7 +97,7 @@ function SignUpForm() {
                                 <input
                                     type="text"
                                     className="input"
-                                    onChange={(event) => onChange(event, "setEmail")}
+                                    onChange={e => setEmail(e.target.value)}
                                     required
                                 />
                             </Grid>
@@ -109,7 +115,7 @@ function SignUpForm() {
                                 <input
                                     type="text"
                                     className="input"
-                                    onChange={(event) => onChange(event, "setInstagram")}
+                                    onChange={e => setInstagram(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
@@ -126,7 +132,24 @@ function SignUpForm() {
                                 <input
                                     type="text"
                                     className="input"
-                                    onChange={(event) => onChange(event, "setLinkedIn")}
+                                    onChange={e => setLinkedIn(e.target.value)}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid 
+                            container
+                            direction="column"
+                            align-items="flex-start"
+                        >
+                            <Grid item>
+                                <label for="twitter" className="inputDesc">your Twitter</label>
+                            </Grid>
+                            <Grid item>
+                                <input
+                                    type="text"
+                                    className="input"
+                                    onChange={e => setTwitter(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
@@ -145,7 +168,7 @@ function SignUpForm() {
                                     rows="3"
                                     cols="23"
                                     className="textbox"
-                                    onChange={(event) => onChange(event, "setComments")}
+                                    onChange={e => setComments(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
@@ -195,7 +218,7 @@ function SignUpForm() {
                             </Grid>
                         </Grid>
 
-                        <input type="submit" value="submit" className="submitBtn" onClick={submitTalk}/>
+                        <input type="submit" value="submit" className="submitBtn"/>
                     </form>
                 </Grid>
             </Grid>
