@@ -115,6 +115,9 @@ import EditCategory from '../EditCategory/EditCategory';
 import ManageJuror from '../ManageJuror/ManageJuror';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterForm from '../RegisterForm/RegisterForm';
+// import { AppBar } from '@material-ui/core';
+import ButtonAppBar from '../AppBar/AppBar';
+
 
 function App() {
   return (
