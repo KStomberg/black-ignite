@@ -41,3 +41,12 @@ CREATE TABLE "rank" (
 "id" SERIAL PRIMARY KEY,
 "user_id" INT NOT NULL REFERENCES "user",
 "submission_id" INT NOT NULL REFERENCES "submission");
+
+INSERT INTO "category" ("title", "description", "image_url")
+VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/originals/63/ac/10/63ac107caeebda2a798c90996564c4cf.png'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces');
