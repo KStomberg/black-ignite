@@ -110,6 +110,7 @@ import React from 'react';
 import './App.css';
 import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import Homepage from '../Homepage/Homepage';
+import JurorPage from '../JurorPage/JurorPage'
 function App() {
   return (
     <Router>
@@ -120,6 +121,12 @@ function App() {
             exact
             path="/"
             component={Homepage}
+          />
+
+          <Route
+            exact
+            path="/juror"
+            component={JurorPage}
           />
           
 
