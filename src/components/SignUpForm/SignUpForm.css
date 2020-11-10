@@ -1,9 +1,10 @@
-.signUp {
-    background-color: goldenrod;
+.form {
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .input {
-    width: 250px;
+    width: 290px;
     height: 35px;
     border: medium solid black;
     border-radius: 6px;
@@ -12,7 +13,7 @@
 }
 
 .textbox {
-    width: 250px;
+    width: 290px;
     border: medium solid black;
     border-radius: 6px;
     font-size: 18px;
@@ -22,14 +23,17 @@
 
 .detailParagraph {
     font-size: 22px;
-    width: 310px;
+    width: 290px;
     margin: auto;
 }
 
 .details {
     width: 300px;
-    margin: auto;
     margin-left: 0px;
+}
+
+.vidmb {
+    
 }
 
 .inputDesc {
@@ -54,5 +58,10 @@
 
 .cancelBtn {
     font-size: 35px;
-    float: right;
+    margin-right: 250px;
+    padding-top: 10px;
+    right: 0px;
+    position: absolute;
+    background-color: transparent;
+    border: none;
 }

@@ -9,13 +9,13 @@ import './Drawer.css'
 const useStyles = makeStyles({
     list: {
         width: 250,
+        backgroundColor: '#F1BA45'
     },
     fullList: {
         width: 'auto',
     },
     btn: {
         borderRadius: 100,
-
     }
 });
 
@@ -47,7 +47,7 @@ export default function SwipeableTemporaryDrawer() {
       );
     
     return (
-        <div className="drawer">
+        <div className={classes.drawer}>
             {['bottom'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button onClick={toggleDrawer(anchor, true)} className={classes.btn} id="drawer-btn">+</Button>
