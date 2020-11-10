@@ -33,9 +33,6 @@ function SignUpForm() {
     return (
         <div className="signUp">
 
-            {/* onClick={} */}
-            <button className="cancelBtn">✖</button>
-
             <Grid
                 container
                 direction="row"

@@ -3,6 +3,17 @@
     position: fixed;
     font-size: 50px;
 }
+
 .drawer{
     background-color: #F1BA45;
+}
+
+.cancelBtn {
+    font-size: 35px;
+    margin-right: 250px;
+    padding-top: 10px;
+    right: 0px;
+    position: absolute;
+    background-color: transparent;
+    border: none;
 }
