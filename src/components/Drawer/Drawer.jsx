@@ -19,8 +19,9 @@ const useStyles = makeStyles({
     },
     cancelBtn: {
         fontSize: 35,
-        marginRight: 250,
         paddingTop: 10,
+        paddingRight: 30,
+        top: 0,
         right: 0,
         position: 'absolute',
         backgroundColor: 'transparent',
