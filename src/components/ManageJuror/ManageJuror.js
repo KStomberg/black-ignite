@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import Swal from 'sweetalert2'
+import ButtonAppBar from '../AppBar/AppBar';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -60,6 +61,7 @@ deleteJuror = (user) => {
   render() {
     return (
       <div>
+        <ButtonAppBar />
         <button
             type="button"
             className="btn btn_asLink"
