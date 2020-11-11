@@ -55,7 +55,7 @@ export default function ButtonAppBar() {
             <Link to="/managejuror" style={{ color: '#FFF' }}>
             <Button color="inherit">Rankings</Button>
             </Link>
-            <Link to="/managejuror" style={{ color: '#FFF' }}>
+            <Link to="/edittalk" style={{ color: '#FFF' }}>
             <Button color="inherit">Add Catergory</Button>
             </Link >
             <Link to="/managejuror" style={{ color: '#FFF' }}>
