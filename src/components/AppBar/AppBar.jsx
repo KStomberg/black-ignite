@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
+import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,10 +31,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+  function Home() {
+    const history = useHistory();
+    return <button onClick={() => history.push('/profile')}>Profile</button>;
+  }
+
 export default function ButtonAppBar() {
     const classes = useStyles();
 
-  
     return (
       <div className={classes.root}>
         <AppBar position="static" className={classes.app}>
@@ -40,15 +47,22 @@ export default function ButtonAppBar() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              News
+              Black Ignite
             </Typography>
+            <Link to="/managejuror" style={{ color: '#FFF' }}>
             <Button color="inherit">Submissions</Button>
+            </Link>
+            <Link to="/managejuror" style={{ color: '#FFF' }}>
             <Button color="inherit">Rankings</Button>
+            </Link>
+            <Link to="/managejuror" style={{ color: '#FFF' }}>
             <Button color="inherit">Add Catergory</Button>
-            <Button color="inherit">Manage Jurors</Button>
+            </Link >
+            <Link to="/managejuror" style={{ color: '#FFF' }}>
+            <Button color="inherit">Manage Jurors </Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>
     );
   }
-  
