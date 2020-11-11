@@ -114,11 +114,12 @@ input {
 
 html, body, #react-root{
   background-color: #F1BA45;
+  margin: 0;
+  padding: 0;
 }
+
 .App {
   text-align: center;
-  
-  
 }
 
 .App-logo {
