@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+
 import './JurorItem.css';
 
 class JurorItem extends Component {
@@ -9,7 +10,12 @@ class JurorItem extends Component {
     render() {
         console.log(this.props);
         return(
-            <p>test</p>
+            <div>
+                <div className='topicHeader' id={this.props.topicId}>
+                    <h4>{this.props.title}</h4>
+                </div>
+                
+            </div>
         )
     }
 }
