@@ -47,7 +47,6 @@ deleteJuror = (user) => {
     payload: objectToSend
   })
 
-
     // For more information about handling dismissals please visit
     // https://sweetalert2.github.io/#handling-dismissals
     } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -57,12 +56,19 @@ deleteJuror = (user) => {
       )
     }
   })
-  
-  
 }
   render() {
     return (
       <div>
+        <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {
+              this.props.history.push('/edittalk');
+            }}
+          >
+            edittalk
+          </button>
         <h2>{this.state.heading}</h2>
         <RegisterForm />
           <table>
@@ -76,7 +82,6 @@ deleteJuror = (user) => {
             {this.props.store.users.map(user =>
                <tr><td key={user.id}>{user.username}</td>
                <button onClick={()=> this.deleteJuror(user)}>Delete</button></tr>)}
-            
            
           </tbody>
         </table>
