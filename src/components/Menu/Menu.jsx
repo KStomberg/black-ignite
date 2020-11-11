@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       
     },
+    menu: {
+        "& .MuiPaper-root": {
+          backgroundColor: "#010101"
+        }
+    },
     
     menuItem: {
         color: '#fff',
@@ -46,6 +51,7 @@ export default function SimpleMenu() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        className={classes.menu}
       >
         <MenuItem onClick={handleClose}
         className={classes.menuItem}>Submissions</MenuItem>
