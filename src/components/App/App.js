@@ -117,8 +117,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterForm from '../RegisterForm/RegisterForm';
 // import { AppBar } from '@material-ui/core';
 import ButtonAppBar from '../AppBar/AppBar';
-
-
+import JurorPage from '../JurorPage/JurorPage'
 function App() {
   return (
     <Router>
@@ -155,6 +154,13 @@ function App() {
               path="/login"
               component={LoginPage}
             />
+
+          <Route
+            exact
+            path="/juror"
+            component={JurorPage}
+          />
+          
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
