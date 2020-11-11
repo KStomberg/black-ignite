@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
-import UploadIcon from './UploadIcon.png';
 import './SignUpForm.css';
 
 function SignUpForm() {
@@ -196,7 +195,7 @@ function SignUpForm() {
                                         alignItems="center"
                                     >
                                         <Grid item xs={4}>
-                                            <img alt="upload" src={UploadIcon} width="60"/>
+                                            <img alt="upload" src="/UploadIcon.png" width="60"/>
                                         </Grid>
                                         <Grid item xs={8}>
                                             <p className="uploadBtnText">upload video from my device</p>

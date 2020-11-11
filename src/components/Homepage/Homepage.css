@@ -1,0 +1,23 @@
+.homepage {
+    background-color: white;
+}
+
+.website {
+    margin-right: 10px;
+}
+
+.title {
+    margin-bottom: 5px;
+}
+
+.talkImg {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    outline: 8px solid #F1BA45;
+    margin: 20px;
+}
+
+.talkImg:hover {
+    transform: scale(1.05); 
+}

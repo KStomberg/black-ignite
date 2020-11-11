@@ -1,9 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
+import {Button, List, SwipeableDrawer, IconButton} from '@material-ui/core';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import './Drawer.css'
 const useStyles = makeStyles({
@@ -15,7 +13,17 @@ const useStyles = makeStyles({
         width: 'auto',
     },
     btn: {
-        borderRadius: 100,
+        display: 'flex',
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 0
+    },
+    iconBtn: {
+        marginTop: 5,
+        color: '#F1BA45',
+        backgroundColor: 'black'
     },
     cancelBtn: {
         fontSize: 35,
@@ -26,6 +34,9 @@ const useStyles = makeStyles({
         position: 'absolute',
         backgroundColor: 'transparent',
         border: 'none',
+    },
+    drawer: {
+        backgroundColor: '#F1BA45'
     }
 });
 
@@ -61,7 +72,9 @@ export default function SwipeableTemporaryDrawer() {
         <div className={classes.drawer}>
             {['bottom'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)} className={classes.btn} id="drawer-btn">+</Button>
+                    <IconButton className={classes.iconBtn}>
+                        <h1 onClick={toggleDrawer(anchor, true)} className={classes.btn}>+</h1>
+                    </IconButton>
                     <SwipeableDrawer
                         anchor={anchor}
                         open={state[anchor]}
