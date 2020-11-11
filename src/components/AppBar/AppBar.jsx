@@ -31,10 +31,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  function Home() {
-    const history = useHistory();
-    return <button onClick={() => history.push('/profile')}>Profile</button>;
-  }
 
 export default function ButtonAppBar() {
     const classes = useStyles();

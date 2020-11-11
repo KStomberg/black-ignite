@@ -1,0 +1,19 @@
+table, th, tr, td {
+    border-collapse: collapse;
+    border: 2px solid black;
+    text-align: center;
+}
+th{
+    background-color: #010101;
+    color: #fff;
+}
+tbody{
+    background-color: #fff;
+}
+table{
+    width: 80%;
+    margin: 0 auto;
+}
+td{
+    height: 30px;
+}

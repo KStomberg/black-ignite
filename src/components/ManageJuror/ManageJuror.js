@@ -5,6 +5,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import Swal from 'sweetalert2'
 import ButtonAppBar from '../AppBar/AppBar';
+import './ManageJuror.css';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -60,20 +61,12 @@ deleteJuror = (user) => {
 }
   render() {
     return (
-      <div>
+      <div >
         <ButtonAppBar />
-        <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/edittalk');
-            }}
-          >
-            edittalk
-          </button>
         <h2>{this.state.heading}</h2>
         <RegisterForm />
-          <table>
+        <div className="manageJurorDiv">
+          <table className="manageJurorTable">
             <thead>
             <tr>
               <th>Username</th>
@@ -82,11 +75,11 @@ deleteJuror = (user) => {
           </thead>
           <tbody>
             {this.props.store.users.map((user, i )=>
-               <tr><td key={user.id}>{user.username}</td>
-               <button key={i} onClick={()=> this.deleteJuror(user)}>Delete</button></tr>)}
-           
+               <tr key={i}><td key={user.id}>{user.username}</td>
+               <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td></tr>)}
           </tbody>
         </table>
+        </div>
       </div>
     );
   }
