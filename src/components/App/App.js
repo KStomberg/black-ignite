@@ -161,6 +161,12 @@ function App() {
             component={JurorPage}
           />
           
+          <Route
+            exact
+            path="/juror"
+            component={JurorPage}
+          />
+          
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
