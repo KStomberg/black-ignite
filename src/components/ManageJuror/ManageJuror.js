@@ -83,7 +83,7 @@ deleteJuror = (user) => {
           <tbody>
             {this.props.store.users.map(user =>
                <tr><td key={user.id}>{user.username}</td>
-               <button onClick={()=> this.deleteJuror(user)}>Delete</button></tr>)}
+               <button key={user.id} onClick={()=> this.deleteJuror(user)}>Delete</button></tr>)}
            
           </tbody>
         </table>

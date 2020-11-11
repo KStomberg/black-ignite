@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import {Link} from "react-router-dom";
-
+import Menu from '../Menu/Menu';
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -44,23 +44,8 @@ export default function ButtonAppBar() {
         <AppBar position="static" className={classes.app}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
+              <Menu/>
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Black Ignite
-            </Typography>
-            <Link to="/managejuror" style={{ color: '#FFF' }}>
-            <Button color="inherit">Submissions</Button>
-            </Link>
-            <Link to="/managejuror" style={{ color: '#FFF' }}>
-            <Button color="inherit">Rankings</Button>
-            </Link>
-            <Link to="/edittalk" style={{ color: '#FFF' }}>
-            <Button color="inherit">Add Catergory</Button>
-            </Link >
-            <Link to="/managejuror" style={{ color: '#FFF' }}>
-            <Button color="inherit">Manage Jurors </Button>
-            </Link>
           </Toolbar>
         </AppBar>
       </div>
