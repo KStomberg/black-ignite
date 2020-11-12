@@ -22,12 +22,14 @@ class JurorTalkCategory extends Component {
 
     render() {
         console.log('this.props for JurorTalkCategory', this.props);
+        let submissionsForThisCategory = this.props.store.submissions
+            .filter(submission => submission.category_id === this.props.topicId)
         return(
             <div>
                 <div className='topicHeader' id={this.props.topicId}>
                     <h4>{this.props.title}</h4>
                 </div>
-                {this.props.store.submissions.map((submission) => {
+                {submissionsForThisCategory.map((submission) => {
                     return(
                     <JurorTalkSubmission 
                     key={submission.id}
