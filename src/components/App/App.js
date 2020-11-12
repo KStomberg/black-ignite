@@ -117,6 +117,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterForm from '../RegisterForm/RegisterForm';
 // import { AppBar } from '@material-ui/core';
 import ButtonAppBar from '../AppBar/AppBar';
+import Ranking from '../Ranking/Ranking'
 
 
 function App() {
@@ -153,11 +154,17 @@ function App() {
               path="/login"
               component={LoginPage}
             />
+            <Route 
+              exact
+              path="/ranking"
+              component={Ranking}
+            />
             {/* <ProtectedRoute 
               exact
               path="/submission"
               component={}
               /> */}
+
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
