@@ -7,6 +7,7 @@ import ButtonAppBar from '../AppBar/AppBar';
 import Switch from '@material-ui/core/Switch';
 import EditTalkDisplay from './EditTalkDisplay';
 import Grid from '@material-ui/core/Grid';
+import S3VanillaUploader from './S3VanillasUploader';
 
 
 class EditCategory extends Component {
@@ -43,7 +44,8 @@ handleChange = () => {
         />
         <label>Talk Title: </label>
           <input value={this.state.title}
-          onChange={(event)=>this.handleChange(event)}/>
+          onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
+          <S3VanillaUploader />
         <input/>
         <input/>
 
