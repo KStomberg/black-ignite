@@ -28,4 +28,15 @@ router.post('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    let queryString = `SELECT * FROM "submission" WHERE "id" = $1;`;
+    pool.query(queryString, [req.body.id])
+        .then(results => {
+            res.send(results.rows);
+        }).catch(err => {
+            console.error('/submissions GET/:id failed', err);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
