@@ -45,7 +45,7 @@ handleChange = () => {
         <label>Talk Title: </label>
           <input value={this.state.title}
           onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
-          <S3VanillaUploader />
+          {/* <S3VanillaUploader /> */}
         <input/>
         <input/>
 
