@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
+    padding-top: 100px;
     margin: 0;
 }
 .talkDiv{
@@ -20,4 +20,8 @@
     margin-left: -50px;
     width: 100px;
     height: 100px;
+}
+.EditSwitch{
+    display: flex;
+    padding-top: 10px;
 }
