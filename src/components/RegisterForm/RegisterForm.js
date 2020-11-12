@@ -18,6 +18,9 @@ class RegisterForm extends Component {
         password: this.state.password,
       },
     });
+    this.props.dispatch({
+      type: 'FETCH_USERS'
+    })
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -29,7 +32,7 @@ class RegisterForm extends Component {
   render() {
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
-        <h2>Register User</h2>
+        <h2>Add A Juror</h2>
         {this.props.store.errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.registrationMessage}

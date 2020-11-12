@@ -2,13 +2,7 @@
     height: 200px;
     width: 200px;
 }
-.talkGallery{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-    margin: 0;
-}
+
 .talkDiv{
     margin: 10px;
 }
@@ -20,4 +14,8 @@
     margin-left: -50px;
     width: 100px;
     height: 100px;
+}
+.EditSwitch{
+    display: flex;
+    padding-top: 10px;
 }

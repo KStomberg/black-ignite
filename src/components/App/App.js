@@ -112,6 +112,13 @@ import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Homepage from '../Homepage/Homepage';
 import EditCategory from '../EditCategory/EditCategory';
+import ManageJuror from '../ManageJuror/ManageJuror';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterForm from '../RegisterForm/RegisterForm';
+// import { AppBar } from '@material-ui/core';
+import ButtonAppBar from '../AppBar/AppBar';
+
+
 function App() {
   return (
     <Router>
@@ -123,13 +130,34 @@ function App() {
             path="/"
             component={Homepage}
           />
-           <Route
+            <ProtectedRoute
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"
               component={EditCategory}
             />
-
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/managejuror"
+              component={ManageJuror}
+            />
+            <Route
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/register"
+              component={RegisterForm}
+            />
+            <Route 
+              exact
+              path="/login"
+              component={LoginPage}
+            />
+            {/* <ProtectedRoute 
+              exact
+              path="/submission"
+              component={}
+              /> */}
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
