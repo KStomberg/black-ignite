@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Drawer from '../Drawer/Drawer';
 import {IconButton} from '@material-ui/core';
@@ -23,10 +23,20 @@ const useStyles = makeStyles({
 function Homepage() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [images, setImages] = useState([
+    const [submissions, setSubmissions] = useState([
         "/mixed_in_america.png", "/city.png", "/allies.png", "/college.png", "/police.png", "/moms.png", 
         "/justice_system.png", "/voting.png", "/restin_power.png"
     ]);
+    // const [descriptions, setDescriptions] = useState([
+    //     "/mixed_in_america_description.png", "/city_description.png", "/allies_description.png", "/college_description.png", "/police_description.png", "/moms_description.png",
+    //     "/justice_system_description.png", "/voting_description.png", "/restin_power_description.png"
+    // ]);
+
+    // USE THIS WHEN USING SQL AND AWS //
+    // const submissions = useSelector(state => state.talks)
+    // useEffect(() => {
+    //     dispatch({type: 'FETCH_ALL_TALKS'});
+    // });
 
     return (
         <div className="homepage">
@@ -44,8 +54,8 @@ function Homepage() {
             </IconButton>
 
             <div>
-                {images.map(image =>
-                    <img src={image} width="200px" className="talkImg" alt={image} />
+                {submissions.map(submission =>
+                    <img src={submission} /* src={submission.image_url} */ width="200px" className="talkImg" alt={submission.title} />
                 )}
             </div>
 
