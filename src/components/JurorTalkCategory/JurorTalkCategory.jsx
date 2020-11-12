@@ -20,15 +20,28 @@ class JurorTalkCategory extends Component {
         });
     }
 
+    toggleDisplay = () => {
+        console.log('toggleDisplay clicked!');
+            let toggleStatus = document.getElementById(this.props.id);
+            if (toggleStatus.style.display === "none") {
+                toggleStatus.style.display = "block";
+            } else {
+                toggleStatus.style.display = "none";
+            }
+          
+    }
+
     render() {
         console.log('this.props for JurorTalkCategory', this.props);
         let submissionsForThisCategory = this.props.store.submissions
             .filter(submission => submission.category_id === this.props.topicId)
         return(
             <div>
-                <div className='topicHeader' id={this.props.topicId}>
+                <div className='topicHeader'>
+                    <button className='toggleDisplay' onClick={this.toggleDisplay}>Toggle Display</button>
                     <h4>{this.props.title}</h4>
                 </div>
+                <div id={this.props.id}>
                 {submissionsForThisCategory.map((submission) => {
                     return(
                     <JurorTalkSubmission 
@@ -44,6 +57,7 @@ class JurorTalkCategory extends Component {
                     video={submission.video_url}
                     />
                 )})}
+                </div>
                 
             </div>
         )

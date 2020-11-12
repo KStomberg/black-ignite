@@ -11,7 +11,7 @@ class JurorTalkSubmission extends Component {
         let submission = this.props;
         
             return (
-                <div className='submissionContainer'>
+                <div className='submissionContainer' id={this.props.key}>
                     <p>{submission.name}</p>
                     <p>{submission.email}</p>
                     <p>{submission.instagram}</p>
