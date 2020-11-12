@@ -6,7 +6,7 @@ import './EditCategory.css';
 import ButtonAppBar from '../AppBar/AppBar';
 import Switch from '@material-ui/core/Switch';
 import EditTalkDisplay from './EditTalkDisplay';
-
+import Grid from '@material-ui/core/Grid';
 
 
 class EditCategory extends Component {
@@ -28,7 +28,7 @@ toggleEditView = () => {
   render() {
     if (this.state.editView === false){
       return (
-        <div className="talkGallery">
+       <div className="talkGallery">
           <ButtonAppBar/>
           <h2>{this.state.heading}</h2>
           <Switch
@@ -37,10 +37,15 @@ toggleEditView = () => {
           color="default"
           inputProps={{ 'aria-label': 'checkbox with default color' }}
         />
+        <Grid container spacing={2}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
           {this.props.store.talks.map(talk => 
               <TalkDisplay key={talk.id} talk={talk}/>)}
+        </Grid>
         </div>
-        
       );
     }
     else{
@@ -53,8 +58,15 @@ toggleEditView = () => {
           color="default"
           inputProps={{ 'aria-label': 'checkbox with default color' }}
         />
+          <Grid container spacing={2}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
           {this.props.store.talks.map(talk => 
               <EditTalkDisplay key={talk.id} talk={talk}/>)}
+        
+        </Grid>
         </div>
       )
     }

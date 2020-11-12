@@ -2,13 +2,7 @@
     height: 200px;
     width: 200px;
 }
-.talkGallery{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 100px;
-    margin: 0;
-}
+
 .talkDiv{
     margin: 10px;
 }
