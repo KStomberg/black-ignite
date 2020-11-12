@@ -72,5 +72,5 @@ toggleEditView = () => {
     }
   }
 }
-
+// adding a comment to push changes
 export default connect(mapStoreToProps)(EditCategory);
