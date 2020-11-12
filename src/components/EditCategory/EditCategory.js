@@ -9,7 +9,6 @@ import EditTalkDisplay from './EditTalkDisplay';
 import Grid from '@material-ui/core/Grid';
 import S3VanillaUploader from './S3VanillasUploader';
 
-
 class EditCategory extends Component {
   state = {
     editView: false,

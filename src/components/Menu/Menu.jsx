@@ -62,6 +62,9 @@ export default function SimpleMenu() {
         <Link to="/edittalk" className={classes.link} >
             <MenuItem className={classes.menuItem}>Add Catergory</MenuItem>
             </Link >
+        <Link to="/ranking" className={classes.link} >
+            <MenuItem className={classes.menuItem}>Ranking</MenuItem>
+            </Link >
       </Menu>
     </div>
   );
