@@ -32,14 +32,14 @@ function Homepage() {
         <div className="homepage">
             <img src="/circle_logo.png" alt="companyLogo" width="80px"/>
             <h1 className="title">Speak at Black Ignite!</h1>
-            <span className="website">blackignite.com</span>
-            <IconButton className={classes.btn}>
+            <span className="website" onClick={() => window.open("https://blackignite.com/")}>blackignite.com</span>
+            <IconButton className={classes.btn} onClick={() => window.open("https://www.instagram.com/black.ignite/?hl=en")}>
                 <InstagramIcon className={classes.iconBtn} />
             </IconButton>
-            <IconButton className={classes.btn}>
+            <IconButton className={classes.btn} onClick={() => window.open("https://www.youtube.com/channel/UCfbaeaddxBcxB37c0NvqzPg")}>
                 <YouTubeIcon className={classes.iconBtn} />
             </IconButton>
-            <IconButton className={classes.btn}>
+            <IconButton className={classes.btn} onClick={() => window.open("https://www.linkedin.com/company/blackignite/")}>
                 <LinkedInIcon className={classes.iconBtn} />
             </IconButton>
 
