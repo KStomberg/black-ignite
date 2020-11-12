@@ -8,10 +8,17 @@ class JurorTalkSubmission extends Component {
     
     render() {
         console.log('this.props for JurorTalkSubmission', this.props);
+        let submission = this.props;
         
             return (
-                <div>
-                    <p>match!</p>
+                <div className='submissionContainer'>
+                    <p>{submission.name}</p>
+                    <p>{submission.email}</p>
+                    <p>{submission.instagram}</p>
+                    <p>{submission.linkedin}</p>
+                    <p>{submission.twitter}</p>
+                    <p>{submission.comment}</p>
+                    <p>{submission.video}</p>
                 </div>
             )
         }
