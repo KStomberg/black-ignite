@@ -154,7 +154,7 @@ function App() {
               path="/login"
               component={LoginPage}
             />
-            <Route 
+            <Route
               exact
               path="/ranking"
               component={Ranking}
