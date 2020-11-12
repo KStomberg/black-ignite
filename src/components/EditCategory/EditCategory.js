@@ -8,7 +8,6 @@ import Switch from '@material-ui/core/Switch';
 import EditTalkDisplay from './EditTalkDisplay';
 import Grid from '@material-ui/core/Grid';
 
-
 class EditCategory extends Component {
   state = {
     editView: false,

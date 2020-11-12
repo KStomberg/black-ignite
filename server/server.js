@@ -14,6 +14,7 @@ const submissionsRouter = require('./routes/submissions.router');
 const usersRouter = require('./routes/users.routers');
 const deleteJuror = require('./routes/deleteJuror.router');
 const deleteTalk = require('./routes/deleteTalk.router');
+const rankingsRouter = require('./routes/rankings.router')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +33,7 @@ app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
+app.use('/api/ranking', rankingsRouter);
 // Serve static files
 app.use(express.static('build'));
 
