@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import Swal from 'sweetalert2'
+import ButtonAppBar from '../AppBar/AppBar';
+import './ManageJuror.css';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -29,7 +31,7 @@ deleteJuror = (user) => {
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Yes, delete',
-    cancelButtonText: 'No, keep it'
+    cancelButtonText: 'No, keep this Juror'
   }).then((result) => {
     if (result.value) {
       Swal.fire(
@@ -47,7 +49,6 @@ deleteJuror = (user) => {
     payload: objectToSend
   })
 
-
     // For more information about handling dismissals please visit
     // https://sweetalert2.github.io/#handling-dismissals
     } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -57,15 +58,15 @@ deleteJuror = (user) => {
       )
     }
   })
-  
-  
 }
   render() {
     return (
-      <div>
+      <div >
+        <ButtonAppBar />
         <h2>{this.state.heading}</h2>
         <RegisterForm />
-          <table>
+        <div className="manageJurorDiv">
+          <table className="manageJurorTable">
             <thead>
             <tr>
               <th>Username</th>
@@ -73,13 +74,12 @@ deleteJuror = (user) => {
             </tr>
           </thead>
           <tbody>
-            {this.props.store.users.map(user =>
-               <tr><td key={user.id}>{user.username}</td>
-               <button onClick={()=> this.deleteJuror(user)}>Delete</button></tr>)}
-            
-           
+            {this.props.store.users.map((user, i )=>
+               <tr key={i}><td key={user.id}>{user.username}</td>
+               <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td></tr>)}
           </tbody>
         </table>
+        </div>
       </div>
     );
   }

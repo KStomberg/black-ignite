@@ -129,27 +129,25 @@ function App() {
             path="/"
             component={Homepage}
           />
-           <ProtectedRoute
+            <ProtectedRoute
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"
               component={EditCategory}
             />
-              <ProtectedRoute
+            <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/managejuror"
               component={ManageJuror}
             />
-                <Route
+            <Route
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/register"
               component={RegisterForm}
             />
-           
-            <Route
-              
+            <Route 
               exact
               path="/login"
               component={LoginPage}
@@ -160,13 +158,13 @@ function App() {
             path="/juror"
             component={JurorPage}
           />
-          
-          <Route
-            exact
-            path="/juror"
-            component={JurorPage}
-          />
-          
+
+            {/* <ProtectedRoute 
+              exact
+              path="/submission"
+              component={}
+              /> */}
+
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
