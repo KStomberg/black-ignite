@@ -118,7 +118,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 // import { AppBar } from '@material-ui/core';
 import ButtonAppBar from '../AppBar/AppBar';
 import Ranking from '../Ranking/Ranking'
-
+import JurorPage from '../JurorPage/JurorPage'
 
 function App() {
   return (
@@ -154,11 +154,19 @@ function App() {
               path="/login"
               component={LoginPage}
             />
+
             <Route
               exact
               path="/ranking"
               component={Ranking}
             />
+
+          <Route
+            exact
+            path="/juror"
+            component={JurorPage}
+          />
+
             {/* <ProtectedRoute 
               exact
               path="/submission"
