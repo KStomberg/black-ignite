@@ -31,7 +31,7 @@ deleteJuror = (user) => {
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Yes, delete',
-    cancelButtonText: 'No, keep it'
+    cancelButtonText: 'No, keep this Juror'
   }).then((result) => {
     if (result.value) {
       Swal.fire(

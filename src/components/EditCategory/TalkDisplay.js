@@ -20,14 +20,14 @@ class TalkDisplay extends Component {
 
   render() {
     return (
-      <Grid item xs={12} className="categoryDiv">
+      <div className="talkDiv">
           <img className="talkImages" src={this.props.talk.image_url}
           onClick={this.togglePopup}/>
           
           {this.state.showPopup ? 
           <div className="popUpDescription">{this.props.talk.description}</div>
         : null  }  
-      </Grid>
+      </div>
     );
   }
 }
