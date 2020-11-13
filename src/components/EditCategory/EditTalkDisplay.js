@@ -12,12 +12,22 @@ class EditTalkDisplay extends Component {
     heading: 'Talk Display',
     showPopup: false,
     editView: false,
+    talkInputs: false,
+    title: '',
+    posterFile: '',
+    descriptionFile: ''
+
   };
   togglePopup = () => {
       this.setState({
           showPopup: !this.state.showPopup
       })
   }
+ handleChange = (talk) => {
+    this.setState({
+        talkInputs: !this.state.talkInputs
+    })
+ }
   deleteTalk = (talk) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -56,10 +66,18 @@ class EditTalkDisplay extends Component {
   render() {
     return (
       <div className="talkDiv">
+          {this.state.talkInputs ? 
+        <div className="editTalkInputs">
+            <input placeholder="title"/>
+            <input placeholder="dropzone"/>
+            <input placeholder="dropzone2"/>
+        </div>
+      : null  
+    }  
         <img className="talkImages" src={this.props.talk.image_url}
         onClick={this.togglePopup}/>
         <div>
-        <button>Edit</button>
+        <button onClick={()=> this.handleChange(this.props.talk)}>Edit</button>
         <button onClick={()=> this.deleteTalk(this.props.talk)}>Delete</button>
         </div>
         {this.state.showPopup ? 

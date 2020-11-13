@@ -7,7 +7,8 @@ import ButtonAppBar from '../AppBar/AppBar';
 import Switch from '@material-ui/core/Switch';
 import EditTalkDisplay from './EditTalkDisplay';
 import Grid from '@material-ui/core/Grid';
-import S3VanillaUploader from './S3VanillasUploader';
+import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+import moment from 'moment';
 
 class EditCategory extends Component {
   state = {
@@ -15,6 +16,9 @@ class EditCategory extends Component {
     title: '',
     poster: '',
     description: '',
+    fileUrl: '',
+    imageUrl: '',
+    date: ''
   };
 componentDidMount() {
     this.props.dispatch({
@@ -29,7 +33,21 @@ toggleEditView = () => {
 handleChange = () => {
   
 }
+handleFinishedUpload = info => {
+  console.log('File uploaded with filename', info.filename)
+  console.log('Access it on s3 at', info.fileUrl)
+  this.setState({
+      fileUrl: info.fileUrl,
+      date: moment(Date()).format(),
+      //challenges_id: this.props.store.dailyChallenges[0]
+    });
+}
   render() {
+    const uploadOptions = {
+      server: 'http://localhost:5000',
+      // signingUrlQueryParams: {uploadType: 'avatar'},
+  }
+  const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
     if (this.state.editView === false){
       return (
        <div className="talkGallery">
@@ -44,7 +62,12 @@ handleChange = () => {
         <label>Talk Title: </label>
           <input value={this.state.title}
           onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
-          {/* <S3VanillaUploader /> */}
+          <DropzoneS3Uploader
+                    onFinish={this.handleFinishedUpload}
+                    s3Url={s3Url}
+                    maxSize={1024 * 1024 * 5}
+                    upload={uploadOptions}
+                />
         <input/>
         <input/>
 
