@@ -64,9 +64,19 @@ handleFinishedUpload = info => {
           onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
           <DropzoneS3Uploader
                     onFinish={this.handleFinishedUpload}
-                    s3Url={s3Url}
+                    //s3Url={s3Url}
                     accept="image/*,audio/*,video/*"
                    // maxSize={1024 * 1024 * 5}
+                   className={{ dropzone: { minHeight: 300, maxHeight: 350 },
+                  inputLabel: "Description" }}
+                    upload={uploadOptions}
+                />
+                <DropzoneS3Uploader
+                    onFinish={this.handleFinishedUpload}
+                    //s3Url={s3Url}
+                    accept="image/*,audio/*,video/*"
+                   // maxSize={1024 * 1024 * 5}
+                   className="S3Uploader"
                     upload={uploadOptions}
                 />
         <input/>

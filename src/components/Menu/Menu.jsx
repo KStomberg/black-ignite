@@ -65,6 +65,9 @@ export default function SimpleMenu() {
         <Link to="/ranking" className={classes.link} >
             <MenuItem className={classes.menuItem}>Ranking</MenuItem>
             </Link >
+            <Link to="/juror" className={classes.link} >
+            <MenuItem className={classes.menuItem}>Submissions</MenuItem>
+            </Link >
       </Menu>
     </div>
   );
