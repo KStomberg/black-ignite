@@ -42,6 +42,7 @@ handleFinishedUpload = info => {
       date: moment(Date()).format(),
       //challenges_id: this.props.store.dailyChallenges[0]
     });
+    console.log(`this is the file, I think?`, this.state.fileUrl)
 }
   render() {
     const uploadOptions = {

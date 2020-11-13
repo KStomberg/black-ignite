@@ -53,8 +53,7 @@ export default function SimpleMenu() {
         onClose={handleClose}
         className={classes.menu}
       >
-        <MenuItem onClick={handleClose}
-        className={classes.menuItem}>Submissions</MenuItem>
+        
         <Link to="/managejuror" className={classes.link}>
             <MenuItem onClick={handleClose}
             className={classes.menuItem}>Manage Juror</MenuItem>
@@ -62,6 +61,8 @@ export default function SimpleMenu() {
         <Link to="/edittalk" className={classes.link} >
             <MenuItem className={classes.menuItem}>Add Catergory</MenuItem>
             </Link >
+            <MenuItem onClick={handleClose}
+        className={classes.menuItem}>Submissions</MenuItem>
       </Menu>
     </div>
   );
