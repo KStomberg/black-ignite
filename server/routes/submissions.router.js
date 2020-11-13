@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    let queryString = `SELECT * FROM "submission" ORDER BY "id" DECS;`;
+    let queryString = `SELECT * FROM "submission" ORDER BY "id" DESC;`;
     pool.query(queryString)
         .then(result => {
             res.send(result.rows);
