@@ -53,11 +53,11 @@ VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/origi
 ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces');
 
 INSERT INTO "submission" ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "video_url")
-	VALUES (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo');
+	VALUES (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+	(1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+	(3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+	(4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+	(2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo');
 
 --SELECT * FROM "submission" JOIN "category" ON "category"."id" = "submission"."category_id";
 
