@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
-
+const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 // Route includes
 const userRouter = require('./routes/user.router');
 const talksRouter = require('./routes/category.router');
@@ -31,7 +31,12 @@ app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
-
+app.use('/s3', UploaderS3Router({
+  bucket: process.env.BUCKET_NAME,                // required
+  region: 'ca-central-1',                            // optional
+  headers: {'Access-Control-Allow-Origin': '*'},  // optional
+  ACL: 'public-read',                             // this is the default - set to `public-read` to let anyone view uploads
+}));
 // Serve static files
 app.use(express.static('build'));
 
