@@ -4,6 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* submissionsSaga() {
     yield takeLatest('CREATE_SUBMISSION', createSubmission);
     yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
+    yield takeLatest('FETCH_DESCRIPTION', fetchDescription);
 }
 
 function* fetchSubmissions(action) {
@@ -27,9 +28,21 @@ function* createSubmission(action) {
             url: '/api/submissions',
             data: action.payload
         });
+    } catch (err) {
+        console.error('ERROR in submissions saga:', err);
+    }
+}
+
+function* fetchDescription(action) {
+    try {
+        let res = yield axios({
+            method: 'GET',
+            url: `/api/submissions/${action.id}`
+        });
 
         yield put({
-            type: 'FETCH_SUBMISSIONS'
+            type: 'SET_DESCRIPTION',
+            payload: res.data
         });
     } catch (err) {
         console.error('ERROR in submissions saga:', err);
