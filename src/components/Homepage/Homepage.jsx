@@ -18,6 +18,14 @@ const useStyles = makeStyles({
         width: 30,
         height: 30,
         margin: 2
+    },
+    dialog: {
+        opacity: 0.5,
+    },
+    dialogContent: {
+        opacity: 1,
+        backgroundColor: '#EDAC3A',
+        border: 5
     }
 });
 
@@ -53,9 +61,9 @@ function Homepage() {
         setOpen(false);
     };
 
-    const getDescription = (id) => {
-        dispatch({type: 'FETCH_DESCRIPTION', payload: id});
-    }
+    // const getDescription = (id) => {
+    //     dispatch({type: 'FETCH_DESCRIPTION', payload: id});
+    // }
 
     return (
         <div className="homepage">
@@ -90,13 +98,14 @@ function Homepage() {
                             onClose={handleClose}
                             aria-labelledby="alert-dialog-slide-title"
                             aria-describedby="alert-dialog-slide-description"
+                            className={classes.dialog}
                         >
-                            <DialogContent>
+                            <DialogContent className={classes.dialogContent}>
                                 <DialogContentText id="alert-dialog-slide-description">
                                     <img src={submission} width="200px"/>
                                 </DialogContentText>
                             </DialogContent>
-                            <DialogActions>
+                            <DialogActions className={classes.dialogContent}>
                                 <Button onClick={handleClose} color="primary">
                                     sign up to speak
                                 </Button>
