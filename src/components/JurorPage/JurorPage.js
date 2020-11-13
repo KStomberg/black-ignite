@@ -26,7 +26,7 @@ class JurorView extends Component {
       <div>
         <div id="topicContainer">
           {this.props.store.talks.map((talk) => (
-            <JurorTalkCategory key={talk.id} topicId={talk.id} title={talk.title} />
+            <JurorTalkCategory key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} />
           ))}
         </div>
       </div>

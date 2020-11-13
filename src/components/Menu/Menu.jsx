@@ -61,8 +61,12 @@ export default function SimpleMenu() {
         <Link to="/edittalk" className={classes.link} >
             <MenuItem className={classes.menuItem}>Add Catergory</MenuItem>
             </Link >
-            <MenuItem onClick={handleClose}
-        className={classes.menuItem}>Submissions</MenuItem>
+        <Link to="/ranking" className={classes.link} >
+            <MenuItem className={classes.menuItem}>Ranking</MenuItem>
+            </Link >
+            <Link to="/juror" className={classes.link} >
+            <MenuItem className={classes.menuItem}>Submissions</MenuItem>
+            </Link >
       </Menu>
     </div>
   );

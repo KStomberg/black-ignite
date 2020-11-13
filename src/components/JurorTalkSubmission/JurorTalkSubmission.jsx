@@ -5,43 +5,26 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
-
-    idCompare = () => {
-        console.log('Testing:', this.props.topicId, this.props.categoryId);
-        if (this.props.topicId === this.props.categoryId) {
-            return (
-                <div>
-                    <p>match!</p>
-                </div>
-            )
-        }
-    }
     
     render() {
         console.log('this.props for JurorTalkSubmission', this.props);
+        let submission = this.props;
         
-        console.log('Testing:', this.props.talkId, this.props.categoryId);
-        if (this.props.talkId === this.props.categoryId) {
             return (
-                <div>
-                    <p>match!</p>
+                <div className='submissionContainer' id={this.props.key}>
+                    <p>{submission.name}</p>
+                    <p>{submission.email}</p>
+                    <p>{submission.instagram}</p>
+                    <p>{submission.linkedin}</p>
+                    <p>{submission.twitter}</p>
+                    <p>{submission.comment}</p>
+                    <p>{submission.video}</p>
                 </div>
             )
-        } else {
-            return ('')
         }
 
     }
 
 
-    // render() {
-    //     console.log('this.props for JurorTalkSubmission', this.props);
-    //     return(
-    //         <div> 
-    //         {this.idCompare}
-    //         </div>
-    //     );
-    // }
-}
 
 export default connect(mapStoreToProps)(JurorTalkSubmission);

@@ -117,7 +117,9 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterForm from '../RegisterForm/RegisterForm';
 // import { AppBar } from '@material-ui/core';
 import ButtonAppBar from '../AppBar/AppBar';
+import Ranking from '../Ranking/Ranking'
 import JurorPage from '../JurorPage/JurorPage'
+
 function App() {
   return (
     <Router>
@@ -129,13 +131,13 @@ function App() {
             path="/"
             component={Homepage}
           />
-            <ProtectedRoute
+            <Route
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"
               component={EditCategory}
             />
-            <ProtectedRoute
+            <Route
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/managejuror"
@@ -151,6 +153,12 @@ function App() {
               exact
               path="/login"
               component={LoginPage}
+            />
+
+            <Route
+              exact
+              path="/ranking"
+              component={Ranking}
             />
 
           <Route
