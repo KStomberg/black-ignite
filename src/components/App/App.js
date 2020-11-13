@@ -131,13 +131,13 @@ function App() {
             path="/"
             component={Homepage}
           />
-            <ProtectedRoute
+            <Route
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"
               component={EditCategory}
             />
-            <ProtectedRoute
+            <Route
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/managejuror"
