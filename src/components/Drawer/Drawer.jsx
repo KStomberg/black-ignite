@@ -40,6 +40,7 @@ const useStyles = makeStyles({
     }
 });
 
+// See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
 export default function SwipeableTemporaryDrawer() {
     const classes = useStyles();
     const [state, setState] = React.useState({

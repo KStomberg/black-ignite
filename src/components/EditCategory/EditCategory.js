@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import moment from 'moment';
 
-
 class EditCategory extends Component {
   state = {
     editView: false,

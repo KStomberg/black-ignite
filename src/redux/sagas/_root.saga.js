@@ -8,6 +8,7 @@ import usersSaga from './users.saga';
 import jurorPage from './jurorPage.saga'
 import deleteJuror from './deleteJuror.saga';
 import deleteTalk from './deleteTalk.saga';
+import rankingsTalk from './rankings.saga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     deleteJuror(),
     jurorPage(),
     deleteTalk(),
+    rankingsTalk()
 
   ]);
 }

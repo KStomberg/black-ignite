@@ -13,6 +13,9 @@ const submissionsRouter = require('./routes/submissions.router');
 const usersRouter = require('./routes/users.routers');
 const deleteJuror = require('./routes/deleteJuror.router');
 const deleteTalk = require('./routes/deleteTalk.router');
+const rankingsRouter = require('./routes/rankings.router')
+
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,18 +28,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+
+app.use('/api/ranking', rankingsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/user', userRouter);
 app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
+
 app.use('/s3', UploaderS3Router({
   bucket: process.env.BUCKET_NAME,                // required
   region: 'ca-central-1',                            // optional
   headers: {'Access-Control-Allow-Origin': '*'},  // optional
   ACL: 'public-read',                             // this is the default - set to `public-read` to let anyone view uploads
 }));
+
+
+
 // Serve static files
 app.use(express.static('build'));
 
