@@ -4,9 +4,6 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
-const aws = require('aws-sdk');
-const fs = require('fs');
-const multer = require('multer')
 const passport = require('./strategies/user.strategy');
 
 // Route includes
@@ -16,7 +13,6 @@ const submissionsRouter = require('./routes/submissions.router');
 const usersRouter = require('./routes/users.routers');
 const deleteJuror = require('./routes/deleteJuror.router');
 const deleteTalk = require('./routes/deleteTalk.router');
-const s3UploadRouter = require('./routes/s3.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +31,7 @@ app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
-app.use('/', s3UploadRouter);
+
 // Serve static files
 app.use(express.static('build'));
 
