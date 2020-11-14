@@ -18,6 +18,11 @@ class EditTalkDisplay extends Component {
     descriptionFile: ''
 
   };
+  componentDidUpdate() {
+    this.props.dispatch({
+        type: 'FETCH_ALL_TALKS'
+    })
+  }
   togglePopup = () => {
       this.setState({
           showPopup: !this.state.showPopup
@@ -52,6 +57,7 @@ class EditTalkDisplay extends Component {
       type: 'DELETE_TALK',
       payload: objectToSend
     })
+    
   
       // For more information about handling dismissals please visit
       // https://sweetalert2.github.io/#handling-dismissals
