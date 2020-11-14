@@ -53,8 +53,7 @@ export default function SimpleMenu() {
         onClose={handleClose}
         className={classes.menu}
       >
-        <MenuItem onClick={handleClose}
-        className={classes.menuItem}>Submissions</MenuItem>
+        
         <Link to="/managejuror" className={classes.link}>
             <MenuItem onClick={handleClose}
             className={classes.menuItem}>Manage Juror</MenuItem>

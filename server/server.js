@@ -14,7 +14,7 @@ const usersRouter = require('./routes/users.routers');
 const deleteJuror = require('./routes/deleteJuror.router');
 const deleteTalk = require('./routes/deleteTalk.router');
 const rankingsRouter = require('./routes/rankings.router')
-
+const addCategory = require('./routes/categoryPost.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -36,7 +36,7 @@ app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
-
+app.use('/api/category', addCategory);
 app.use('/s3', UploaderS3Router({
   bucket: process.env.BUCKET_NAME,                // required
   region: 'ca-central-1',                            // optional

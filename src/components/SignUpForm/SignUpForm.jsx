@@ -1,34 +1,36 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
+import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+import moment from 'moment';
 import './SignUpForm.css';
 
 function SignUpForm() {
     const [category, setCategory] = useState();
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
-    const [instagram, setInstagram] = useState('NA');
-    const [linkedIn, setLinkedIn] = useState('NA');
-    const [twitter, setTwitter] = useState('NA');
-    const [comments, setComments] = useState('NA');
-    // 
-    const [file, setFile] = useState('FILE');
-    // 
+    const [instagram, setInstagram] = useState('');
+    const [linkedIn, setLinkedIn] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [comments, setComments] = useState('');
+    const [date, setDate] = useState('')
+    const [fileUrl, setFileUrl] = useState('');
     const dispatch = useDispatch();
 
     // Submitting form
-    const handleSubmit = (evt) => {
+    const handleSubmit = evt => {
         evt.preventDefault();
 
         let objectToSend = {
-            category: category,
+            category: Number(category),
             fullName: fullName,
             email: email,
             instagram: instagram,
             linkedIn: linkedIn,
             twitter: twitter,
             comments: comments,
-            file: file
+            date: date,
+            fileUrl: fileUrl
         }
         console.log("objectToSend:", objectToSend);
 
@@ -37,6 +39,26 @@ function SignUpForm() {
             payload: objectToSend
         });
     } // end handleSubmit
+
+    const dropzoneStyles = {
+        border: '2px dashed red',
+        backgroundColor: 'transparent',
+        borderRadius: 10,
+        maxWidth: 270,
+        width: 270,
+        maxHeight: 'fitContent',
+        height: 90
+    }
+
+    const handleFinishedUpload = async info => {
+        await setFileUrl(info.fileUrl);
+        await setDate(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    }
+
+    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
+    const uploadOptions = {
+        server: 'http://localhost:5000'
+    }
 
     return (
         <div className="signUp">
@@ -186,8 +208,15 @@ function SignUpForm() {
                                 <label for="video" className="inputDesc">*my intro video</label>
                             </Grid>
                             <Grid item>
-                                {/* Drop Zone for Video Upload */}
-                                <button className="uploadBtn">
+                                <DropzoneS3Uploader
+                                    onFinish={handleFinishedUpload}
+                                    accept="image/*,audio/*,video/*"
+                                    style={dropzoneStyles}
+                                    upload={uploadOptions}
+                                    s3Url={s3Url}
+                                    required
+                                />
+                                {/* <button className="uploadBtn">
                                     <Grid
                                         container
                                         direction="row"
@@ -201,7 +230,7 @@ function SignUpForm() {
                                             <p className="uploadBtnText">upload video from my device</p>
                                         </Grid>
                                     </Grid>
-                                </button>
+                                </button> */}
                             </Grid>
                         </Grid>
 

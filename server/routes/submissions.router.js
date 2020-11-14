@@ -16,10 +16,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    let queryString = `INSERT INTO "submission" ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "video_url")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+    let queryString = `INSERT INTO "submission" ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "time_stamp", "video_url")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
     pool.query(queryString, [req.body.category, req.body.fullName, req.body.email, req.body.instagram, req.body.linkedIn,
-            req.body.twitter, req.body.comments, req.body.file])
+            req.body.twitter, req.body.comments, req.body.date, req.body.fileUrl])
         .then(result => {
             res.send(result.rows);
         }).catch(err => {
