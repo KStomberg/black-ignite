@@ -1,4 +1,4 @@
-.true {
+#true {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -8,7 +8,7 @@
   background-color: #f1ba45;
 }
 
-.false {
+#false {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -16,5 +16,12 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   background-color: #f1ba45;
-  
+}
+
+.toggleButton {
+  display: inline;
+}
+
+.submissionTitle {
+  display: inline;
 }

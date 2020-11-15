@@ -45,12 +45,13 @@ class JurorTalkCategory extends Component {
       <div>
         <div className="topicHeader">
           <button
-            className={JSON.stringify(this.state.isToggled)}
+            className="toggleButton"
+            id={JSON.stringify(this.state.isToggled)}
             onClick={this.toggleDisplay}
           ></button>
-          <h4>{this.props.title}</h4>
+          <h4 className="submissionTitle">{this.props.title}</h4>
         </div>
-        <div id={this.props.id}>
+        <div className="submissionItem" id={this.props.id}>
           {submissionsForThisCategory.map((submission) => {
             return (
               <JurorTalkSubmission
