@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ButtonAppBar from '../AppBar/AppBar';
 import './Ranking.css';
+import {Link} from 'react-router-dom';
 
 class Ranking extends Component {
     state = {
@@ -30,18 +31,20 @@ class Ranking extends Component {
               <th>Twitter</th>
               <th>Comments</th>
               <th>Video url</th>
+              <th>Likes:</th>
             </tr>
           </thead>
           <tbody>
                 {this.props.store.rankings.map(ranking => 
               <tr key={ranking.id}>
-                   <td> {ranking.full_name}</td>
-                   <td>{ranking.email}</td>
+                   <td>{ranking.full_name}</td>
+                   <a href="mailto:">{ranking.email}</a>
                    <td>{ranking.instagram}</td>
                    <td>{ranking.linkedin}</td>
                    <td>{ranking.twitter}</td>
                    <td>{ranking.comments}</td>
                    <td>{ranking.video_url}</td>
+                   <td>{ranking.likes}</td>
                    </tr> )}
         </tbody>
         </table>
