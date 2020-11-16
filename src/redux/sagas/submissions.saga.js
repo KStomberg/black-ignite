@@ -50,11 +50,13 @@ function* createSubmission(action) {
 
 function* fetchDescription(action) {
     try {
+        console.log('action.payload is:', action.payload)
         let res = yield axios({
             method: 'GET',
-            url: `/api/submissions/${action.id}`
+            url: `/api/talks/unauthenticated/${action.payload}`
         });
 
+        console.log('res.data:', res.data);
         yield put({
             type: 'SET_DESCRIPTION',
             payload: res.data
