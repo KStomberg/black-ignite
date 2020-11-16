@@ -42,7 +42,7 @@ class JurorTalkCategory extends Component {
       (submission) => submission.category_id === this.props.topicId
     );
     return (
-      <div>
+      <div >
         <div className="topicHeader">
           <button
             className="toggleButton"
@@ -56,6 +56,7 @@ class JurorTalkCategory extends Component {
             return (
               <JurorTalkSubmission
                 key={submission.id}
+                id={submission.id}
                 talkId={this.props.topicId}
                 categoryId={submission.category_id}
                 name={submission.full_name}
