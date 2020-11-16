@@ -52,6 +52,11 @@ class JurorTalkSubmission extends Component {
     });
   };
 
+  likeSubmission = () => {
+    console.log('Like button clicked!');
+    let submissionId = this.props.id
+  }
+
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);
     let submission = this.props;
@@ -68,6 +73,7 @@ class JurorTalkSubmission extends Component {
         <video width="420" height="315" controls>
           <source src={submission.video} />
         </video>
+        <button onClick={this.likeSubmission}>Like</button>
       </div>
     );
   }
