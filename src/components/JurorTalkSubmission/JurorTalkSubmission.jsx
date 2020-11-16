@@ -65,7 +65,9 @@ class JurorTalkSubmission extends Component {
         <p>{submission.linkedin}</p>
         <p>{submission.twitter}</p>
         <p>{submission.comment}</p>
-        <iframe width="420" height="315" src={submission.video}></iframe>
+        <video width="420" height="315" controls>
+          <source src={submission.video} />
+        </video>
       </div>
     );
   }
