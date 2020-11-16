@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         color: 'white'
     },
     btn: {
-        backgroundColor: 'black',
+        backgroundColor: '#221F1F',
         width: 30,
         height: 30,
         margin: 2
@@ -37,21 +37,17 @@ function Homepage() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
-    const [category, setCategory] = useState({});
-    const [submissions, setSubmissions] = useState([
-        "/mixed_in_america.png", "/city.png", "/allies.png", "/college.png", "/police.png", "/moms.png", 
-        "/justice_system.png", "/voting.png", "/restin_power.png"
-    ]);
-    // const [descriptions, setDescriptions] = useState([
-    //     "/mixed_in_america_description.png", "/city_description.png", "/allies_description.png", "/college_description.png", "/police_description.png", "/moms_description.png",
-    //     "/justice_system_description.png", "/voting_description.png", "/restin_power_description.png"
-    // ]);
+    const categories = useSelector(state => state.categories);
+    const description = useSelector(state => state.description);
 
-    // USE THIS WHEN USING SQL AND AWS //
-    // const submissions = useSelector(state => state.talks)
-    // useEffect(() => {
-    //     dispatch({type: 'FETCH_ALL_TALKS'});
-    // });
+    useEffect(() => {
+        dispatch({type: 'FETCH_ALL_CATEGORIES'});
+    }, []);
+
+    const getDescription = (id) => {
+        dispatch({type: 'FETCH_DESCRIPTION', payload: id});
+        handleClickOpen();
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -60,10 +56,6 @@ function Homepage() {
       const handleClose = () => {
         setOpen(false);
     };
-
-    // const getDescription = (id) => {
-    //     dispatch({type: 'FETCH_DESCRIPTION', payload: id});
-    // }
 
     return (
         <div className="homepage">
@@ -81,12 +73,13 @@ function Homepage() {
             </IconButton>
 
             <div>
-                {submissions.map(submission =>
+                {categories.map(category =>
                     <span>
-                        <Link key={submission.id} /* onClick={() => getDescription(submission.id)} */ onClick={handleClickOpen}>
-                            <img src={submission} /* src={submission.image_url} */ width="200px" className="talkImg" alt={submission.title} />
+                        <Link key={category.id} onClick={() => getDescription(category.id)}>
+                            <img src={category.image_url} width="200px" className="talkImg" alt={category.title} />
                         </Link>
-                        
+                    </span>
+                )}
                         {/* 
                             See Material-UI Zoom Transition: https://material-ui.com/components/transitions/ 
                             See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
@@ -102,7 +95,13 @@ function Homepage() {
                         >
                             <DialogContent className={classes.dialogContent}>
                                 <DialogContentText id="alert-dialog-slide-description">
-                                    <img src={submission} width="200px"/>
+                                    {/* <img src={submission.description_url} width="200px"/> */}
+
+                                    {console.log('description is:', description)}
+                                    {description.map(desc =>
+                                        <h1>{desc.description_url}</h1>
+                                    )}
+                                    {/* <h1>{description.description_url}</h1> */}
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions className={classes.dialogContent}>
@@ -111,8 +110,6 @@ function Homepage() {
                                 </Button>
                             </DialogActions>
                         </Dialog>
-                    </span>
-                )}
             </div>
 
             <Drawer />

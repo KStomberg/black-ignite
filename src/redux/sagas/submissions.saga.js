@@ -6,6 +6,20 @@ function* submissionsSaga() {
     yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
     yield takeLatest('FETCH_DESCRIPTION', fetchDescription);
     yield takeLatest('UPDATE_FORM_STATUS', updateFormStatus);
+    yield takeLatest('FETCH_ALL_CATEGORIES', fetchAllCategories);
+}
+
+function* fetchAllCategories(action) {
+    try {
+        let res = yield axios.get('/api/talks/unauthenticated')
+
+        yield put({
+            type: 'SET_CATEGORIES',
+            payload: res.data
+        });
+    } catch (err) {
+        console.error('ERROR in submissions sage', err);
+    }
 }
 
 function* fetchSubmissions(action) {
@@ -36,11 +50,13 @@ function* createSubmission(action) {
 
 function* fetchDescription(action) {
     try {
+        console.log('action.payload is:', action.payload)
         let res = yield axios({
             method: 'GET',
-            url: `/api/submissions/${action.id}`
+            url: `/api/talks/unauthenticated/${action.payload}`
         });
 
+        console.log('res.data:', res.data);
         yield put({
             type: 'SET_DESCRIPTION',
             payload: res.data
@@ -51,10 +67,15 @@ function* fetchDescription(action) {
 }
 
 function* updateFormStatus(action) {
+    console.log('action.payload of updateFormStatus', action.payload);
     try{
         yield axios({
             method: 'PUT',
-            url: `/api/submissions/${action.id}`
+            url: `/api/submissions/${action.payload}`
+        });
+        
+        yield put({
+            type: 'FETCH_SUBMISSIONS'
         });
 
     } catch (err) {

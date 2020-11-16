@@ -15,12 +15,12 @@ function SignUpForm() {
     const [comments, setComments] = useState('');
     const [date, setDate] = useState('');
     const [fileUrl, setFileUrl] = useState('');
-    const categories = useSelector(state => state.talks);
+    const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({type: 'FETCH_ALL_TALKS'});
-    });
+        dispatch({type: 'FETCH_ALL_CATEGORIES'});
+    }, []);
 
     // Submitting form
     const handleSubmit = evt => {
@@ -90,7 +90,14 @@ function SignUpForm() {
                                     onChange={e => setCategory(e.target.value)}
                                     required
                                 /> */}
-                                <select id="category" name="category" required>
+                                <select 
+                                    id="category" 
+                                    name="category" 
+                                    placeholder="Category Name" 
+                                    className="selectInput" 
+                                    onChange={e => setCategory(e.target.value)} 
+                                    required
+                                >
                                     {categories.map(category =>
                                         <option value={category.id}>{category.title}</option>
                                     )}
