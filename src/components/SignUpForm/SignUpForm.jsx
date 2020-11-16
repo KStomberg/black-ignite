@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
@@ -13,9 +13,14 @@ function SignUpForm() {
     const [linkedIn, setLinkedIn] = useState('');
     const [twitter, setTwitter] = useState('');
     const [comments, setComments] = useState('');
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState('');
     const [fileUrl, setFileUrl] = useState('');
+    const categories = useSelector(state => state.talks);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({type: 'FETCH_ALL_TALKS'});
+    });
 
     // Submitting form
     const handleSubmit = evt => {
@@ -79,12 +84,17 @@ function SignUpForm() {
                             </Grid>
                             <Grid item>
                                 {/* Drop-Down for Categories */}
-                                <input
+                                {/* <input
                                     type="text"
                                     className="input"
                                     onChange={e => setCategory(e.target.value)}
                                     required
-                                />
+                                /> */}
+                                <select id="category" name="category" required>
+                                    {categories.map(category =>
+                                        <option value={category.id}>{category.title}</option>
+                                    )}
+                                </select>
                             </Grid>
                         </Grid>
 
@@ -211,10 +221,9 @@ function SignUpForm() {
                                 <DropzoneS3Uploader
                                     onFinish={handleFinishedUpload}
                                     accept="image/*,audio/*,video/*"
-                                    style={dropzoneStyles}
                                     upload={uploadOptions}
                                     s3Url={s3Url}
-                                    required
+                                    style={dropzoneStyles}
                                 />
                                 {/* <button className="uploadBtn">
                                     <Grid
