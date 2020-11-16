@@ -20,9 +20,9 @@ class EditCategory extends Component {
     date: ''
   };
 componentDidMount() {
-    this.props.dispatch({
-        type: 'FETCH_ALL_TALKS'
-    })
+  this.props.dispatch({
+      type: 'FETCH_ALL_TALKS'
+  })
 }
 toggleEditView = () => {
   this.setState({
@@ -55,25 +55,37 @@ this.props.dispatch({
     type: 'POST_CATEGORY',
     payload: categoryTosend
 })
+this.componentDidMount();
+
 }
   render() {
     if (this.state.editView === false){
       return (
        <div className="talkGallery">
           <ButtonAppBar/>
-          <h2>Create A Talk</h2>
+          <h2>Add A Talk</h2>
           <Switch
             className="EditSwitch"
             onClick={this.toggleEditView}
             color="default"
             inputProps={{ 'aria-label': 'checkbox with default color' }}
           />
+          <div className="createTalkForm">
           <label>Talk Title: </label>
             <input type="text" value={this.state.title}
               onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
-            <PosterDropzone setOurPosterState={this.setOurPosterState}/>
-            <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
+              <div className="dropzones">
+                <div className="dropzone">
+                  <h2 className="talkH2">Talk Poster</h2>
+                  <PosterDropzone setOurPosterState={this.setOurPosterState}/>
+                </div>
+                <div className="dropzone">
+                <h2 className="talkH2">Talk Description</h2>
+                  <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
+                </div>
+              </div>
             <button onClick={this.onSubmit}>Submit</button>
+            </div>
           <Grid container spacing={2}
             direction="row"
             justify="center"

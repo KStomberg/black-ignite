@@ -4,6 +4,7 @@
 }
 .talkGallery{
     padding-top: 100px;
+   
 }
 .talkDiv{
     margin: 10px;
@@ -21,4 +22,18 @@
 .EditSwitch{
     display: flex;
     padding-top: 10px;
+}
+.createTalkForm{
+    align-items: center;
+}
+.dropzones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.dropzone{
+    padding: 20px;
+}
+.talkH2{
+  
 }

@@ -28,7 +28,7 @@ CREATE TABLE "category" (
 );
 CREATE TABLE "submission" (
 "id" SERIAL PRIMARY KEY,
-"category_id" INT NOT NULL REFERENCES "category",
+"category_id" INT NOT NULL,
 "full_name" VARCHAR(10000) NOT NULL,
 "email" VARCHAR(10000) NOT NULL,
 "instagram" VARCHAR(5000),

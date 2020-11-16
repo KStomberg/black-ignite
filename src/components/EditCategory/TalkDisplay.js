@@ -9,11 +9,16 @@ class TalkDisplay extends Component {
     heading: 'Talk Display',
     showPopup: false,
   };
+  componentDidUpdate() {
+    this.props.dispatch({
+        type: 'FETCH_ALL_TALKS'
+    })
+  }
   togglePopup = () => {
       this.setState({
           showPopup: !this.state.showPopup
       })
-  }
+  };
 
   render() {
     return (
