@@ -73,6 +73,7 @@ class JurorTalkSubmission extends Component {
         <video width="420" height="315" controls>
           <source src={submission.video} />
         </video>
+        <p>{submission.like} Jurors like this!</p>
         <button onClick={this.likeSubmission}>Like</button>
       </div>
     );
