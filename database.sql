@@ -28,17 +28,18 @@ CREATE TABLE "category"
     "description_url" VARCHAR(50000) NOT NULL,
     "image_url" VARCHAR(50000) NOT NULL
 );
-CREATE TABLE "submission" (
-"id" SERIAL PRIMARY KEY,
-"category_id" INT NOT NULL,
-"full_name" VARCHAR(10000) NOT NULL,
-"email" VARCHAR(10000) NOT NULL,
-"instagram" VARCHAR(5000),
-"linkedin" VARCHAR(5000), 
-"twitter" VARCHAR(5000),
-"comments" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL,
-"form_status" BOOLEAN DEFAULT FALSE
+CREATE TABLE "submission"
+(
+    "id" SERIAL PRIMARY KEY,
+    "category_id" INT NOT NULL,
+    "full_name" VARCHAR(10000) NOT NULL,
+    "email" VARCHAR(10000) NOT NULL,
+    "instagram" VARCHAR(5000),
+    "linkedin" VARCHAR(5000),
+    "twitter" VARCHAR(5000),
+    "comments" VARCHAR(50000),
+    "video_url" VARCHAR(50000) NOT NULL,
+    "form_status" BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE "rank"
 (
