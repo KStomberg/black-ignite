@@ -65,6 +65,7 @@ class JurorTalkCategory extends Component {
                 twitter={submission.twitter}
                 comment={submission.comments}
                 video={submission.video_url}
+                formStatus={submission.form_status}
               />
             );
           })}
