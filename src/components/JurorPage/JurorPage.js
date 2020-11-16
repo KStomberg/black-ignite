@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
 import AppBar from '../AppBar/AppBar' 
 import JurorTalkCategory from '../JurorTalkCategory/JurorTalkCategory'
-
 import './JurorPage.css';
 
 class JurorView extends Component {

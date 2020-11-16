@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ButtonAppBar from '../AppBar/AppBar';
 import './Ranking.css';
-import {Link} from 'react-router-dom';
+import CategoryMenu from '../CategoryMenu.js/CategoryMenu';
 
 class Ranking extends Component {
     state = {
-        heading: 'Ranking',
     }
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ALL_RANKINGS'
         })
+        
     }
+
     render(){
         console.log('this.props.store.rankings',this.props.store.rankings)
         JSON.stringify(this.props.store.rankings)
@@ -21,6 +22,7 @@ class Ranking extends Component {
             <div>
                 <ButtonAppBar />
                 <div className="rankingDiv"><h2>Redesign our city!</h2></div>
+
           <table className="rankingTable">
             <thead>
             <tr>
@@ -48,6 +50,7 @@ class Ranking extends Component {
                    </tr> )}
         </tbody>
         </table>
+        <CategoryMenu />
             </div>
         )
     }
