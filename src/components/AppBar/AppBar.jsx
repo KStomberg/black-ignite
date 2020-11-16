@@ -8,7 +8,7 @@ import Menu from '../Menu/Menu';
 const useStyles = makeStyles((theme) => ({
    
     appbar: {
-      backgroundColor: '#010101',
+      backgroundColor: '#221F1F',
       width: '100%',
       position: 'fixed',
       top: 0,

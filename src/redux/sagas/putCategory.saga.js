@@ -6,7 +6,6 @@ function* putCategory(action) {
   try {
     let response = yield axios.put('/api/category', action.payload);
     console.log(response);
-    yield put({ type: 'SET_TALKS', payload: response.data});
   } catch (error) {
     console.log('poster PUT request failed', error);
   }

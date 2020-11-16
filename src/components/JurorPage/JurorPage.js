@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+import AppBar from '../AppBar/AppBar' 
 import JurorTalkCategory from '../JurorTalkCategory/JurorTalkCategory'
-
 import './JurorPage.css';
 
 class JurorView extends Component {
@@ -24,6 +23,7 @@ class JurorView extends Component {
     console.log('this.props for jurorPage', this.props);
     return (
       <div>
+        <AppBar />
         <div id="topicContainer">
           {this.props.store.talks.map((talk) => (
             <JurorTalkCategory key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} />
