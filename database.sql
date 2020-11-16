@@ -55,10 +55,9 @@ CREATE TABLE "submission" (
 "linkedin" VARCHAR(5000), 
 "twitter" VARCHAR(5000),
 "comments" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL
+"video_url" VARCHAR(50000) NOT NULL,
+"form_status" BOOLEAN DEFAULT FALSE
 );
-
-
 INSERT INTO "category"
     ("title", "description_url", "image_url")
 VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/originals/63/ac/10/63ac107caeebda2a798c90996564c4cf.png'),
