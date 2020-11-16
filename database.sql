@@ -38,7 +38,8 @@ CREATE TABLE "submission" (
 "linkedin" VARCHAR(5000), 
 "twitter" VARCHAR(5000),
 "comments" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL,
+"time_stamp" VARCHAR(50000),
+"video_url" VARCHAR(50000) NOT NULL
 "form_status" BOOLEAN DEFAULT FALSE
 );
 
