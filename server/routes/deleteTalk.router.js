@@ -4,9 +4,11 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  //delete a specific user based on client delete in manageJuror.js
+  //soft delete category
   console.log('made it to our delete talk router', req.params)
-  const queryText = `DELETE FROM "category" WHERE "id" = $1;`;
+  const queryText = `UPDATE "category" 
+  SET "is_deleted" = TRUE
+  WHERE "id" = $1;`;
   pool.query(queryText, [req.params.id])
     .then( (result) => {
         console.log(result.rows);
