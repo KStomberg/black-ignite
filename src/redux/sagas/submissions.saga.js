@@ -5,6 +5,7 @@ function* submissionsSaga() {
     yield takeLatest('CREATE_SUBMISSION', createSubmission);
     yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
     yield takeLatest('FETCH_DESCRIPTION', fetchDescription);
+    yield takeLatest('UPDATE_FORM_STATUS', updateFormStatus);
 }
 
 function* fetchSubmissions(action) {
@@ -46,6 +47,18 @@ function* fetchDescription(action) {
         });
     } catch (err) {
         console.error('ERROR in submissions saga:', err);
+    }
+}
+
+function* updateFormStatus(action) {
+    try{
+        yield axios({
+            method: 'PUT',
+            url: `/api/submissions/${action.id}`
+        });
+
+    } catch (err) {
+        console.error('ERROR in updateFormStatus saga:', err);
     }
 }
 

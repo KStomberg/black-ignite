@@ -39,4 +39,15 @@ router.get('/:id', (req, res) => {
         });
 });
 
+router.put('/:id', (req, res) => {
+    let queryString = `UPDATE "submission" SET "form_status" = $2 WHERE "id" = $1;`;
+    pool.query(queryString, [req.body.id])
+        .then(results => {
+            res.send(results.rows);
+        }).catch(err => {
+            console.error('/submissions put/:id failed', err);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

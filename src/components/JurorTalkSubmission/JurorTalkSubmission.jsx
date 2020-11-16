@@ -5,6 +5,23 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
+  formStatusChecker = (currentForm) => {
+    console.log('currentForm:', currentForm);
+    if (currentForm === false) {
+      return (
+        <button onClick={this.submitForm}>Submitted Form</button>
+      )
+    } else {
+      return (
+        <p>Form Submitted!</p>
+      )
+    }
+  };
+
+  submitForm = () => {
+    console.log('clicked!');
+  }
+
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);
     let submission = this.props;
@@ -12,6 +29,7 @@ class JurorTalkSubmission extends Component {
     return (
       <div className="submissionContainer" id={this.props.key}>
         <p>{submission.name}</p>
+        {this.formStatusChecker(submission.formStatus)}
         <p>{submission.email}</p>
         <p>{submission.instagram}</p>
         <p>{submission.linkedin}</p>

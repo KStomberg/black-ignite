@@ -31,14 +31,15 @@ CREATE TABLE "category"
 CREATE TABLE "submission"
 (
     "id" SERIAL PRIMARY KEY,
-    "category_id" INT NOT NULL REFERENCES "category",
+    "category_id" INT NOT NULL,
     "full_name" VARCHAR(10000) NOT NULL,
     "email" VARCHAR(10000) NOT NULL,
     "instagram" VARCHAR(5000),
     "linkedin" VARCHAR(5000),
     "twitter" VARCHAR(5000),
     "comments" VARCHAR(50000),
-    "video_url" VARCHAR(50000) NOT NULL
+    "video_url" VARCHAR(50000) NOT NULL,
+    "form_status" BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE "rank"
 (
@@ -46,19 +47,6 @@ CREATE TABLE "rank"
     "user_id" INT NOT NULL REFERENCES "user",
     "submission_id" INT NOT NULL REFERENCES "submission"
 );
-CREATE TABLE "submission" (
-"id" SERIAL PRIMARY KEY,
-"category_id" INT NOT NULL,
-"full_name" VARCHAR(10000) NOT NULL,
-"email" VARCHAR(10000) NOT NULL,
-"instagram" VARCHAR(5000),
-"linkedin" VARCHAR(5000), 
-"twitter" VARCHAR(5000),
-"comments" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL
-);
-
-
 INSERT INTO "category"
     ("title", "description_url", "image_url")
 VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/originals/63/ac/10/63ac107caeebda2a798c90996564c4cf.png'),
@@ -79,5 +67,3 @@ VALUES
     (2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo');
 
 --SELECT * FROM "submission" JOIN "category" ON "category"."id" = "submission"."category_id";
-
-
