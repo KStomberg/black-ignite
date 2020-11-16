@@ -40,8 +40,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    let queryString = `UPDATE "submission" SET "form_status" = $2 WHERE "id" = $1;`;
-    pool.query(queryString, [req.body.id])
+    console.log('hit update submission put', req.params);
+    let queryString = `UPDATE "submission" SET "form_status" = true WHERE "id" = $1;`;
+    pool.query(queryString, [req.params.id])
         .then(results => {
             res.send(results.rows);
         }).catch(err => {
