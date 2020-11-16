@@ -28,24 +28,6 @@ CREATE TABLE "category"
     "description_url" VARCHAR(50000) NOT NULL,
     "image_url" VARCHAR(50000) NOT NULL
 );
-CREATE TABLE "submission"
-(
-    "id" SERIAL PRIMARY KEY,
-    "category_id" INT NOT NULL REFERENCES "category",
-    "full_name" VARCHAR(10000) NOT NULL,
-    "email" VARCHAR(10000) NOT NULL,
-    "instagram" VARCHAR(5000),
-    "linkedin" VARCHAR(5000),
-    "twitter" VARCHAR(5000),
-    "comments" VARCHAR(50000),
-    "video_url" VARCHAR(50000) NOT NULL
-);
-CREATE TABLE "rank"
-(
-    "id" SERIAL PRIMARY KEY,
-    "user_id" INT NOT NULL REFERENCES "user",
-    "submission_id" INT NOT NULL REFERENCES "submission"
-);
 CREATE TABLE "submission" (
 "id" SERIAL PRIMARY KEY,
 "category_id" INT NOT NULL,
@@ -57,6 +39,12 @@ CREATE TABLE "submission" (
 "comments" VARCHAR(50000),
 "video_url" VARCHAR(50000) NOT NULL,
 "form_status" BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE "rank"
+(
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT NOT NULL REFERENCES "user",
+    "submission_id" INT NOT NULL REFERENCES "submission"
 );
 INSERT INTO "category"
     ("title", "description_url", "image_url")
@@ -78,5 +66,3 @@ VALUES
     (2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo');
 
 --SELECT * FROM "submission" JOIN "category" ON "category"."id" = "submission"."category_id";
-
-
