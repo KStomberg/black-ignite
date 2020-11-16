@@ -40,7 +40,7 @@ class Ranking extends Component {
                 {this.props.store.rankings.map(ranking => 
               <tr key={ranking.id}>
                    <td>{ranking.full_name}</td>
-                   <a href="mailto:">{ranking.email}</a>
+                  <a href="mailto:">{ranking.email}</a>
                    <a href={ranking.instagram}>Instagram</a>
                    <a href={ranking.linkedin}> LinkedIn Account</a>
                    <a href={ranking.twitter}> Twitter account</a>

@@ -50,7 +50,7 @@ class PosterDropzone extends Component {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
-            createimagethumbnails="false"
+            createImageThumbnails="false"
             /> 
     );
   }
