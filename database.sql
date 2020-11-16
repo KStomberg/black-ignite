@@ -46,6 +46,17 @@ CREATE TABLE "rank"
     "user_id" INT NOT NULL REFERENCES "user",
     "submission_id" INT NOT NULL REFERENCES "submission"
 );
+CREATE TABLE "submission" (
+"id" SERIAL PRIMARY KEY,
+"category_id" INT NOT NULL,
+"full_name" VARCHAR(10000) NOT NULL,
+"email" VARCHAR(10000) NOT NULL,
+"instagram" VARCHAR(5000),
+"linkedin" VARCHAR(5000), 
+"twitter" VARCHAR(5000),
+"comments" VARCHAR(50000),
+"video_url" VARCHAR(50000) NOT NULL
+);
 
 
 INSERT INTO "category"
