@@ -51,10 +51,15 @@ function* fetchDescription(action) {
 }
 
 function* updateFormStatus(action) {
+    console.log('action.payload of updateFormStatus', action.payload);
     try{
         yield axios({
             method: 'PUT',
-            url: `/api/submissions/${action.id}`
+            url: `/api/submissions/${action.payload}`
+        });
+        
+        yield put({
+            type: 'FETCH_SUBMISSIONS'
         });
 
     } catch (err) {
