@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class CategoryMenu extends Component{
     state= {open: false,
-            anchorEl: 'bottom'
+            anchorEl: null
     }
 
     componentDidMount() {
@@ -23,7 +23,8 @@ class CategoryMenu extends Component{
       
     toggleMenu = () => {
         this.setState({
-            open: !this.state.open
+            open: !this.state.open,
+            anchorEl: null
         }) 
     }
     render() {
@@ -34,13 +35,16 @@ class CategoryMenu extends Component{
               </Button>
               <Menu
                 id="simple-menu"
-                anchorEl={this.state.anchorEl}
                 keepMounted
                 open={this.state.open}
-                // onClose={handleClose}
+                anchorEl={this.state.anchorEl}
+                getContentAnchorEl={null}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                transformOrigin={{ vertical: "top", horizontal: "center" }}
+                onClose={this.toggleMenu}
               >
                 {this.props.store.talks.map((talk) => (
-            <MenuItem key={talk.id} id={talk.id} topicId={talk.id} title={talk.title}>
+            <MenuItem key={talk.id} id={talk.id} onClick={this.toggleMenu}>
                 {talk.title} </MenuItem>
                 ))}
               </Menu>
