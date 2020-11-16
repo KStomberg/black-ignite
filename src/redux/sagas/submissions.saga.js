@@ -6,6 +6,20 @@ function* submissionsSaga() {
     yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
     yield takeLatest('FETCH_DESCRIPTION', fetchDescription);
     yield takeLatest('UPDATE_FORM_STATUS', updateFormStatus);
+    yield takeLatest('FETCH_ALL_CATEGORIES', fetchAllCategories);
+}
+
+function* fetchAllCategories(action) {
+    try {
+        let res = yield axios.get('/api/talks/unauthenticated')
+
+        yield put({
+            type: 'SET_CATEGORIES',
+            payload: res.data
+        });
+    } catch (err) {
+        console.error('ERROR in submissions sage', err);
+    }
 }
 
 function* fetchSubmissions(action) {

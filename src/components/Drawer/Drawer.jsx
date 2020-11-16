@@ -7,7 +7,7 @@ import './Drawer.css'
 const useStyles = makeStyles({
     list: {
         width: 250,
-        backgroundColor: '#F1BA45'
+        backgroundColor: '#EDAC3A'
     },
     fullList: {
         width: 'auto',
@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     },
     iconBtn: {
         marginTop: 5,
-        color: '#F1BA45',
-        backgroundColor: 'black'
+        color: '#EDAC3A',
+        backgroundColor: '#221F1F'
     },
     cancelBtn: {
         fontSize: 35,
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
         border: 'none',
     },
     drawer: {
-        backgroundColor: '#F1BA45'
+        backgroundColor: '#EDAC3A'
     }
 });
 
