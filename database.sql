@@ -3,7 +3,8 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
-CREATE TABLE "user" (
+CREATE TABLE "user"
+(
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR(1000) NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE "user" (
 --DROP TABLE "submission";
 --DROP TABLE "category";
 --DROP TABLE "user";
+
 
 
 CREATE TABLE "category" (
@@ -36,30 +38,33 @@ CREATE TABLE "submission" (
 "linkedin" VARCHAR(5000), 
 "twitter" VARCHAR(5000),
 "comments" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL
+"video_url" VARCHAR(50000) NOT NULL,
+"form_status" BOOLEAN DEFAULT FALSE
 );
-CREATE TABLE "rank" (
-"id" SERIAL PRIMARY KEY,
-"user_id" INT NOT NULL REFERENCES "user",
-"submission_id" INT NOT NULL REFERENCES "submission");
 
-
-INSERT INTO "category" ("title", "description_url", "image_url")
+CREATE TABLE "rank"
+(
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT NOT NULL REFERENCES "user",
+    "submission_id" INT NOT NULL REFERENCES "submission"
+);
+INSERT INTO "category"
+    ("title", "description_url", "image_url")
 VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/originals/63/ac/10/63ac107caeebda2a798c90996564c4cf.png'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
-('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces');
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces'),
+    ('Toilet Paper our city', 'Gonna TP the town', 'https://stmedia.stimg.co/ows_15856618268149.jpg?fit=crop&crop=faces');
 
-INSERT INTO "submission" ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "video_url")
-	VALUES (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo'),
-	(2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/watch?v=YddwkMJG1Jo');
+INSERT INTO "submission"
+    ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "video_url")
+VALUES
+    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+    (3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+    (4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
+    (2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo');
 
 --SELECT * FROM "submission" JOIN "category" ON "category"."id" = "submission"."category_id";
-
-
