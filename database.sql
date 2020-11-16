@@ -24,11 +24,12 @@ CREATE TABLE "category" (
 "id" SERIAL PRIMARY KEY,
 "title" VARCHAR(1000) NOT NULL,
 "description_url" VARCHAR(50000) NOT NULL,
-"image_url" VARCHAR(50000) NOT NULL
+"image_url" VARCHAR(50000) NOT NULL,
+"is_deleted" BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE "submission" (
 "id" SERIAL PRIMARY KEY,
-"category_id" INT NOT NULL,
+"category_id" INT NOT NULL REFERENCES "category",
 "full_name" VARCHAR(10000) NOT NULL,
 "email" VARCHAR(10000) NOT NULL,
 "instagram" VARCHAR(5000),

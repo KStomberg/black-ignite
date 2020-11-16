@@ -37,7 +37,8 @@ class PosterDropzone extends Component {
       cursor: 'pointer',
       backgroundImage: 'url(/highres_blackignite_logo.png)',
       backgroundPosition: 'center',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      
       
 
     }
@@ -49,6 +50,7 @@ class PosterDropzone extends Component {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
+            createimagethumbnails="false"
             /> 
     );
   }
