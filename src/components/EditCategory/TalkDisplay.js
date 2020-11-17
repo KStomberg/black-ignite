@@ -48,8 +48,53 @@ class TalkDisplay extends Component {
  }
  
  handleEditSubmit = () => {
+  let editObjectToSend;
   console.log('made it into our edit submit')
+  if(this.state.poster === '' && this.state.description === ''){
+    editObjectToSend = {
+      title: this.state.title
+    }
+  }
+  else if (this.state.poster === '' && this.state.title === ''){
+    editObjectToSend = {
+      description_url: this.state.description
+    }
+  }
+  else if (this.state.description === '' && this.state.title === ''){
+    editObjectToSend = {
+      poster_url: this.state.poster
+    }
+  }
+  else if (this.state.title === ''){
+    editObjectToSend = {
+      poster_url: this.state.poster,
+      description_url: this.state.description
+    }
+  }
+    else if (this.state.description === ''){
+      editObjectToSend = {
+        poster_url: this.state.poster,
+        title: this.state.title
+      }
  }
+  else if (this.state.poster === ''){
+    editObjectToSend = {
+      description_url: this.state.description,
+      title: this.state.title
+    }
+  }
+  else{
+    editObjectToSend = {
+      poster_url: this.state.poster,
+      description_url: this.state.description,
+      title: this.state.title
+    }
+  }
+  this.props.dispatch({
+    type: 'EDIT_CATEGORY',
+    payload: editObjectToSend
+  })
+}
  submitChange = (talk) => {
   let objectToSend = {
     id: talk.id
