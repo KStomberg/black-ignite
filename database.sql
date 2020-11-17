@@ -42,7 +42,7 @@ CREATE TABLE "submission" (
 "time_stamp" VARCHAR(50000),
 "video_url" VARCHAR(50000) NOT NULL,
 "form_status" BOOLEAN DEFAULT FALSE,
-"likes" INT DEFAULT 0,
+"likes" INT DEFAULT 0
 );
 
 CREATE TABLE "like"
