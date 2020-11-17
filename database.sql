@@ -8,7 +8,8 @@ CREATE TABLE "user"
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR(1000) NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
-    "authLevel" VARCHAR(256) NOT NULL
+    "authLevel" VARCHAR(256) NOT NULL,
+    "likes" INT DEFAULT 30 MIN 0
 );
 --create database called "Black_Ignite"
 --should be noted that some of rows such as 
@@ -41,10 +42,10 @@ CREATE TABLE "submission" (
 "time_stamp" VARCHAR(50000),
 "video_url" VARCHAR(50000) NOT NULL,
 "form_status" BOOLEAN DEFAULT FALSE,
-"likes" NUMBER DEFAULT 0,
+"likes" INT DEFAULT 0,
 );
 
-CREATE TABLE "rank"
+CREATE TABLE "like"
 (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user",
