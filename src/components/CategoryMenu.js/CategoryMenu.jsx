@@ -11,27 +11,32 @@ class CategoryMenu extends Component{
     }
 
     componentDidMount() {
-        this.getTalk();
+        // this.getTalk();
       }
     
-      getTalk = () => {
-        console.log('Fetching talks');
-        this.props.dispatch({
-            type: 'FETCH_ALL_TALKS'
-          });
-    }
-      
-    toggleMenu = () => {
+      // getTalk = (id) => {
+      //   console.log('Fetching talks', id);
+      //     this.toggleMenu();
+      // }
+    toggleMenu = (id) => {
         this.setState({
             open: !this.state.open,
             anchorEl: null
         }) 
+        this.props.dispatch({
+            type: 'FETCH_ALL_TALKS',
+            payload: 1
+          });
+    }
+    categroyTalks = () => {
+
     }
     render() {
+      console.log(this.props, this.state)
         return (
             <div>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.toggleMenu}>
-                Categories
+                All Categories
               </Button>
               <Menu
                 id="simple-menu"
@@ -44,7 +49,9 @@ class CategoryMenu extends Component{
                 onClose={this.toggleMenu}
               >
                 {this.props.store.talks.map((talk) => (
-            <MenuItem key={talk.id} id={talk.id} onClick={this.toggleMenu}>
+            <MenuItem key={talk.id} id={talk.id} onClick={()=>this.getTalk(talk.id)}>
+              
+                
                 {talk.title} </MenuItem>
                 ))}
               </Menu>
