@@ -9,7 +9,6 @@ class CategoryMenu extends Component{
     state= {open: false,
             anchorEl: null
     }
-
     componentDidMount() {
         this.getTalk();
       }
@@ -20,7 +19,6 @@ class CategoryMenu extends Component{
             type: 'FETCH_ALL_TALKS'
           });
     }
-      
     toggleMenu = () => {
         this.setState({
             open: !this.state.open,
