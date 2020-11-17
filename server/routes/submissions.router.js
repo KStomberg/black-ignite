@@ -46,7 +46,19 @@ router.put('/:id', (req, res) => {
         .then(results => {
             res.send(results.rows);
         }).catch(err => {
-            console.error('/submissions put/:id failed', err);
+            console.error('/submissions put/:id form failed', err);
+            res.sendStatus(500);
+        });
+});
+
+router.put('/likes/:id', (req, res) => {
+    console.log('hit update likes put'), req.params;
+    let queryString = `UPDATE "submission" SET "likes" = "likes" + 1 WHERE "id" = $1;`;
+    pool.query(queryString, [req.params.id])
+        .then(results => {
+            res.send(results.rows);
+        }).catch(err => {
+            console.error('/submisions put/:id likes failed', err);
             res.sendStatus(500);
         });
 });

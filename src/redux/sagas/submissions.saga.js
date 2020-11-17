@@ -6,6 +6,7 @@ function* submissionsSaga() {
     yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
     yield takeLatest('FETCH_DESCRIPTION', fetchDescription);
     yield takeLatest('UPDATE_FORM_STATUS', updateFormStatus);
+    yield takeLatest('UPDATE_LIKES', updateLikes)
     yield takeLatest('FETCH_ALL_CATEGORIES', fetchAllCategories);
 }
 
@@ -80,6 +81,24 @@ function* updateFormStatus(action) {
 
     } catch (err) {
         console.error('ERROR in updateFormStatus saga:', err);
+    }
+}
+
+function* updateLikes(action) {
+    console.log('action.payload of updateLikes', action.payload);
+    try{
+        yield axios({
+            method: 'PUT',
+            url: `/api/submissions/likes/${action.payload}`
+        });
+
+        yield put({
+            method: 'PUT',
+            type: 'FETCH_SUBMISSIONS'
+        });
+
+    } catch (err) {
+        console.error('ERROR in updateLikes saga:', err);
     }
 }
 

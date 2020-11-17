@@ -39,8 +39,9 @@ CREATE TABLE "submission" (
 "twitter" VARCHAR(5000),
 "comments" VARCHAR(50000),
 "time_stamp" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL
-"form_status" BOOLEAN DEFAULT FALSE
+"video_url" VARCHAR(50000) NOT NULL,
+"form_status" BOOLEAN DEFAULT FALSE,
+"likes" NUMBER DEFAULT 0,
 );
 
 CREATE TABLE "rank"
