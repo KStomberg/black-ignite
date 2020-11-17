@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class CategoryMenu extends Component{
     state= {open: false,
-            anchorEl: null
+            anchorEl: null,
     }
 
     componentDidMount() {
@@ -16,16 +16,43 @@ class CategoryMenu extends Component{
     
       getTalk = () => {
         console.log('Fetching talks');
-        this.props.dispatch({
+           this.props.dispatch({
             type: 'FETCH_ALL_TALKS'
-          });
+        })
     }
       
-    toggleMenu = () => {
+    toggleMenu = (talk) => {
+      let categoryIdToSend = {
+        talkId: talk.id
+      }
+      console.log(`categoryId`, categoryIdToSend)
         this.setState({
             open: !this.state.open,
             anchorEl: null
         }) 
+    }
+    sendTalk = (talk) => {
+      let categoryIdToSend = {
+        talkId: talk.id
+      }
+      console.log(`categoryId`, categoryIdToSend)
+        this.setState({
+            open: !this.state.open,
+            anchorEl: null
+        }) 
+        this.props.dispatch({
+          type: 'FETCH_CATEGORY_RANKINGS',
+          payload: categoryIdToSend
+      })
+    }
+    getAllRankings = () => {
+      this.setState({
+        open: !this.state.open,
+        anchorEl: null
+    });
+      this.props.dispatch({
+        type: 'FETCH_ALL_RANKINGS'
+    })
     }
     render() {
         return (
@@ -44,9 +71,10 @@ class CategoryMenu extends Component{
                 onClose={this.toggleMenu}
               >
                 {this.props.store.talks.map((talk) => (
-            <MenuItem key={talk.id} id={talk.id} onClick={this.toggleMenu}>
+            <MenuItem key={talk.id} id={talk.id} onClick={() => this.sendTalk(talk)}>
                 {talk.title} </MenuItem>
                 ))}
+                <MenuItem onClick={this.getAllRankings} >All Talks</MenuItem>
               </Menu>
             </div>
           );
