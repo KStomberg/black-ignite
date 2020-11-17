@@ -42,12 +42,14 @@ const useStyles = makeStyles({
 });
 
 // See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     const classes = useStyles();
-    const [openDrawer, setOpen] = useState(false);
+
 
     const toggleDrawer = () => {
-        setOpen(!openDrawer);
+        console.log('opening drawer:', openDrawer);
+        setOpenDrawer(!openDrawer);
+        console.log('after "opening drawer":', openDrawer);
     };
     
     return (
