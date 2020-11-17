@@ -21,11 +21,7 @@ class CategoryMenu extends Component{
         })
     }
       
-    toggleMenu = (talk) => {
-      let categoryIdToSend = {
-        talkId: talk.id
-      }
-      console.log(`categoryId`, categoryIdToSend)
+    toggleMenu = () => {
         this.setState({
             open: !this.state.open,
             anchorEl: null
@@ -64,7 +60,6 @@ class CategoryMenu extends Component{
                 id="simple-menu"
                 keepMounted
                 open={this.state.open}
-                anchorEl={this.state.anchorEl}
                 getContentAnchorEl={null}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                 transformOrigin={{ vertical: "top", horizontal: "center" }}
