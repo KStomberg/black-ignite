@@ -42,6 +42,17 @@ router.get('/unauthenticated/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
-
+router.get('/:id', (req, res) => {
+    console.log(`in our talks router.get`, req.params.id);
+    queryText = `SELECT * FROM "category" 
+    WHERE "is_deleted" = FALSE AND "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+    .then(response => {
+        res.send(response.rows);
+    }).catch(err => {
+        console.log(`got an error in category GET`, err);
+        res.sendStatus(500);
+    })
+});
 
 module.exports = router;
