@@ -19,13 +19,9 @@ const useStyles = makeStyles({
         height: 30,
         margin: 2
     },
-    dialog: {
-        opacity: 0.5,
-    },
     dialogContent: {
         opacity: 1,
         backgroundColor: '#EDAC3A',
-        border: 5
     }
 });
 
@@ -36,9 +32,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function Homepage() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const categories = useSelector(state => state.categories);
     const description = useSelector(state => state.description);
+
 
     useEffect(() => {
         dispatch({type: 'FETCH_ALL_CATEGORIES'});
@@ -53,7 +50,7 @@ function Homepage() {
         setOpen(true);
     };
     
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false);
     };
 
@@ -80,39 +77,51 @@ function Homepage() {
                         </Link>
                     </span>
                 )}
-                        {/* 
-                            See Material-UI Zoom Transition: https://material-ui.com/components/transitions/ 
-                            See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
-                        */}
-                        <Dialog
-                            open={open}
-                            TransitionComponent={Transition}
-                            keepMounted
-                            onClose={handleClose}
-                            aria-labelledby="alert-dialog-slide-title"
-                            aria-describedby="alert-dialog-slide-description"
-                            className={classes.dialog}
-                        >
-                            <DialogContent className={classes.dialogContent}>
-                                <DialogContentText id="alert-dialog-slide-description">
-                                    {/* <img src={submission.description_url} width="200px"/> */}
 
-                                    {console.log('description is:', description)}
-                                    {description.map(desc =>
-                                        <h1>{desc.description_url}</h1>
-                                    )}
-                                    {/* <h1>{description.description_url}</h1> */}
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions className={classes.dialogContent}>
-                                <Button onClick={handleClose} color="primary">
-                                    sign up to speak
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
+                {/* 
+                    See Material-UI Zoom Transition: https://material-ui.com/components/transitions/ 
+                    See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
+                */}
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                    className={classes.dialog}
+                >
+                    <div className="dialog">
+                        <DialogContent className={classes.dialogContent}>
+                            <DialogContentText id="alert-dialog-slide-description">
+                                {description.map(desc =>
+                                    <div>
+                                        <h1 className="p descTitle">{desc.title}!</h1>
+                                        <img src={desc.description_url} width="400px"/>
+                                        <p className="p">
+                                            -------------------------------------------------------------------------
+                                        </p>
+                                        <p className="p">
+                                            Sign up to speak and we'll send you a short questionaire within 72 hours.
+                                            To promote we'll need a headshot and brief bio.
+                                        </p>
+                                    </div>
+                                )}
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions className={classes.dialogContent}>
+                            <button 
+                                // onClick={toggleDrawer(description.id)}
+                                className="btn"
+                            >
+                                sign up to speak
+                            </button>
+                        </DialogActions>
+                    </div>
+                </Dialog>
             </div>
 
-            <Drawer />
+            <Drawer/>
         </div>
     );
 }

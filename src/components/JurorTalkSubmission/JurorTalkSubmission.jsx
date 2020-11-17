@@ -44,13 +44,16 @@ class JurorTalkSubmission extends Component {
 
   submitForm = () => {
     let submissionId = this.props.id;
+    console.log('Submission to update', submissionId, this.props);
     console.log('Submission to update', submissionId);
+
 
     this.props.dispatch({
       type: 'UPDATE_FORM_STATUS',
       payload: submissionId,
     });
   };
+
 
   likeSubmission = () => {
     let submissionId = this.props.id
@@ -61,6 +64,7 @@ class JurorTalkSubmission extends Component {
       payload: submissionId
     });
   };
+
 
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);
