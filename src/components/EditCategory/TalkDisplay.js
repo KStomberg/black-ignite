@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './EditCategory.css';
 import Swal from 'sweetalert2'
-
+import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Button, Input} from '@material-ui/core';
+import PosterDropzone from './PosterDropzone';
+import DescriptionDropzone from './DescriptionDropzone'
 class TalkDisplay extends Component {
   state = {
     editView: false,
+    open: false,
+    sendEdit: false,
+    title: '',
+    description: '',
+    poster: ''
   };
   componentDidUpdate() {
     this.props.dispatch({
@@ -16,11 +23,32 @@ class TalkDisplay extends Component {
   toggleEditView = () => {
     this.setState({
       editView: !this.state.editView,
+      open: !this.state.open
     })
   }
+  editTalk = () => {
+    this.setState({
+      sendEdit: !this.state.sendEdit
+    })
+  }
+  setOurDescriptionState = (description) => {
+    this.setState({
+      description: description
+    })
+  }
+  setOurPosterState = (poster) => {
+    this.setState({
+      poster: poster
+    })
+  }
+ handleChange = (e) => {
+    this.setState({
+      title: e.target.value
+    })
+ }
  
- handleChange = () => {
-    
+ handleEditSubmit = () => {
+  console.log('made it into our edit submit')
  }
  submitChange = (talk) => {
   let objectToSend = {
@@ -69,31 +97,69 @@ class TalkDisplay extends Component {
       }
     })
   }
-
+transition = (props) => {
+    return <Zoom direction="in" {...props} />;
+};
   render() {
-    if(this.state.editView === false){
     return (
       <div className="talkDiv">
           <img className="talkImages" src={this.props.talk.image_url}
-          onClick={this.toggleEditView}/>
-      </div>
-    );
-  }
-  else {
-    return (
-      <div className="talkDiv">
-          <img className="talkImages" src={this.props.talk.image_url}
-          onClick={this.toggleEditView}/>
-          <img className="talkImages" src={this.props.talk.description_url}
-          onClick={this.toggleEditView}/>
-            <div>
-        <button onClick={()=> this.handleChange(this.props.talk)}>Edit</button>
-        <button onClick={()=> this.deleteTalk(this.props.talk)}>Delete</button>
-        </div>  
+          onClick={this.toggleEditView}/> 
+        <Dialog
+          open={this.state.open}
+          TransitionComponent={this.transition}
+          keepMounted
+          onClose={this.toggleEditView}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"    
+        >
+            <DialogContent >
+                <DialogContentText id="alert-dialog-slide-description" >
+                    <img className="talkImages" src={this.props.talk.description_url}/>
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions >
+                <Button onClick={this.editTalk} color="primary">
+                    Edit This Talk
+                </Button>
+            </DialogActions>
+      </Dialog>
+      <Dialog
+          open={this.state.sendEdit}
+          TransitionComponent={this.transition}
+          keepMounted
+          onClose={this.toggleSendEdit}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"    
+        >
+            <DialogContent >
+                <DialogContentText id="alert-dialog-slide-description" >
+                <div className="dropzones">
+                  <Input
+                  value={this.state.title} 
+                  onChange={this.handleChange}/>
+                <div className="dropzone">
+                  <h2 className="talkH2">Talk Poster</h2>
+                  <PosterDropzone setOurPosterState={this.setOurPosterState}/>
+                </div>
+                <div className="dropzone">
+                  <h2 className="talkH2">Talk Description</h2>
+                  <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
+                </div>
+              </div>
+                  
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions >
+                <Button onClick={this.handleEditSubmit} color="primary">
+                  Submit Changes
+                </Button>
+            </DialogActions>
+      </Dialog>
       </div>
     );
   }
 }
-}
+
 
 export default connect(mapStoreToProps)(TalkDisplay);
