@@ -4,7 +4,7 @@
 
 .website {
     text-decoration: none;
-    color: black;
+    color: #221F1F;
     margin-right: 10px;
 }
 
@@ -13,13 +13,41 @@
 }
 
 .talkImg {
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    outline: 8px solid #F1BA45;
+    border-top: 2px solid #221F1F;
+    border-left: 2px solid #221F1F;
+    border-bottom: 2px solid #221F1F;
+    outline: 8px solid #EDAC3A;
     margin: 20px;
 }
 
 .talkImg:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
+}
+
+.dialog {
+    border: 10px solid #221F1F;
+}
+
+.dialogText {
+    color: #221F1F
+}
+
+.descTitle {
+    margin-top: 0;
+}
+
+.btn {
+    background-color: #221F1F;
+    color: #EDAC3A;
+    width: 200px;
+    height: 50px;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.p {
+    width: 400px;
+    color: #221F1F;
 }

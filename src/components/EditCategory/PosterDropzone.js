@@ -4,6 +4,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import './EditCategory.css'
 import { InputLabel } from '@material-ui/core';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -11,6 +13,8 @@ import { InputLabel } from '@material-ui/core';
 class PosterDropzone extends Component {
  state = {
      posterUrl: '',
+     uploadPercentage: 0,
+
  }
   handleFinishedUpload = async(info) => {
     this.dataToSend(info);
@@ -22,6 +26,11 @@ class PosterDropzone extends Component {
             });
             console.log(`this.state.posterUrl`, this.state.posterUrl);
             this.props.setOurPosterState(this.state.posterUrl);
+    }
+    onUploadProgress = (percent) => { console.log(percent) 
+      this.setState({
+        uploadPercentage: percent
+      })
     }
   render() {
     const uploadOptions = {server: 'http://localhost:5000'}
@@ -37,19 +46,23 @@ class PosterDropzone extends Component {
       cursor: 'pointer',
       backgroundImage: 'url(/highres_blackignite_logo.png)',
       backgroundPosition: 'center',
-      backgroundSize: 'cover'
-      
-
+      backgroundSize: 'cover',
+      zIndex: 1
     }
+   
     return (
+      <>
+      <LinearProgress variant="determinate" value={this.state.uploadPercentage} />
          <DropzoneS3Uploader
             onFinish={this.handleFinishedUpload}
             s3Url={s3Url}
             accept="image/*,audio/*,video/*"
             // maxSize={1024 * 1024 * 5}
-            upload={uploadOptions}
+            //upload={uploadOptions}
             style={dropZoneStyle}
+            onProgress={this.onUploadProgress}
             /> 
+            </>
     );
   }
 }

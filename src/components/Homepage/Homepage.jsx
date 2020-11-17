@@ -14,18 +14,14 @@ const useStyles = makeStyles({
         color: 'white'
     },
     btn: {
-        backgroundColor: 'black',
+        backgroundColor: '#221F1F',
         width: 30,
         height: 30,
         margin: 2
     },
-    dialog: {
-        opacity: 0.5,
-    },
     dialogContent: {
         opacity: 1,
         backgroundColor: '#EDAC3A',
-        border: 5
     }
 });
 
@@ -36,34 +32,27 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function Homepage() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [open, setOpen] = React.useState(false);
-    const [category, setCategory] = useState({});
-    const [submissions, setSubmissions] = useState([
-        "/mixed_in_america.png", "/city.png", "/allies.png", "/college.png", "/police.png", "/moms.png", 
-        "/justice_system.png", "/voting.png", "/restin_power.png"
-    ]);
-    // const [descriptions, setDescriptions] = useState([
-    //     "/mixed_in_america_description.png", "/city_description.png", "/allies_description.png", "/college_description.png", "/police_description.png", "/moms_description.png",
-    //     "/justice_system_description.png", "/voting_description.png", "/restin_power_description.png"
-    // ]);
+    const [open, setOpen] = useState(false);
+    const categories = useSelector(state => state.categories);
+    const description = useSelector(state => state.description);
 
-    // USE THIS WHEN USING SQL AND AWS //
-    // const submissions = useSelector(state => state.talks)
-    // useEffect(() => {
-    //     dispatch({type: 'FETCH_ALL_TALKS'});
-    // });
+
+    useEffect(() => {
+        dispatch({type: 'FETCH_ALL_CATEGORIES'});
+    }, []);
+
+    const getDescription = (id) => {
+        dispatch({type: 'FETCH_DESCRIPTION', payload: id});
+        handleClickOpen();
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
     };
     
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false);
     };
-
-    // const getDescription = (id) => {
-    //     dispatch({type: 'FETCH_DESCRIPTION', payload: id});
-    // }
 
     return (
         <div className="homepage">
@@ -81,41 +70,58 @@ function Homepage() {
             </IconButton>
 
             <div>
-                {submissions.map(submission =>
+                {categories.map(category =>
                     <span>
-                        <Link key={submission.id} /* onClick={() => getDescription(submission.id)} */ onClick={handleClickOpen}>
-                            <img src={submission} /* src={submission.image_url} */ width="200px" className="talkImg" alt={submission.title} />
+                        <Link key={category.id} onClick={() => getDescription(category.id)}>
+                            <img src={category.image_url} width="200px" className="talkImg" alt={category.title} />
                         </Link>
-                        
-                        {/* 
-                            See Material-UI Zoom Transition: https://material-ui.com/components/transitions/ 
-                            See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
-                        */}
-                        <Dialog
-                            open={open}
-                            TransitionComponent={Transition}
-                            keepMounted
-                            onClose={handleClose}
-                            aria-labelledby="alert-dialog-slide-title"
-                            aria-describedby="alert-dialog-slide-description"
-                            className={classes.dialog}
-                        >
-                            <DialogContent className={classes.dialogContent}>
-                                <DialogContentText id="alert-dialog-slide-description">
-                                    <img src={submission} width="200px"/>
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions className={classes.dialogContent}>
-                                <Button onClick={handleClose} color="primary">
-                                    sign up to speak
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
                     </span>
                 )}
+
+                {/* 
+                    See Material-UI Zoom Transition: https://material-ui.com/components/transitions/ 
+                    See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
+                */}
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                    className={classes.dialog}
+                >
+                    <div className="dialog">
+                        <DialogContent className={classes.dialogContent}>
+                            <DialogContentText id="alert-dialog-slide-description">
+                                {description.map(desc =>
+                                    <div>
+                                        <h1 className="p descTitle">{desc.title}!</h1>
+                                        <img src={desc.description_url} width="400px"/>
+                                        <p className="p">
+                                            -------------------------------------------------------------------------
+                                        </p>
+                                        <p className="p">
+                                            Sign up to speak and we'll send you a short questionaire within 72 hours.
+                                            To promote we'll need a headshot and brief bio.
+                                        </p>
+                                    </div>
+                                )}
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions className={classes.dialogContent}>
+                            <button 
+                                // onClick={toggleDrawer(description.id)}
+                                className="btn"
+                            >
+                                sign up to speak
+                            </button>
+                        </DialogActions>
+                    </div>
+                </Dialog>
             </div>
 
-            <Drawer />
+            <Drawer/>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-const descriptionReducer = (state = {}, action) => {
+const descriptionReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_DESCRIPTION':
             return action.payload;

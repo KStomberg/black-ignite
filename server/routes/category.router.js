@@ -6,8 +6,35 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(`in our talks router.get`);
-    queryText = `SELECT * FROM "category" ORDER BY "id" DESC;`;
+    queryText = `SELECT * FROM "category" 
+    WHERE "is_deleted" = FALSE ORDER BY "id" DESC;`;
     pool.query(queryText)
+    .then(response => {
+        res.send(response.rows);
+    }).catch(err => {
+        console.log(`got an error in category GET`, err);
+        res.sendStatus(500);
+    })
+});
+
+router.get('/unauthenticated', (req, res) => {
+    console.log(`in our talks router.get`);
+    queryText = `SELECT * FROM "category" 
+    WHERE "is_deleted" = FALSE;`;
+    pool.query(queryText)
+    .then(response => {
+        res.send(response.rows);
+    }).catch(err => {
+        console.log(`got an error in category GET`, err);
+        res.sendStatus(500);
+    })
+});
+
+router.get('/unauthenticated/:id', (req, res) => {
+    console.log(`in our talks router.get`, req.params.id);
+    queryText = `SELECT * FROM "category" 
+    WHERE "is_deleted" = FALSE AND "id" = $1;`;
+    pool.query(queryText, [req.params.id])
     .then(response => {
         res.send(response.rows);
     }).catch(err => {

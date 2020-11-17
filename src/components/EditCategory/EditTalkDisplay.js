@@ -3,19 +3,21 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './EditCategory.css';
 import Swal from 'sweetalert2'
+import PosterDropzone from './PosterDropzone';
+
+import DescriptionDropzone from './DescriptionDropzone';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
 class EditTalkDisplay extends Component {
   state = {
-    heading: 'Talk Display',
-    showPopup: false,
     editView: false,
     talkInputs: false,
     title: '',
     posterFile: '',
-    descriptionFile: ''
+    descriptionFile: '',
+    saveBtn: false
 
   };
   componentDidUpdate() {
@@ -23,15 +25,23 @@ class EditTalkDisplay extends Component {
         type: 'FETCH_ALL_TALKS'
     })
   }
-  togglePopup = () => {
-      this.setState({
-          showPopup: !this.state.showPopup
-      })
-  }
+ 
  handleChange = (talk) => {
     this.setState({
-        talkInputs: !this.state.talkInputs
+        talkInputs: !this.state.talkInputs,
+        saveBtn: !this.state.saveBtn
     })
+ }
+ submitChange = (talk) => {
+  let objectToSend = {
+    id: talk.id
+  }
+  console.log(objectToSend)
+
+  this.props.dispatch({
+    type: 'DELETE_TALK',
+    payload: objectToSend
+  })
  }
   deleteTalk = (talk) => {
     Swal.fire({
@@ -71,26 +81,16 @@ class EditTalkDisplay extends Component {
   }
   render() {
     return (
-      <div className="talkDiv">
-          {this.state.talkInputs ? 
-        <div className="editTalkInputs">
-            <input placeholder="title"/>
-            <input placeholder="dropzone"/>
-            <input placeholder="dropzone2"/>
-        </div>
-      : null  
-    }  
+
+      <div className="talkDiv"> 
         <img className="talkImages" src={this.props.talk.image_url}
         onClick={this.togglePopup}/>
         <div>
         <button onClick={()=> this.handleChange(this.props.talk)}>Edit</button>
         <button onClick={()=> this.deleteTalk(this.props.talk)}>Delete</button>
-        </div>
-        {this.state.showPopup ? 
-        <div className="popUpDescription">{this.props.talk.description}</div>
-      : null  
-    }  
+        </div>  
       </div>
+      
     );
   }
 }
