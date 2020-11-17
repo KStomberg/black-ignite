@@ -9,7 +9,6 @@ class CategoryMenu extends Component{
     state= {open: false,
             anchorEl: null,
     }
-
     componentDidMount() {
         this.getTalk();
       }
@@ -58,7 +57,7 @@ class CategoryMenu extends Component{
         return (
             <div>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.toggleMenu}>
-                Categories
+                All the Categories▾
               </Button>
               <Menu
                 id="simple-menu"
