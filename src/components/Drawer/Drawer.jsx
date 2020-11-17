@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Button, List, SwipeableDrawer, IconButton} from '@material-ui/core';
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 // See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
 export default function SwipeableTemporaryDrawer() {
     const classes = useStyles();
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         bottom: false
     });
 
