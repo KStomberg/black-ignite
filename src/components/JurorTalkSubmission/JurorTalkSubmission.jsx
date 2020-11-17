@@ -45,12 +45,26 @@ class JurorTalkSubmission extends Component {
   submitForm = () => {
     let submissionId = this.props.id;
     console.log('Submission to update', submissionId, this.props);
+    console.log('Submission to update', submissionId);
+
 
     this.props.dispatch({
       type: 'UPDATE_FORM_STATUS',
       payload: submissionId,
     });
   };
+
+
+  likeSubmission = () => {
+    let submissionId = this.props.id
+    console.log('Like button clicked!', submissionId);
+
+    this.props.dispatch({
+      type: 'UPDATE_LIKES',
+      payload: submissionId
+    });
+  };
+
 
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);
@@ -65,7 +79,11 @@ class JurorTalkSubmission extends Component {
         <p>{submission.linkedin}</p>
         <p>{submission.twitter}</p>
         <p>{submission.comment}</p>
-        <iframe width="420" height="315" src={submission.video}></iframe>
+        <video width="420" height="315" controls>
+          <source src={submission.video} />
+        </video>
+        <p>{submission.like} Jurors like this!</p>
+        <button onClick={this.likeSubmission}>Like</button>
       </div>
     );
   }

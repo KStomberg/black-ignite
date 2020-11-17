@@ -39,8 +39,9 @@ CREATE TABLE "submission" (
 "twitter" VARCHAR(5000),
 "comments" VARCHAR(50000),
 "time_stamp" VARCHAR(50000),
-"video_url" VARCHAR(50000) NOT NULL
-"form_status" BOOLEAN DEFAULT FALSE
+"video_url" VARCHAR(50000) NOT NULL,
+"form_status" BOOLEAN DEFAULT FALSE,
+"likes" NUMBER DEFAULT 0,
 );
 
 CREATE TABLE "rank"
@@ -62,10 +63,10 @@ VALUES('Redesign Our City', 'We''re redesigning it', 'https://i.pinimg.com/origi
 INSERT INTO "submission"
     ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "video_url")
 VALUES
-    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
-    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
-    (3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
-    (4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo'),
-    (2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://www.youtube.com/embed/YddwkMJG1Jo');
+    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/22708223-a317-43df-8df8-134458c43f5e/goprofall.mov?temp_url_sig=6548c17b91feec90489a90a6185279a97c70ca37&temp_url_expires=1605651439'),
+    (1, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/22708223-a317-43df-8df8-134458c43f5e/goprofall.mov?temp_url_sig=6548c17b91feec90489a90a6185279a97c70ca37&temp_url_expires=1605651439'),
+    (3, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/22708223-a317-43df-8df8-134458c43f5e/goprofall.mov?temp_url_sig=6548c17b91feec90489a90a6185279a97c70ca37&temp_url_expires=1605651439'),
+    (4, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/22708223-a317-43df-8df8-134458c43f5e/goprofall.mov?temp_url_sig=6548c17b91feec90489a90a6185279a97c70ca37&temp_url_expires=1605651439'),
+    (2, 'Joe Bob', 'jbob@realist.com', '@jbob101', null, '@tweetingjoe', 'well dun dar look lik a good talk', 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/22708223-a317-43df-8df8-134458c43f5e/goprofall.mov?temp_url_sig=6548c17b91feec90489a90a6185279a97c70ca37&temp_url_expires=1605651439');
 
 --SELECT * FROM "submission" JOIN "category" ON "category"."id" = "submission"."category_id";
