@@ -64,14 +64,8 @@ class JurorTalkSubmission extends Component {
       type: 'UPDATE_LIKES',
       payload: submissionId
     });
+    this.props.getLikeFunction();
   };
-
-  getLike = () => {
-    console.log('fetching likes');
-    this.props.dispatch({
-      type: 'FETCH_LIKES',
-    });
-  }
 
 
   render() {

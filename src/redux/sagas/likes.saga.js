@@ -3,8 +3,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* likesSaga() {
   yield takeLatest('FETCH_LIKES', fetchLikes);
+  yield takeLatest('FETCH_MAX_LIKES', fetchMaxLikesSaga);
   yield takeLatest('UPDATE_LIKES', updateLikes);
-  // yield takeLatest('UPDATE_LIKES', updateLikes);
 }
 
 function* fetchLikes(action) {
@@ -17,7 +17,21 @@ function* fetchLikes(action) {
       payload: response.data,
     });
   } catch (err) {
-    console.error('ERROR in submissions saga:', err);
+    console.error('ERROR in fetchLikes saga:', err);
+  }
+}
+
+function* fetchMaxLikesSaga(action) {
+  console.log('in fetch max likes saga');
+  try {
+    let response = yield axios.get(`/api/likes/user`);
+
+    yield put({
+      type: 'SET_MAX_LIKES',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.error('ERROR in fetchMaxLikes saga:', err);
   }
 }
 

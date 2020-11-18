@@ -2,6 +2,8 @@ const likesReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_LIKES':
         return action.payload;
+      case 'SET_MAX_LIKES':
+        return action.payload;
       default:
         return state;
     }

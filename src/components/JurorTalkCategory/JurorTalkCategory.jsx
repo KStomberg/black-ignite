@@ -41,7 +41,8 @@ class JurorTalkCategory extends Component {
     let submissionsForThisCategory = this.props.store.submissions.filter(
       (submission) => submission.category_id === this.props.topicId
     );
-    let usedLikes = this.props.usedLikes
+    let usedLikes = this.props.usedLikes;
+    let getLikeFunction = this.props.getLikeFunction;
     return (
       <div >
         <div className="topicHeader">
@@ -70,6 +71,7 @@ class JurorTalkCategory extends Component {
                 formStatus={submission.form_status}
                 like={submission.likes}
                 usedLikes={usedLikes}
+                getLikeFunction={getLikeFunction}
               />
             );
           })}
