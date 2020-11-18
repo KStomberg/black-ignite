@@ -19,6 +19,7 @@ function SignUpFormConformation() {
                 I just signed up to speak at @black_ignite!
                 Join me as a speaker at speak.blackignite.com
             </p>
+            
             <a 
                 class="twitter-share-button"
                 href="https://twitter.com/intent/tweet?text=I%20just%20signed%20up%20to%20speak%20at%20@black_ignite!%20Join%20me%20as%20a%20speaker%20at%20speak.blackignite.com"
