@@ -120,6 +120,7 @@ import ButtonAppBar from '../AppBar/AppBar';
 import Ranking from '../Ranking/Ranking'
 import JurorPage from '../JurorPage/JurorPage'
 import SignUpFormConformation from '../SignUpForm/SignUpFormConformation';
+import LogOutButton from '../LogOutButton/LogOutButton'
 
 function App() {
   return (
@@ -179,6 +180,11 @@ function App() {
             path="/user/conformation"
             component={SignUpFormConformation}
           />
+          <Route
+            exact
+            path="/logout"
+            component={LogOutButton}
+            />
 
             {/* <ProtectedRoute 
               exact
