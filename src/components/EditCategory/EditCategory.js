@@ -72,7 +72,7 @@ this.componentDidMount();
                   <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
                 </div>
               </div>
-            <button onClick={this.onSubmit}>Submit</button>
+            <button onClick={this.onSubmit} className="btn">Submit</button>
             </div>
           <Grid container spacing={2}
             direction="row"

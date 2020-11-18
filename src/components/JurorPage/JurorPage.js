@@ -33,7 +33,7 @@ class JurorView extends Component {
       <div>
         <div id="topicContainer">
           <div className="likesDiv">
-            <h1 className="likesHeader">You have {remainingLikes} likes remaining.</h1>
+            <h1 className="likesHeader">You have {remainingLikes} likes remaining</h1>
           </div>
           <div className="submissionHeader">
           <h1 className="submissionH1">Submissions</h1>

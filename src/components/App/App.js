@@ -29,12 +29,9 @@ import EditCategory from '../EditCategory/EditCategory';
 import ManageJuror from '../ManageJuror/ManageJuror';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterForm from '../RegisterForm/RegisterForm';
-// import { AppBar } from '@material-ui/core';
-import ButtonAppBar from '../AppBar/AppBar';
 import Ranking from '../Ranking/Ranking'
 import JurorPage from '../JurorPage/JurorPage'
 import SignUpFormConfirmation from '../SignUpForm/SignUpFormConfirmation';
-import LogOutButton from '../LogOutButton/LogOutButton'
 import {useDispatch} from 'react-redux';
 
 
@@ -105,17 +102,6 @@ function App() {
             path="/user/confirmation"
             component={SignUpFormConfirmation}
           />
-          {/* <ProtectedRoute
-            exact
-            path="/logout"
-            component={LogOutButton}
-            /> */}
-
-            {/* <ProtectedRoute 
-              exact
-              path="/submission"
-              component={}
-              /> */}
 
           {/* If none of the other routes match, show 404 */}
           <Route render={() => <h1>404</h1>} />

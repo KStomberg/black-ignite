@@ -39,10 +39,6 @@ state = {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover'
-
-      
     }
     return (
       <>
