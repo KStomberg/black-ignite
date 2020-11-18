@@ -132,6 +132,12 @@ function App() {
             path="/"
             component={Homepage}
           />
+          {/* <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/user"
+              component={UserPage}
+            /> */}
             <ProtectedRoute
               // logged in shows EditCategory else shows LoginPage
               exact
