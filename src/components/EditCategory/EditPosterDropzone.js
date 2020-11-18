@@ -23,7 +23,7 @@ class PosterDropzone extends Component {
               posterUrl: info.fileUrl
           });
           console.log(`this.state.posterUrl`, this.state.posterUrl);
-          this.props.setOurPosterState(this.state.posterUrl);
+          this.props.setEditedPosterState(this.state.posterUrl);
   }
   onUploadProgress = (percent) => { console.log(percent) 
     this.setState({
@@ -42,7 +42,6 @@ class PosterDropzone extends Component {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundImage: 'url(/highres_blackignite_logo.png)',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       zIndex: 1
