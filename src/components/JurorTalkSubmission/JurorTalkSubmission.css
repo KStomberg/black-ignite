@@ -1,4 +1,23 @@
 .submissionContainer {
-  border: 1px solid white;
-  border-radius: 10px;
+ /* display: flex;
+ flex-wrap: wrap;
+ justify-content: left; */
+ padding-left: 20px;
+}
+#submissionVideo{
+  height: 400px;
+  width: 500px;
+}
+@media only screen and (max-width: 600px) {
+  #submissionVideo{
+    height: 200px;
+    width: 300px;
+  }
+  .submissionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 20px;
+   }
+   
 }

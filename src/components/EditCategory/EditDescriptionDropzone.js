@@ -20,7 +20,7 @@ state = {
         descriptionUrl: info.fileUrl
         });
         console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
-        this.props.setOurDescriptionState(this.state.descriptionUrl);
+        this.props.setEditedDescriptionState(this.state.descriptionUrl);
     }
     onUploadProgress = (percent) => { console.log(percent) 
       this.setState({
@@ -39,7 +39,6 @@ state = {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundImage: 'url(/highres_blackignite_logo.png)',
       backgroundPosition: 'center',
       backgroundSize: 'cover'
 
