@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import JurorTalkSubmission from '../JurorTalkSubmission/JurorTalkSubmission';
-
 import './JurorTalkCategory.css';
 
 class JurorTalkCategory extends Component {
@@ -25,15 +25,8 @@ class JurorTalkCategory extends Component {
 
   toggleDisplay = () => {
     console.log('toggleDisplay clicked!');
-    const currentState = this.state.isToggled;
-    this.setState({ isToggled: !currentState });
-    console.log(this.state);
-    let toggleStatus = document.getElementById(this.props.id);
-    if (toggleStatus.style.display === 'none') {
-      toggleStatus.style.display = 'block';
-    } else {
-      toggleStatus.style.display = 'none';
-    }
+    this.setState({ isToggled: !this.state.isToggled });
+    console.log(this.state.isToggled);
   };
 
   render() {
@@ -44,39 +37,49 @@ class JurorTalkCategory extends Component {
     let remainingLikes = this.props.remainingLikes;
     let getLikeFunction = this.props.getLikeFunction;
     return (
-      <div >
-        <div className="topicHeader">
-          <button
-            className="toggleButton"
-            id={JSON.stringify(this.state.isToggled)}
-            onClick={this.toggleDisplay}
-          ></button>
-          <h4 className="submissionTitle">{this.props.title}</h4>
-        </div>
-        <div className="submissionItem" id={this.props.id}>
-          {submissionsForThisCategory.map((submission) => {
-            return (
-              <JurorTalkSubmission
-                key={submission.id}
-                id={submission.id}
-                talkId={this.props.topicId}
-                categoryId={submission.category_id}
-                name={submission.full_name}
-                email={submission.email}
-                instagram={submission.instagram}
-                linkedin={submission.linkedin}
-                twitter={submission.twitter}
-                comment={submission.comments}
-                video={submission.video_url}
-                formStatus={submission.form_status}
-                like={submission.likes}
-                remainingLikes={remainingLikes}
-                getLikeFunction={getLikeFunction}
-              />
-            );
-          })}
-        </div>
-      </div>
+      
+      <>
+        {this.state.isToggled ? 
+          <div>
+            <div className="topicHeader">
+              <ArrowDropDownIcon 
+                className="arrow"
+                onClick={this.toggleDisplay}/> 
+              <h1 className="submissionTitle">{this.props.title}</h1>
+            </div>
+            <div className="submissionItem" id={this.props.id}>
+              {submissionsForThisCategory.map((submission) => {
+                return (
+                  <JurorTalkSubmission
+                    key={submission.id}
+                    id={submission.id}
+                    talkId={this.props.topicId}
+                    categoryId={submission.category_id}
+                    name={submission.full_name}
+                    email={submission.email}
+                    instagram={submission.instagram}
+                    linkedin={submission.linkedin}
+                    twitter={submission.twitter}
+                    comment={submission.comments}
+                    video={submission.video_url}
+                    formStatus={submission.form_status}
+                    like={submission.likes}
+                    remainingLikes={remainingLikes}
+                    getLikeFunction={getLikeFunction}
+                  />
+                );
+              })}
+            </div>
+          </div>
+            : 
+          <div className="topicHeader"> 
+            <ArrowRightIcon 
+              className="arrow"
+              onClick={this.toggleDisplay}/>  
+            <h1 className="submissionTitle">{this.props.title}</h1>
+          </div>
+        }
+      </>
     );
   }
 }
