@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Drawer from '../Drawer/Drawer';
-import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Button} from '@material-ui/core';
+import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -100,18 +100,51 @@ function Homepage() {
                     <div className="dialog">
                         <DialogContent className={classes.dialogContent}>
                             <DialogContentText id="alert-dialog-slide-description">
-                                    <div>
-                                        <button onClick={handleClose}>✖</button>
-                                        <h1 className="p descTitle">{desc.title}!</h1>
-                                        <img src={desc.description_url} />
-                                        <p className="p">
-                                            -------------------------------------------------------------------------
-                                        </p>
-                                        <p className="p">
-                                            Sign up to speak and we'll send you a short questionaire within 72 hours.
-                                            To promote we'll need a headshot and brief bio.
-                                        </p>
-                                    </div>
+                                    <Grid
+                                        container
+                                        direction="column"
+                                        // justify="center"
+                                        // alignItems="flex-start"
+                                    >
+                                        <Grid item>
+                                            <Grid
+                                                container
+                                                direction="row"
+                                                // justify="space-between"
+                                                alignItems="flex-start"
+                                            >
+                                                <Grid item>
+                                                    <h1 className="descTitle">{desc.title}!</h1>
+                                                </Grid>
+                                                <Grid item>
+                                                    <button onClick={handleClose}>✖</button>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid item>
+                                            <Grid
+                                                container
+                                                direction="row"
+                                                justify="center"
+                                                // alignItems="flex-start"
+                                            >
+                                                <Grid item>
+                                                    <img src={desc.description_url} className="descImg"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid item>
+                                            <p >
+                                                ---------------------------
+                                            </p>
+                                        </Grid>
+                                        <Grid item>
+                                            <p >
+                                                Sign up to speak and we'll send you a short questionaire within 72 hours.
+                                                To promote we'll need a headshot and brief bio.
+                                            </p>
+                                        </Grid>
+                                    </Grid>
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions className={classes.dialogContent}>
@@ -126,10 +159,12 @@ function Homepage() {
                 </Dialog>
             </div>
 
-            <Drawer 
-                openDrawer={openDrawer} 
-                setOpenDrawer={setOpenDrawer}
-            />
+            <div className="drawerDiv">
+                <Drawer
+                    openDrawer={openDrawer} 
+                    setOpenDrawer={setOpenDrawer}
+                />
+            </div>
         </div>
     );
 }
