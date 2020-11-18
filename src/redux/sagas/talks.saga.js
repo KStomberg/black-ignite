@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+
+//Fetches all talks/categories from DB, sends to props
 function* fetchTalks(action) {
     console.log(`in our fetchTalks saga`);
   try {
@@ -11,7 +13,7 @@ function* fetchTalks(action) {
   }
 }
 
-
+//Fetches info on specific talk, sends to props
 function* fetchCategory(action) {
   console.log(`in our fetchCategory saga`, action.payload.talkId);
 try {
