@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+
 function* fetchRanking(action) {
     console.log(`in our fetchRankings saga`, action.payload);
   try {
@@ -11,6 +12,7 @@ function* fetchRanking(action) {
     console.log('Rankings GET request failed', error);
   }
 }
+
 function* fetchRankings() {
   console.log(`in our fetchRankings saga`);
 try {
@@ -21,6 +23,7 @@ try {
   console.log('Rankings GET request failed', error);
 }
 }
+
 
 function* rankingsSaga() {
   yield takeLatest('FETCH_CATEGORY_RANKINGS', fetchRanking);

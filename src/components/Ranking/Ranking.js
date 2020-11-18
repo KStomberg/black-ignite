@@ -21,6 +21,7 @@ class Ranking extends Component {
         return (
             <div>
                 <ButtonAppBar />
+
                 <div className="rankingDiv"><CategoryMenu/></div>
 
           <table className="rankingTable">

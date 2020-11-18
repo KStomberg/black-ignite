@@ -10,9 +10,9 @@ class CategoryMenu extends Component{
             anchorEl: null,
     }
     componentDidMount() {
-        this.getTalk();
+        // this.getTalk();
       }
-    
+
       getTalk = () => {
         console.log('Fetching talks');
            this.props.dispatch({
@@ -21,10 +21,18 @@ class CategoryMenu extends Component{
     }
       
     toggleMenu = () => {
+
         this.setState({
             open: !this.state.open,
             anchorEl: null
         }) 
+        this.props.dispatch({
+            type: 'FETCH_ALL_TALKS',
+            payload: 1
+          });
+    }
+    categroyTalks = () => {
+
     }
     sendTalk = (talk) => {
       let categoryIdToSend = {
@@ -50,10 +58,13 @@ class CategoryMenu extends Component{
     })
     }
     render() {
+      console.log(this.props, this.state)
         return (
             <div>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.toggleMenu}>
+
                 All the Categories▾
+
               </Button>
               <Menu
                 id="simple-menu"
@@ -65,7 +76,9 @@ class CategoryMenu extends Component{
                 onClose={this.toggleMenu}
               >
                 {this.props.store.talks.map((talk) => (
+
             <MenuItem key={talk.id} id={talk.id} onClick={() => this.sendTalk(talk)}>
+
                 {talk.title} </MenuItem>
                 ))}
                 <MenuItem onClick={this.getAllRankings} >All Talks</MenuItem>
@@ -78,62 +91,3 @@ class CategoryMenu extends Component{
 export default connect(mapStoreToProps)(CategoryMenu);
 
 
-
-
-
-
-
-
-
-
-
-
-// import React,{useEffect} from 'react';
-// import Button from '@material-ui/core/Button';
-// import mapStoreToProps from '../../redux/mapStoreToProps';
-// import Menu from '@material-ui/core/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import { connect } from 'react-redux';
-// import {useDispatch} from 'react-redux';
-
-
-// function SimpleMenu() {
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-
-//   const handleClick = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch({type: 'FETCH_ALL_TALKS'});
-// });
-//   return (
-//     <div>
-//       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-//         Categories Topics
-//       </Button>
-//       <Menu
-//         id="simple-menu"
-//         anchorEl={anchorEl}
-//         keepMounted
-//         open={Boolean(anchorEl)}
-//         onClose={handleClose}
-//       >
-//         {talks.map((talk) => (
-//             <MenuItem key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} >
-//                 {talk.title}
-//             </MenuItem>
-//           ))}
-//         <MenuItem onClick={handleClose}>Profile</MenuItem>
-//         <MenuItem onClick={handleClose}>My account</MenuItem>
-//         <MenuItem onClick={handleClose}>Logout</MenuItem>
-//       </Menu>
-//     </div>
-//   );
-// }
-
-// export default connect(mapStoreToProps)(SimpleMenu);
