@@ -26,14 +26,8 @@ class CategoryMenu extends Component{
             open: !this.state.open,
             anchorEl: null
         }) 
-        this.props.dispatch({
-            type: 'FETCH_ALL_TALKS',
-            payload: 1
-          });
     }
-    categroyTalks = () => {
 
-    }
     sendTalk = (talk) => {
       let categoryIdToSend = {
         talkId: talk.id

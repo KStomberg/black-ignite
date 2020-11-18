@@ -51,6 +51,7 @@ state = {
          <DropzoneS3Uploader
             onFinish={this.handleFinishedUpload}
             s3Url={s3Url}
+            
             accept="image/*,audio/*,video/*"
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
