@@ -2,27 +2,13 @@ import React, { Component, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
 
-  componentDidMount() {
-    this.getLike();
-    this.getUserLike();
-  }
-
-  getLike = () => {
-    console.log('fetching likes');
-    this.props.dispatch({
-      type: 'FETCH_LIKES',
-    });
-  }
-
-  getUserLike = () => {
-    console.log('fetching user likes');
-  }
-
+  
   formStatusChecker = (currentForm) => {
     console.log('currentForm:', currentForm);
     if (currentForm === false) {
@@ -80,6 +66,14 @@ class JurorTalkSubmission extends Component {
       payload: submissionId
     });
   };
+
+  getLike = () => {
+    console.log('fetching likes');
+    this.props.dispatch({
+      type: 'FETCH_LIKES',
+    });
+  }
+
 
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);

@@ -9,6 +9,7 @@ class JurorView extends Component {
 
   componentDidMount() {
     this.getTalk();
+    this.getLike();
   }
 
   getTalk = () => {
@@ -19,14 +20,22 @@ class JurorView extends Component {
     });
   }
 
+  getLike = () => {
+    console.log('fetching likes');
+    this.props.dispatch({
+      type: 'FETCH_LIKES',
+    });
+  }
+
   render() {
     console.log('this.props for jurorPage', this.props);
+    let usedLikes = this.props.store.likes.length;
     return (
       <div>
         <div id="topicContainer">
         <AppBar />
           {this.props.store.talks.map((talk) => (
-            <JurorTalkCategory key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} />
+            <JurorTalkCategory key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} usedLikes={usedLikes}/>
           ))}
         </div>
       </div>
