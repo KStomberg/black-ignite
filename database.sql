@@ -16,7 +16,7 @@ CREATE TABLE "user"
 --"image_url and video_url may change depending on AWS S3 requirements
 -- in that event tables will have to be deleted in the following order 
 
---DROP TABLE "rank";
+--DROP TABLE "like";
 --DROP TABLE "submission";
 --DROP TABLE "category";
 --DROP TABLE "user";
