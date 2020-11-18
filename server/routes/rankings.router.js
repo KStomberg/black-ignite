@@ -4,7 +4,6 @@ const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get('/', (req, res) => {
-    console.log(`in our ranking router.get`, req.params.id);
     queryText = 
     `SELECT * FROM "submission" ORDER BY "likes" DESC;`;
     pool.query(queryText)

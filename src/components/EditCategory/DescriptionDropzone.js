@@ -18,6 +18,7 @@ state = {
         });
         console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
         this.props.setOurDescriptionState(this.state.descriptionUrl);
+        this.props.setEditedDescriptionState(this.state.descriptionUrl);
     }
   render() {
     const uploadOptions = {server: 'http://localhost:5000'}

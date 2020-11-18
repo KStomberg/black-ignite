@@ -80,7 +80,9 @@ this.componentDidMount();
             alignItems="center"
           >
           {this.props.store.talks.map(talk => 
-              <TalkDisplay key={talk.id} talk={talk}/>)}
+              <TalkDisplay key={talk.id} talk={talk}
+              setOurPosterState={this.setOurPosterState}
+              setOurDescriptionState={this.setOurDescriptionState}/>)}
           </Grid>
         </div>
       );
