@@ -13,12 +13,17 @@ class TalkDisplay extends Component {
     sendEdit: false,
     title: '',
     description: '',
-    poster: ''
+    poster: '',
   };
   componentDidMount() {
     this.props.dispatch({
         type: 'FETCH_ALL_TALKS'
     })
+  }
+  componentDidUpdate() {
+    this.props.dispatch({
+      type: 'FETCH_ALL_TALKS'
+  })
   }
   toggleEditView = () => {
     this.setState({
@@ -41,17 +46,18 @@ class TalkDisplay extends Component {
       poster: poster
     })
   }
- submitChange = (talk) => {
-  let objectToSend = {
-    id: talk.id
-  }
-  console.log(objectToSend)
+ 
+  submitChange = (talk) => {
+    let objectToSend = {
+      id: talk.id
+    }
+    console.log(objectToSend)
 
-  this.props.dispatch({
-    type: 'DELETE_TALK',
-    payload: objectToSend
-  })
- }
+    this.props.dispatch({
+      type: 'DELETE_TALK',
+      payload: objectToSend
+    })
+  }
   deleteTalk = (talk) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -76,50 +82,54 @@ class TalkDisplay extends Component {
       type: 'DELETE_TALK',
       payload: objectToSend
     })
-    
-  
-      // For more information about handling dismissals please visit
-      // https://sweetalert2.github.io/#handling-dismissals
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Talk not deleted'
-        )
+    // For more information about handling dismissals please visit
+    // https://sweetalert2.github.io/#handling-dismissals
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        'Cancelled',
+        'Talk not deleted'
+      )
       }
     })
   }
-transition = (props) => {
-    return <Zoom direction="in" {...props} />;
-};
   render() {
     return (
       <div className="talkDiv">
-          <img className="talkImages" src={this.props.talk.image_url}
-          onClick={this.toggleEditView}/> 
+          <img 
+            className="talkImages" 
+            src={this.props.talk.image_url}
+            onClick={this.toggleEditView}/> 
         <Dialog
           open={this.state.open}
-          TransitionComponent={this.transition}
           keepMounted
           onClose={this.toggleEditView}
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"    
         >
-            <DialogContent >
-                <DialogContentText id="alert-dialog-slide-description" >
-                    <img className="talkImages" src={this.props.talk.description_url}/>
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions >
-                <Button onClick={this.editTalk} color="primary">
-                    Edit This Talk
-                </Button>
-            </DialogActions>
+          <DialogContent >
+              <DialogContentText id="alert-dialog-slide-description" >
+                  <img 
+                    className="talkImages" 
+                    src={this.props.talk.description_url}/>
+              </DialogContentText>
+          </DialogContent>
+          <DialogActions >
+          <Button 
+                onClick={()=> this.submitChange(this.props.talk)} color="primary">
+                  Delete Talk
+              </Button>
+              <Button 
+                onClick={this.editTalk} color="primary">
+                  Edit Talk
+              </Button>
+          </DialogActions>
       </Dialog>
       <EditDialogue 
         editTalk={this.editTalk} sendEdit={this.state.sendEdit}
         talk={this.props.talk} 
         setOurPosterState={this.props.setOurPosterState}
-        setOurDescriptionState={this.props.setOurDescriptionState}/>
+        setOurDescriptionState={this.props.setOurDescriptionState}
+       />
       </div>
     );
   }
