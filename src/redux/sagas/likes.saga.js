@@ -18,4 +18,4 @@ function* fetchLikes(action) {
   }
 }
 
-export default submissionsSaga;
+export default likesSaga;
