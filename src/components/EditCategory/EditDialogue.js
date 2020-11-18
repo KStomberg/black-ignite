@@ -1,0 +1,97 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+import PosterDropzone from './PosterDropzone';
+import DescriptionDropzone from './DescriptionDropzone';
+import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Button, Input} from '@material-ui/core';
+
+// Basic class component structure for React with default state
+// value setup. When making a new component be sure to replace
+// the component name TemplateClass with the name for the new
+// component.
+class EditDialogue extends Component {
+  state = {
+    heading: 'Class Component',
+    title: this.props.talk.title,
+    description: this.props.talk.description_url,
+    poster: this.props.talk.image_url,
+    id: this.props.talk.id
+  };
+  handleChange = (e) => {
+    this.setState({
+      title: e.target.value
+    })
+ }
+ setEditedDescriptionState = (description) => {
+  this.setState({
+    description: description
+  })
+}
+setEditedPosterState = (poster) => {
+  this.setState({
+    poster: poster
+  })
+}
+ handleEditSubmit = () => {
+     this.setState({
+
+     })
+    let editObjectToSend = {
+    title: this.state.title,
+    description: this.state.description,
+    poster: this.state.poster,
+    id: this.state.id
+    }
+    console.log('made it into our edit submit', editObjectToSend)
+   
+    this.props.dispatch({
+      type: 'EDIT_CATEGORY',
+      payload: editObjectToSend
+    })
+  }
+  transition = (props) => {
+    return <Zoom direction="in" {...props} />;
+};
+
+  render() {
+    return (
+        <Dialog
+        open={this.props.sendEdit}
+        TransitionComponent={this.transition}
+        keepMounted
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"    
+      >
+          <DialogContent >
+              <DialogContentText id="alert-dialog-slide-description" >
+              <div className="dropzones">
+                <input
+                value={this.state.title} 
+                onChange={this.handleChange}/>
+              <div className="dropzone">
+                <h2 className="talkH2">Talk Poster</h2>
+                <PosterDropzone value={this.state.poster} 
+                setOurPosterState={this.props.setOurPosterState}
+                setEditedPosterState={this.setEditedPosterState}/>
+              </div>
+              <div className="dropzone">
+                <h2 className="talkH2">Talk Description</h2>
+                <DescriptionDropzone value={this.state.description}
+                setOurDescriptionState={this.props.setOurDescriptionState}
+                setEditedDescriptionState={this.setEditedDescriptionState}/>
+              </div>
+            </div>
+                
+              </DialogContentText>
+          </DialogContent>
+          <DialogActions >
+              <Button onClick={this.handleEditSubmit} color="primary">
+                Submit Changes
+              </Button>
+          </DialogActions>
+    </Dialog>
+    );
+  }
+}
+
+export default connect(mapStoreToProps)(EditDialogue);

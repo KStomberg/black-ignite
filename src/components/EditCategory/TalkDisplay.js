@@ -4,8 +4,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './EditCategory.css';
 import Swal from 'sweetalert2'
 import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Button, Input} from '@material-ui/core';
-import PosterDropzone from './PosterDropzone';
-import DescriptionDropzone from './DescriptionDropzone'
+
+import EditDialogue from './EditDialogue';
 class TalkDisplay extends Component {
   state = {
     editView: false,
@@ -15,7 +15,7 @@ class TalkDisplay extends Component {
     description: '',
     poster: ''
   };
-  componentDidUpdate() {
+  componentDidMount() {
     this.props.dispatch({
         type: 'FETCH_ALL_TALKS'
     })
@@ -41,60 +41,6 @@ class TalkDisplay extends Component {
       poster: poster
     })
   }
- handleChange = (e) => {
-    this.setState({
-      title: e.target.value
-    })
- }
- 
- handleEditSubmit = () => {
-  let editObjectToSend;
-  console.log('made it into our edit submit')
-  if(this.state.poster === '' && this.state.description === ''){
-    editObjectToSend = {
-      title: this.state.title
-    }
-  }
-  else if (this.state.poster === '' && this.state.title === ''){
-    editObjectToSend = {
-      description_url: this.state.description
-    }
-  }
-  else if (this.state.description === '' && this.state.title === ''){
-    editObjectToSend = {
-      poster_url: this.state.poster
-    }
-  }
-  else if (this.state.title === ''){
-    editObjectToSend = {
-      poster_url: this.state.poster,
-      description_url: this.state.description
-    }
-  }
-    else if (this.state.description === ''){
-      editObjectToSend = {
-        poster_url: this.state.poster,
-        title: this.state.title
-      }
- }
-  else if (this.state.poster === ''){
-    editObjectToSend = {
-      description_url: this.state.description,
-      title: this.state.title
-    }
-  }
-  else{
-    editObjectToSend = {
-      poster_url: this.state.poster,
-      description_url: this.state.description,
-      title: this.state.title
-    }
-  }
-  this.props.dispatch({
-    type: 'EDIT_CATEGORY',
-    payload: editObjectToSend
-  })
-}
  submitChange = (talk) => {
   let objectToSend = {
     id: talk.id
@@ -169,38 +115,11 @@ transition = (props) => {
                 </Button>
             </DialogActions>
       </Dialog>
-      <Dialog
-          open={this.state.sendEdit}
-          TransitionComponent={this.transition}
-          keepMounted
-          onClose={this.toggleSendEdit}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"    
-        >
-            <DialogContent >
-                <DialogContentText id="alert-dialog-slide-description" >
-                <div className="dropzones">
-                  <Input
-                  value={this.state.title} 
-                  onChange={this.handleChange}/>
-                <div className="dropzone">
-                  <h2 className="talkH2">Talk Poster</h2>
-                  <PosterDropzone setOurPosterState={this.setOurPosterState}/>
-                </div>
-                <div className="dropzone">
-                  <h2 className="talkH2">Talk Description</h2>
-                  <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
-                </div>
-              </div>
-                  
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions >
-                <Button onClick={this.handleEditSubmit} color="primary">
-                  Submit Changes
-                </Button>
-            </DialogActions>
-      </Dialog>
+      <EditDialogue 
+        editTalk={this.editTalk} sendEdit={this.state.sendEdit}
+        talk={this.props.talk} 
+        setOurPosterState={this.props.setOurPosterState}
+        setOurDescriptionState={this.props.setOurDescriptionState}/>
       </div>
     );
   }
