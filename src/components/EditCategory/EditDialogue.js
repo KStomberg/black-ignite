@@ -15,8 +15,10 @@ class EditDialogue extends Component {
     title: this.props.talk.title,
     description: this.props.talk.description_url,
     poster: this.props.talk.image_url,
-    id: this.props.talk.id
+    id: this.props.talk.id,
+    isOpen: this.props.sendEdit
   };
+
   handleChange = (e) => {
     this.setState({
       title: e.target.value
@@ -33,9 +35,6 @@ setEditedPosterState = (poster) => {
   })
 }
  handleEditSubmit = () => {
-     this.setState({
-
-     })
     let editObjectToSend = {
     title: this.state.title,
     description: this.state.description,
@@ -49,47 +48,43 @@ setEditedPosterState = (poster) => {
       payload: editObjectToSend
     })
   }
-  transition = (props) => {
-    return <Zoom direction="in" {...props} />;
-};
 
   render() {
     return (
         <Dialog
-        open={this.props.sendEdit}
-        TransitionComponent={this.transition}
-        keepMounted
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"    
-      >
-          <DialogContent >
-              <DialogContentText id="alert-dialog-slide-description" >
-              <div className="dropzones">
-                <input
+          open={this.props.sendEdit}
+          onClose={this.props.editTalk}
+          keepMounted
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"    
+        >
+          <DialogContent id="alert-dialog-slide-description" >
+            <div className="editDropzones">
+              <input
                 value={this.state.title} 
                 onChange={this.handleChange}/>
-              <div className="dropzone">
-                <h2 className="talkH2">Talk Poster</h2>
-                <PosterDropzone value={this.state.poster} 
+            <div className="dropzone">
+              <h2 className="talkH2">Talk Poster</h2>
+              <PosterDropzone 
+                value={this.state.poster} 
                 setOurPosterState={this.props.setOurPosterState}
                 setEditedPosterState={this.setEditedPosterState}/>
-              </div>
-              <div className="dropzone">
-                <h2 className="talkH2">Talk Description</h2>
-                <DescriptionDropzone value={this.state.description}
-                setOurDescriptionState={this.props.setOurDescriptionState}
-                setEditedDescriptionState={this.setEditedDescriptionState}/>
-              </div>
             </div>
-                
-              </DialogContentText>
-          </DialogContent>
-          <DialogActions >
-              <Button onClick={this.handleEditSubmit} color="primary">
-                Submit Changes
-              </Button>
-          </DialogActions>
-    </Dialog>
+          <div className="dropzone">
+            <h2 className="talkH2">Talk Description</h2>
+            <DescriptionDropzone 
+              value={this.state.description}
+              setOurDescriptionState={this.props.setOurDescriptionState}
+              setEditedDescriptionState={this.setEditedDescriptionState}/>
+          </div>
+        </div>
+        </DialogContent>
+        <DialogActions >
+            <Button onClick={this.handleEditSubmit} color="primary">
+              Submit Changes
+            </Button>
+              </DialogActions>
+        </Dialog>
     );
   }
 }

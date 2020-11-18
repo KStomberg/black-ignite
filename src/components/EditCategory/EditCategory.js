@@ -82,7 +82,8 @@ this.componentDidMount();
           {this.props.store.talks.map(talk => 
               <TalkDisplay key={talk.id} talk={talk}
               setOurPosterState={this.setOurPosterState}
-              setOurDescriptionState={this.setOurDescriptionState}/>)}
+              setOurDescriptionState={this.setOurDescriptionState}
+             />)}
           </Grid>
         </div>
       );
