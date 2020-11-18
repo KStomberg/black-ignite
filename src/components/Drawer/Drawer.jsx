@@ -42,29 +42,29 @@ const useStyles = makeStyles({
 });
 
 // See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     const classes = useStyles();
-    const [openDrawer, setOpen] = useState(false);
+
 
     const toggleDrawer = () => {
-        setOpen(!openDrawer);
+        setOpenDrawer(!openDrawer);
     };
     
     return (
         <div className={classes.drawer}>
-                    <IconButton className={classes.iconBtn}>
-                        <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
-                    </IconButton>
-                    <SwipeableDrawer
-                        anchor='bottom'
-                        open={openDrawer}
-                        onClose={toggleDrawer}
-                        onOpen={toggleDrawer}
-                    >
-                         <div className={classes.drawer}>
-            <Button onClick={toggleDrawer} className={classes.cancelBtn}>✖</Button>
-            <SignUpForm />
-        </div>
+            <IconButton className={classes.iconBtn}>
+                <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
+            </IconButton>
+            <SwipeableDrawer
+                anchor='bottom'
+                open={openDrawer}
+                onClose={toggleDrawer}
+                onOpen={toggleDrawer}
+            >
+                <div className={classes.drawer}>
+                    <Button onClick={toggleDrawer} className={classes.cancelBtn}>✖</Button>
+                    <SignUpForm />
+                </div>
             </SwipeableDrawer>
         </div>
     );

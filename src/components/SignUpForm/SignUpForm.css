@@ -61,6 +61,10 @@
     margin: auto;
 }
 
+.disabled {
+    background-color: #666666;
+}
+
 .uploadBtnText {
     font-size: 20px;
     justify-content: flex-start;

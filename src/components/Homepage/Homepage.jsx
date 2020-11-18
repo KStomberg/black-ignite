@@ -32,9 +32,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function Homepage() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [open, setOpen] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
     const categories = useSelector(state => state.categories);
-    const description = useSelector(state => state.description);
+    const desc = useSelector(state => state.description);
+    const [openDrawer, setOpenDrawer] = useState(false);
 
 
     useEffect(() => {
@@ -47,11 +48,12 @@ function Homepage() {
     }
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpenDialog(true);
     };
     
     const handleClose = () => {
-        setOpen(false);
+        setOpenDialog(false);
+        setOpenDrawer(true);
     };
 
     return (
@@ -83,7 +85,7 @@ function Homepage() {
                     See Material-UI Transition Dialog: https://material-ui.com/components/dialogs/
                 */}
                 <Dialog
-                    open={open}
+                    open={openDialog}
                     TransitionComponent={Transition}
                     keepMounted
                     onClose={handleClose}
@@ -94,7 +96,6 @@ function Homepage() {
                     <div className="dialog">
                         <DialogContent className={classes.dialogContent}>
                             <DialogContentText id="alert-dialog-slide-description">
-                                {description.map(desc =>
                                     <div>
                                         <h1 className="p descTitle">{desc.title}!</h1>
                                         <img src={desc.description_url} width="400px"/>
@@ -106,12 +107,11 @@ function Homepage() {
                                             To promote we'll need a headshot and brief bio.
                                         </p>
                                     </div>
-                                )}
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions className={classes.dialogContent}>
                             <button 
-                                // onClick={toggleDrawer(description.id)}
+                                onClick={handleClose}
                                 className="btn"
                             >
                                 sign up to speak
@@ -121,7 +121,10 @@ function Homepage() {
                 </Dialog>
             </div>
 
-            <Drawer/>
+            <Drawer 
+                openDrawer={openDrawer} 
+                setOpenDrawer={setOpenDrawer}
+            />
         </div>
     );
 }
