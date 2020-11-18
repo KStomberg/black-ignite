@@ -50,8 +50,12 @@ function Homepage() {
     const handleClickOpen = () => {
         setOpenDialog(true);
     };
-    
+
     const handleClose = () => {
+        setOpenDialog(false);
+    }
+    
+    const handleCloseSignUp = () => {
         setOpenDialog(false);
         setOpenDrawer(true);
     };
@@ -88,7 +92,7 @@ function Homepage() {
                     open={openDialog}
                     TransitionComponent={Transition}
                     keepMounted
-                    onClose={handleClose}
+                    // onClose={handleClose}
                     aria-labelledby="alert-dialog-slide-title"
                     aria-describedby="alert-dialog-slide-description"
                     className={classes.dialog}
@@ -97,8 +101,9 @@ function Homepage() {
                         <DialogContent className={classes.dialogContent}>
                             <DialogContentText id="alert-dialog-slide-description">
                                     <div>
+                                        <button onClick={handleClose}>✖</button>
                                         <h1 className="p descTitle">{desc.title}!</h1>
-                                        <img src={desc.description_url} width="400px"/>
+                                        <img src={desc.description_url} />
                                         <p className="p">
                                             -------------------------------------------------------------------------
                                         </p>
@@ -111,7 +116,7 @@ function Homepage() {
                         </DialogContent>
                         <DialogActions className={classes.dialogContent}>
                             <button 
-                                onClick={handleClose}
+                                onClick={handleCloseSignUp}
                                 className="btn"
                             >
                                 sign up to speak
