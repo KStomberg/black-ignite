@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Grid} from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
-import moment from 'moment';
+import moment from 'moment'
 import './SignUpForm.css';
 
 function SignUpForm() {
@@ -13,24 +14,46 @@ function SignUpForm() {
     const [linkedIn, setLinkedIn] = useState('');
     const [twitter, setTwitter] = useState('');
     const [comments, setComments] = useState('');
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState('');
     const [fileUrl, setFileUrl] = useState('');
+    const selectedCategory = useSelector(state => state.description);
+    const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    // Submitting form
+    useEffect(() => {
+        dispatch({type: 'FETCH_ALL_CATEGORIES'});
+    }, []);
+
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        let objectToSend = {
-            category: Number(category),
-            fullName: fullName,
-            email: email,
-            instagram: instagram,
-            linkedIn: linkedIn,
-            twitter: twitter,
-            comments: comments,
-            date: date,
-            fileUrl: fileUrl
+        let objectToSend;
+        if (category === undefined) {
+            objectToSend = {
+                category: selectedCategory.id,
+                fullName: fullName,
+                email: email,
+                instagram: instagram,
+                linkedIn: linkedIn,
+                twitter: twitter,
+                comments: comments,
+                date: date,
+                fileUrl: fileUrl
+            }
+        }
+        else {
+            objectToSend = {
+                category: Number(category),
+                fullName: fullName,
+                email: email,
+                instagram: instagram,
+                linkedIn: linkedIn,
+                twitter: twitter,
+                comments: comments,
+                date: date,
+                fileUrl: fileUrl
+            }
         }
         console.log("objectToSend:", objectToSend);
 
@@ -38,6 +61,8 @@ function SignUpForm() {
             type: 'CREATE_SUBMISSION',
             payload: objectToSend
         });
+
+        history.push('/user/conformation');
     } // end handleSubmit
 
     const dropzoneStyles = {
@@ -78,13 +103,22 @@ function SignUpForm() {
                                 <label for="category" className="inputDesc">*talk category I'm interested in</label>
                             </Grid>
                             <Grid item>
-                                {/* Drop-Down for Categories */}
-                                <input
-                                    type="text"
-                                    className="input"
-                                    onChange={e => setCategory(e.target.value)}
+                                <select 
+                                    id="category" 
+                                    name="category" 
+                                    placeholder="Category Name" 
+                                    className="selectInput" 
+                                    onChange={e => setCategory(e.target.value)} 
                                     required
-                                />
+                                >
+                                    {selectedCategory === {} ?
+                                        <option value="" disabled selected>Select your Option</option> :
+                                        <option value={selectedCategory.id} selected>{selectedCategory.title}</option>
+                                    }
+                                    {categories.map(category =>
+                                        <option value={category.id}>{category.title}</option>
+                                    )}
+                                </select>
                             </Grid>
                         </Grid>
 
@@ -211,26 +245,10 @@ function SignUpForm() {
                                 <DropzoneS3Uploader
                                     onFinish={handleFinishedUpload}
                                     accept="image/*,audio/*,video/*"
-                                    style={dropzoneStyles}
                                     upload={uploadOptions}
                                     s3Url={s3Url}
-                                    required
+                                    style={dropzoneStyles}
                                 />
-                                {/* <button className="uploadBtn">
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        justify="space-between"
-                                        alignItems="center"
-                                    >
-                                        <Grid item xs={4}>
-                                            <img alt="upload" src="/UploadIcon.png" width="60"/>
-                                        </Grid>
-                                        <Grid item xs={8}>
-                                            <p className="uploadBtnText">upload video from my device</p>
-                                        </Grid>
-                                    </Grid>
-                                </button> */}
                             </Grid>
                         </Grid>
 
@@ -246,7 +264,10 @@ function SignUpForm() {
                             </Grid>
                         </Grid>
 
-                        <input type="submit" value="submit" className="submitBtn"/>
+                        {category === '' || fullName === '' || email === '' || fileUrl === '' ?
+                            <input type="submit" value="submit" className="submitBtn disabled" disabled/> :
+                            <input type="submit" value="submit" className="submitBtn"/>
+                        }
                     </form>
                 </Grid>
             </Grid>

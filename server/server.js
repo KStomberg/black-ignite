@@ -15,6 +15,7 @@ const deleteJuror = require('./routes/deleteJuror.router');
 const deleteTalk = require('./routes/deleteTalk.router');
 const rankingsRouter = require('./routes/rankings.router')
 const addCategory = require('./routes/categoryPost.router');
+const likesRouter = require('./routes/likes.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,6 +35,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/user', userRouter);
 app.use('/api/talks', talksRouter);
 app.use('/api/submissions', submissionsRouter);
+app.use('/api/likes', likesRouter)
 app.use('/api/delete', deleteJuror);
 app.use('/api/delete/talk', deleteTalk);
 app.use('/api/category', addCategory);

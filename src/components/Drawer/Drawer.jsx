@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Button, List, SwipeableDrawer, IconButton} from '@material-ui/core';
@@ -7,10 +7,11 @@ import './Drawer.css'
 const useStyles = makeStyles({
     list: {
         width: 250,
-        backgroundColor: '#F1BA45'
+        backgroundColor: '#EDAC3A'
     },
     fullList: {
         width: 'auto',
+        backgroundColor: '#EDAC3A'
     },
     btn: {
         display: 'flex',
@@ -22,8 +23,8 @@ const useStyles = makeStyles({
     },
     iconBtn: {
         marginTop: 5,
-        color: '#F1BA45',
-        backgroundColor: 'black'
+        color: '#EDAC3A',
+        backgroundColor: '#221F1F'
     },
     cancelBtn: {
         fontSize: 35,
@@ -36,56 +37,35 @@ const useStyles = makeStyles({
         border: 'none',
     },
     drawer: {
-        backgroundColor: '#F1BA45'
+        backgroundColor: '#EDAC3A'
     }
 });
 
 // See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        bottom: false
-    });
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
 
-        setState({ ...state, [anchor]: open });
+    const toggleDrawer = () => {
+        setOpenDrawer(!openDrawer);
     };
-
-    const list = (anchor) => (
-        <div
-          className={clsx(classes.list, {
-            [classes.fullList]: anchor === 'bottom',
-          })}
-          role="presentation"
-        >
-          <List>
-            <Button onClick={toggleDrawer(anchor, false)} className={classes.cancelBtn}>✖</Button>
-            <SignUpForm />
-          </List>
-        </div>
-      );
     
     return (
         <div className={classes.drawer}>
-            {['bottom'].map((anchor) => (
-                <React.Fragment key={anchor}>
-                    <IconButton className={classes.iconBtn}>
-                        <h1 onClick={toggleDrawer(anchor, true)} className={classes.btn}>+</h1>
-                    </IconButton>
-                    <SwipeableDrawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                        onOpen={toggleDrawer(anchor, true)}
-                    >
-                        {list(anchor)}
-                    </SwipeableDrawer>
-                </React.Fragment>
-            ))}
+            <IconButton className={classes.iconBtn}>
+                <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
+            </IconButton>
+            <SwipeableDrawer
+                anchor='bottom'
+                open={openDrawer}
+                onClose={toggleDrawer}
+                onOpen={toggleDrawer}
+            >
+                <div className={classes.drawer}>
+                    <Button onClick={toggleDrawer} className={classes.cancelBtn}>✖</Button>
+                    <SignUpForm />
+                </div>
+            </SwipeableDrawer>
         </div>
     );
 }

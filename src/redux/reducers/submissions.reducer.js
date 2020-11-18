@@ -2,8 +2,6 @@ const submissionsReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_SUBMISSIONS':
       return action.payload;
-    case 'SET_DESCRIPTION':
-      return action.payload;
     default:
       return state;
   }

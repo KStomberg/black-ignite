@@ -13,7 +13,6 @@ import DescriptionDropzone from './DescriptionDropzone'
 class EditCategory extends Component {
  
   state = {
-    editView: false,
     title: '',
     poster: '',
     description: '',
@@ -24,11 +23,7 @@ componentDidMount() {
       type: 'FETCH_ALL_TALKS'
   })
 }
-toggleEditView = () => {
-  this.setState({
-    editView: !this.state.editView,
-  })
-}
+
 handleChange = (event) => {
   this.setState({
     ...this.state,
@@ -59,17 +54,10 @@ this.componentDidMount();
 
 }
   render() {
-    if (this.state.editView === false){
       return (
        <div className="talkGallery">
           <ButtonAppBar/>
           <h2>Add A Talk</h2>
-          <Switch
-            className="EditSwitch"
-            onClick={this.toggleEditView}
-            color="default"
-            inputProps={{ 'aria-label': 'checkbox with default color' }}
-          />
           <div className="createTalkForm">
           <label>Talk Title: </label>
             <input type="text" value={this.state.title}
@@ -80,7 +68,7 @@ this.componentDidMount();
                   <PosterDropzone setOurPosterState={this.setOurPosterState}/>
                 </div>
                 <div className="dropzone">
-                <h2 className="talkH2">Talk Description</h2>
+                  <h2 className="talkH2">Talk Description</h2>
                   <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
                 </div>
               </div>
@@ -92,35 +80,15 @@ this.componentDidMount();
             alignItems="center"
           >
           {this.props.store.talks.map(talk => 
-              <TalkDisplay key={talk.id} talk={talk}/>)}
+              <TalkDisplay key={talk.id} talk={talk}
+              setOurPosterState={this.setOurPosterState}
+              setOurDescriptionState={this.setOurDescriptionState}
+             />)}
           </Grid>
         </div>
       );
     }
-    else{
-      return(
-        <div className="talkGallery">
-          <ButtonAppBar/>
-          <h2>Edit a Talk</h2>
-          <Switch
-            className="EditSwitch"
-            onClick={this.toggleEditView}
-            color="default"
-            inputProps={{ 'aria-label': 'checkbox with default color' }}
-        />
-          <Grid container spacing={2}
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
-          {this.props.store.talks.map(talk => 
-              <EditTalkDisplay key={talk.id} talk={talk}/>)}
-        
-          </Grid>
-        </div>
-      )
-    }
   }
-}
+
 
 export default connect(mapStoreToProps)(EditCategory);

@@ -59,9 +59,8 @@ export default function SimpleMenu() {
             className={classes.menuItem}>Manage Juror</MenuItem>
         </Link>
         <Link to="/edittalk" className={classes.link} >
-            <MenuItem className={classes.menuItem}>
-              Add Catergory
-              </MenuItem>
+
+            <MenuItem className={classes.menuItem}>Add Category</MenuItem>
             </Link >
         <Link to="/ranking" className={classes.link} >
             <MenuItem className={classes.menuItem}>Ranking</MenuItem>

@@ -41,8 +41,10 @@ class JurorTalkCategory extends Component {
     let submissionsForThisCategory = this.props.store.submissions.filter(
       (submission) => submission.category_id === this.props.topicId
     );
+    let remainingLikes = this.props.remainingLikes;
+    let getLikeFunction = this.props.getLikeFunction;
     return (
-      <div>
+      <div >
         <div className="topicHeader">
           <button
             className="toggleButton"
@@ -56,6 +58,7 @@ class JurorTalkCategory extends Component {
             return (
               <JurorTalkSubmission
                 key={submission.id}
+                id={submission.id}
                 talkId={this.props.topicId}
                 categoryId={submission.category_id}
                 name={submission.full_name}
@@ -66,6 +69,9 @@ class JurorTalkCategory extends Component {
                 comment={submission.comments}
                 video={submission.video_url}
                 formStatus={submission.form_status}
+                like={submission.likes}
+                remainingLikes={remainingLikes}
+                getLikeFunction={getLikeFunction}
               />
             );
           })}
