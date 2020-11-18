@@ -14,29 +14,27 @@ class CategoryMenu extends Component{
 
      handleClick = (event) => {
       this.setState({ anchorEl: event.currentTarget })
-      this.props.dispatch({
-        type: 'FETCH_ALL_TALKS',
-        payload: 1
-      });
-  };
+    };
 
      handleClose = () => {
       this.setState({ anchorEl: null })
   };
 
     componentDidMount() {
+      this.getTalk();
       }
 
       getTalk = () => {
         console.log('Fetching talks');
            this.props.dispatch({
             type: 'FETCH_ALL_TALKS'
-        })
-
+        });
+        this.setState({
+            open: !this.state.open,
+            anchorEl: null
+        });
     }
-    categroyTalks = () => {
 
-    }
     sendTalk = (talk) => {
       let categoryIdToSend = {
         talkId: talk.id

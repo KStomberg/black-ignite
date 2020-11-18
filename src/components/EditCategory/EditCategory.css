@@ -37,6 +37,9 @@
 .rdsu-image{
     display: none;
 }
+.rdsu-progress{
+    display: none;
+}
 input {
     width: 260px;
     height: 30px;
