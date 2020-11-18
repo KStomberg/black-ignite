@@ -86,16 +86,16 @@ router.put('/likes/:id', async (req, res) => {
   }
 });
 
-router.get('/likes/:id', (req, res) => {
-  console.log('hit get likes', req.params.id);
+router.get('/likes/get/', (req, res) => {
+  console.log('hit get likes', req.user.id);
   let queryString = `SELECT * FROM "like" WHERE "user_id" = $1;`;
   pool
-    .query(queryString, [req.params.id])
+    .query(queryString, [req.user.id])
     .then((results) => {
       res.send(results.rows);
     })
     .catch((err) => {
-      console.error('/submissions GET/likes/:id failed', err);
+      console.error('/submissions GET/likes/ failed', err);
       res.sendStatus(500);
     });
 });

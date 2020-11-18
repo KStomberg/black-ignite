@@ -84,7 +84,7 @@ function* updateFormStatus(action) {
 }
 
 function* updateLikes(action) {
-  console.log('action.payload of updateLikes', action.payload);
+  console.log('action.payload of updateLikes');
   try {
     yield axios({
       method: 'PUT',

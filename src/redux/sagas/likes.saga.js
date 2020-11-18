@@ -6,8 +6,9 @@ function* likesSaga() {
 }
 
 function* fetchLikes(action) {
+  console.log('in fetch likes saga');
   try {
-    let response = yield axios.get(`/api/likes/${action.payload}`);
+    let response = yield axios.get(`/api/submissions/likes/get/`);
 
     yield put({
       type: 'SET_LIKES',
