@@ -169,7 +169,7 @@ function App() {
               component={Ranking}
             />
 
-          <Route
+          <ProtectedRoute
             exact
             path="/juror"
             component={JurorPage}
