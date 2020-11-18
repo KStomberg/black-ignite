@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log(`in our talks router.get======>`, req.body);
+    console.log(`in our talks router.get`, req.body);
     queryText = `SELECT * FROM "category" 
     WHERE "is_deleted" = FALSE ORDER BY "id" DESC;`;
     pool.query(queryText)

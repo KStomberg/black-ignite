@@ -26,7 +26,7 @@ try {
 
 
 function* rankingsSaga() {
-  yield takeLatest('FETCH_CATEGORY_RANKINGS', fetchRanking);
+ yield takeLatest('FETCH_CATEGORY_RANKINGS', fetchRanking);
   yield takeLatest('FETCH_ALL_RANKINGS', fetchRankings);
 }
 

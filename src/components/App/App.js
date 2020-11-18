@@ -138,7 +138,7 @@ function App() {
               path="/user"
               component={UserPage}
             /> */}
-            <ProtectedRoute
+            <Route
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"

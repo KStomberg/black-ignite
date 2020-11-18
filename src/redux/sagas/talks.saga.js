@@ -4,8 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchTalks(action) {
     console.log(`in our fetchTalks saga`);
   try {
-    let response = yield axios.get(`/api/talks/${action.payload}`);
-    console.log('action.payload======>',action.payload);
+    let response = yield axios.get(`/api/talks`);
     yield put({ type: 'SET_TALKS', payload: response.data});
   } catch (error) {
     console.log('Talks GET request failed', error);
