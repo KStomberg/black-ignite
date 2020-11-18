@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+import {Link} from 'react-router-dom';
 class LoginForm extends Component {
   state = {
     username: '',
@@ -64,7 +64,9 @@ class LoginForm extends Component {
           </label>
         </div>
         <div>
+          <Link to="/juror">
           <input className="btn" type="submit" name="submit" value="Log In" />
+          </Link>
         </div>
       </form>
     );

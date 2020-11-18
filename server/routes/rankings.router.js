@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
-
 router.get('/', (req, res) => {
-    console.log(`in our ranking router.get`, req.params.id);
     queryText = 
     `SELECT * FROM "submission" ORDER BY "likes" DESC;`;
     pool.query(queryText)
@@ -41,5 +39,4 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
     }
 });
-
 module.exports = router;

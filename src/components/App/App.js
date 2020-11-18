@@ -119,6 +119,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import ButtonAppBar from '../AppBar/AppBar';
 import Ranking from '../Ranking/Ranking'
 import JurorPage from '../JurorPage/JurorPage'
+import SignUpFormConformation from '../SignUpForm/SignUpFormConformation';
 
 function App() {
   return (
@@ -131,7 +132,13 @@ function App() {
             path="/"
             component={Homepage}
           />
-            <ProtectedRoute
+          {/* <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/user"
+              component={UserPage}
+            /> */}
+            <Route
               // logged in shows EditCategory else shows LoginPage
               exact
               path="/edittalk"
@@ -165,6 +172,12 @@ function App() {
             exact
             path="/juror"
             component={JurorPage}
+          />
+
+          <Route 
+            exact
+            path="/user/conformation"
+            component={SignUpFormConformation}
           />
 
             {/* <ProtectedRoute 
