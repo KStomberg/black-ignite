@@ -34,7 +34,7 @@ function Homepage() {
     const dispatch = useDispatch();
     const [openDialog, setOpenDialog] = useState(false);
     const categories = useSelector(state => state.categories);
-    const description = useSelector(state => state.description);
+    const desc = useSelector(state => state.description);
     const [openDrawer, setOpenDrawer] = useState(false);
 
 
@@ -53,6 +53,7 @@ function Homepage() {
     
     const handleClose = () => {
         setOpenDialog(false);
+        setOpenDrawer(true);
     };
 
     return (
@@ -95,7 +96,6 @@ function Homepage() {
                     <div className="dialog">
                         <DialogContent className={classes.dialogContent}>
                             <DialogContentText id="alert-dialog-slide-description">
-                                {description.map(desc =>
                                     <div>
                                         <h1 className="p descTitle">{desc.title}!</h1>
                                         <img src={desc.description_url} width="400px"/>
@@ -107,7 +107,6 @@ function Homepage() {
                                             To promote we'll need a headshot and brief bio.
                                         </p>
                                     </div>
-                                )}
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions className={classes.dialogContent}>
@@ -122,7 +121,10 @@ function Homepage() {
                 </Dialog>
             </div>
 
-            <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
+            <Drawer 
+                openDrawer={openDrawer} 
+                setOpenDrawer={setOpenDrawer}
+            />
         </div>
     );
 }

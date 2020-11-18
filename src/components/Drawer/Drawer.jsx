@@ -47,26 +47,24 @@ export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
 
 
     const toggleDrawer = () => {
-        console.log('opening drawer:', openDrawer);
         setOpenDrawer(!openDrawer);
-        console.log('after "opening drawer":', openDrawer);
     };
     
     return (
         <div className={classes.drawer}>
-                    <IconButton className={classes.iconBtn}>
-                        <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
-                    </IconButton>
-                    <SwipeableDrawer
-                        anchor='bottom'
-                        open={openDrawer}
-                        onClose={toggleDrawer}
-                        onOpen={toggleDrawer}
-                    >
-                         <div className={classes.drawer}>
-            <Button onClick={toggleDrawer} className={classes.cancelBtn}>✖</Button>
-            <SignUpForm />
-        </div>
+            <IconButton className={classes.iconBtn}>
+                <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
+            </IconButton>
+            <SwipeableDrawer
+                anchor='bottom'
+                open={openDrawer}
+                onClose={toggleDrawer}
+                onOpen={toggleDrawer}
+            >
+                <div className={classes.drawer}>
+                    <Button onClick={toggleDrawer} className={classes.cancelBtn}>✖</Button>
+                    <SignUpForm />
+                </div>
             </SwipeableDrawer>
         </div>
     );

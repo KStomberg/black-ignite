@@ -36,7 +36,7 @@ router.get('/unauthenticated/:id', (req, res) => {
     WHERE "is_deleted" = FALSE AND "id" = $1;`;
     pool.query(queryText, [req.params.id])
     .then(response => {
-        res.send(response.rows);
+        res.send(response.rows[0]);
     }).catch(err => {
         console.log(`got an error in category GET`, err);
         res.sendStatus(500);
