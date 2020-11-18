@@ -33,9 +33,10 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import ButtonAppBar from '../AppBar/AppBar';
 import Ranking from '../Ranking/Ranking'
 import JurorPage from '../JurorPage/JurorPage'
-import SignUpFormConformation from '../SignUpForm/SignUpFormConformation';
+import SignUpFormConfirmation from '../SignUpForm/SignUpFormConfirmation';
 import LogOutButton from '../LogOutButton/LogOutButton'
 import {useDispatch} from 'react-redux';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +49,13 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+          <Redirect exact from="/" to="/user" />
+
           {/* User view */}
           <Route
             exact
-            path="/"
+            path="/user"
             component={Homepage}
           />
           {/* <ProtectedRoute
@@ -98,8 +102,8 @@ function App() {
 
           <Route 
             exact
-            path="/user/conformation"
-            component={SignUpFormConformation}
+            path="/user/confirmation"
+            component={SignUpFormConfirmation}
           />
           {/* <ProtectedRoute
             exact

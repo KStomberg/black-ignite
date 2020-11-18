@@ -51,3 +51,11 @@
     width: 400px;
     color: #221F1F;
 }
+
+.descImg {
+    width: 160%;
+}
+
+.drawerDiv {
+    margin-bottom: 40px;
+}
