@@ -82,6 +82,4 @@ function* updateFormStatus(action) {
   }
 }
 
-
-
 export default submissionsSaga;

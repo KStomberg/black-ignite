@@ -1,8 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 import './JurorTalkSubmission.css';
 
