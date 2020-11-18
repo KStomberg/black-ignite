@@ -32,7 +32,12 @@ class JurorView extends Component {
     return (
       <div>
         <div id="topicContainer">
-          <p>You have {JSON.stringify(remainingLikes)} likes remaining.</p>
+          <div className="likesDiv">
+            <h1 className="likesHeader">You have {remainingLikes} likes remaining.</h1>
+          </div>
+          <div className="submissionHeader">
+          <h1 className="submissionH1">Submissions</h1>
+          </div>
           <AppBar />
           {this.props.store.talks.map((talk) => (
             <JurorTalkCategory
