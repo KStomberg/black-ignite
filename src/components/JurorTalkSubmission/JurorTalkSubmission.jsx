@@ -78,6 +78,12 @@ class JurorTalkSubmission extends Component {
 
     return (
       <div className="submissionContainer" id={this.props.key}>
+        <div className="videoDiv">
+        <video width="420" height="315" controls id="submissionVideo">
+          <source src={submission.video} />
+        </video>
+        </div>
+        <div className="submissionInfo">
         <p>{submission.name}</p>
         {this.formStatusChecker(submission.formStatus)}
         <p>{submission.email}</p>
@@ -85,11 +91,12 @@ class JurorTalkSubmission extends Component {
         <p>{submission.linkedin}</p>
         <p>{submission.twitter}</p>
         <p>{submission.comment}</p>
-        <video width="420" height="315" controls>
-          <source src={submission.video} />
-        </video>
+        </div>
+        
+        <div className="jurorLikeDiv">
         <p>{submission.like} Jurors like this!</p>
         <button onClick={this.likeSubmission}>Like</button>
+        </div>
       </div>
     );
   }
