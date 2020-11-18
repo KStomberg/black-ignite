@@ -1,0 +1,46 @@
+.xBtn {
+    background-color: transparent;
+    color: #221F1F;
+    border: none;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    margin-left: 70vw;
+}
+
+.title1 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: -5px;
+}
+
+.p {
+    width: 250px;
+    font-size: 17px;
+}
+
+.title2 {
+    font-weight: normal;
+    margin-bottom: -15px;
+}
+
+.tweetp {
+    width: 100vw;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.twitter-share-button {
+    margin-bottom: 50px;
+}
+
+.p2 {
+    font-size: 17px;
+    margin: 0;
+}
+
+.p3 {
+    font-size: 17px;
+    text-decoration: underline;
+    font-weight: bold;
+}
