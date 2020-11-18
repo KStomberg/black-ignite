@@ -62,7 +62,7 @@ function SignUpForm() {
             payload: objectToSend
         });
 
-        history.push('/user/conformation');
+        history.push('/user/confirmation');
     } // end handleSubmit
 
     const dropzoneStyles = {

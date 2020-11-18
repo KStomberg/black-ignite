@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import PosterDropzone from './PosterDropzone';
-import DescriptionDropzone from './DescriptionDropzone';
+import EditPosterDropzone from './EditPosterDropzone';
+import EditDescriptionDropzone from './EditDescriptionDropzone';
 import {IconButton, Zoom, DialogContentText, DialogContent, DialogActions, Dialog, Button, Input} from '@material-ui/core';
 
 // Basic class component structure for React with default state
@@ -65,16 +65,16 @@ setEditedPosterState = (poster) => {
                 onChange={this.handleChange}/>
             <div className="dropzone">
               <h2 className="talkH2">Talk Poster</h2>
-              <PosterDropzone 
+              <EditPosterDropzone 
                 value={this.state.poster} 
-                setOurPosterState={this.props.setOurPosterState}
+                //setOurPosterState={this.props.setOurPosterState}
                 setEditedPosterState={this.setEditedPosterState}/>
             </div>
           <div className="dropzone">
             <h2 className="talkH2">Talk Description</h2>
-            <DescriptionDropzone 
+            <EditDescriptionDropzone 
               value={this.state.description}
-              setOurDescriptionState={this.props.setOurDescriptionState}
+              //setOurDescriptionState={this.props.setOurDescriptionState}
               setEditedDescriptionState={this.setEditedDescriptionState}/>
           </div>
         </div>

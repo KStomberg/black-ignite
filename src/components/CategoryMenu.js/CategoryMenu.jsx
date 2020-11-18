@@ -33,10 +33,12 @@ class CategoryMenu extends Component{
             type: 'FETCH_ALL_TALKS'
         })
 
+        this.setState({
+            open: !this.state.open,
+            anchorEl: null
+        }) 
     }
-    categroyTalks = () => {
 
-    }
     sendTalk = (talk) => {
       let categoryIdToSend = {
         talkId: talk.id
