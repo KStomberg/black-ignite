@@ -4,28 +4,35 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { connect } from 'react-redux';
+import './CategoryMenu.css';
 
 class CategoryMenu extends Component{
     state= {open: false,
             anchorEl: null,
+            
     }
+
+     handleClick = (event) => {
+      this.setState({ anchorEl: event.currentTarget })
+    };
+
+     handleClose = () => {
+      this.setState({ anchorEl: null })
+  };
+
     componentDidMount() {
-        // this.getTalk();
+      this.getTalk();
       }
 
       getTalk = () => {
         console.log('Fetching talks');
            this.props.dispatch({
             type: 'FETCH_ALL_TALKS'
-        })
-    }
-      
-    toggleMenu = () => {
-
+        });
         this.setState({
             open: !this.state.open,
             anchorEl: null
-        }) 
+        });
     }
 
     sendTalk = (talk) => {
@@ -55,19 +62,21 @@ class CategoryMenu extends Component{
       console.log(this.props, this.state)
         return (
             <div>
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.toggleMenu}>
-
-                All the Categories▾
-
-              </Button>
+              <div className="title">
+              <h2 className="likes">Likes</h2>
+              <Button className="menu" aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
+              All the Categories▾
+                </Button>
+                </div>
               <Menu
                 id="simple-menu"
                 keepMounted
-                open={this.state.open}
-                getContentAnchorEl={null}
-                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                transformOrigin={{ vertical: "top", horizontal: "center" }}
-                onClose={this.toggleMenu}
+                open={Boolean(this.state.anchorEl)}
+                anchorEl={this.state.anchorEl}
+                // getContentAnchorEl={null}
+                // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                // transformOrigin={{ vertical: "top", horizontal: "center" }}
+                onClose={this.handleClose}
               >
                 {this.props.store.talks.map((talk) => (
 

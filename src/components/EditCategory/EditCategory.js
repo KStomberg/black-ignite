@@ -90,5 +90,4 @@ this.componentDidMount();
     }
   }
 
-
 export default connect(mapStoreToProps)(EditCategory);
