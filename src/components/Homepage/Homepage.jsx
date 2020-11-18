@@ -159,10 +159,12 @@ function Homepage() {
                 </Dialog>
             </div>
 
-            <Drawer 
-                openDrawer={openDrawer} 
-                setOpenDrawer={setOpenDrawer}
-            />
+            <div className="drawerDiv">
+                <Drawer
+                    openDrawer={openDrawer} 
+                    setOpenDrawer={setOpenDrawer}
+                />
+            </div>
         </div>
     );
 }
