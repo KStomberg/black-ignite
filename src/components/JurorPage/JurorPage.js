@@ -1,49 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import AppBar from '../AppBar/AppBar' 
-import JurorTalkCategory from '../JurorTalkCategory/JurorTalkCategory'
+import AppBar from '../AppBar/AppBar';
+import JurorTalkCategory from '../JurorTalkCategory/JurorTalkCategory';
 import './JurorPage.css';
 
 class JurorView extends Component {
-
   componentDidMount() {
     this.getTalk();
     this.getLike();
-    this.getMaxLike();
   }
 
   getTalk = () => {
     console.log('Fetching talks');
 
     this.props.dispatch({
-      type: 'FETCH_ALL_TALKS'
+      type: 'FETCH_ALL_TALKS',
     });
-  }
+  };
 
   getLike = () => {
-    console.log('fetching likes');
-    this.props.dispatch({
-      type: 'FETCH_LIKES',
-    });
-  }
-
-  getMaxLike = () => {
     console.log('fetching max likes');
     this.props.dispatch({
       type: 'FETCH_MAX_LIKES',
     });
-  }
+  };
 
   render() {
     console.log('this.props for jurorPage', this.props);
-    let usedLikes = this.props.store.likes.length;
+    let remainingLikes = this.props.store.likes.likes;
     return (
       <div>
         <div id="topicContainer">
-        <AppBar />
+          <p>You have {JSON.stringify(remainingLikes)} likes remaining.</p>
+          <AppBar />
           {this.props.store.talks.map((talk) => (
-            <JurorTalkCategory key={talk.id} id={talk.id} topicId={talk.id} title={talk.title} usedLikes={usedLikes} getLikeFunction={this.getLike}/>
+            <JurorTalkCategory
+              key={talk.id}
+              id={talk.id}
+              topicId={talk.id}
+              title={talk.title}
+              remainingLikes={remainingLikes}
+              getLikeFunction={this.getLike}
+            />
           ))}
         </div>
       </div>

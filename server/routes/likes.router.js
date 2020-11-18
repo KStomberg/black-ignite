@@ -32,7 +32,22 @@ router.put('/:id', async (req, res) => {
         res.send(results.rows);
       })
       .catch((err) => {
-        console.error('/submissions GET/likes/ failed', err);
+        console.error('/likes GET/likes/ failed', err);
+        res.sendStatus(500);
+      });
+  });
+
+  router.get('/max/', (req, res) => {
+    console.log('hit get max likes', req.user.id);
+    let queryString = `	SELECT "likes" FROM "user" WHERE "id" = $1;`;
+    pool 
+      .query(queryString, [req.user.id])
+      .then((results) => {
+          res.send(results.rows[0]);
+          console.log(results.rows[0]);
+      })
+      .catch((err) => {
+        console.error('/likes GET/likes/user/ failed', err);
         res.sendStatus(500);
       });
   });

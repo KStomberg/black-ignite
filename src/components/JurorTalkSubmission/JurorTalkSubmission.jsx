@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
-
-  
   formStatusChecker = (currentForm) => {
     console.log('currentForm:', currentForm);
     if (currentForm === false) {
@@ -48,25 +46,31 @@ class JurorTalkSubmission extends Component {
     console.log('Submission to update', submissionId, this.props);
     console.log('Submission to update', submissionId);
 
-
     this.props.dispatch({
       type: 'UPDATE_FORM_STATUS',
       payload: submissionId,
     });
   };
 
-
   likeSubmission = () => {
-    let submissionId = this.props.id
+    let submissionId = this.props.id;
+    let remainingLikes = this.props.remainingLikes;
     console.log('Like button clicked!', submissionId);
-
-    this.props.dispatch({
-      type: 'UPDATE_LIKES',
-      payload: submissionId
-    });
-    this.props.getLikeFunction();
+    if (remainingLikes <= 0) {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Your out of likes!',
+        footer: '<a href>You have just loved too many things...</a>',
+      });
+    } else {
+      this.props.dispatch({
+        type: 'UPDATE_LIKES',
+        payload: submissionId,
+      });
+      this.props.getLikeFunction();
+    }
   };
-
 
   render() {
     console.log('this.props for JurorTalkSubmission', this.props);

@@ -24,7 +24,7 @@ function* fetchLikes(action) {
 function* fetchMaxLikesSaga(action) {
   console.log('in fetch max likes saga');
   try {
-    let response = yield axios.get(`/api/likes/user`);
+    let response = yield axios.get(`/api/likes/max/`);
 
     yield put({
       type: 'SET_MAX_LIKES',
