@@ -6,6 +6,7 @@ class RegisterForm extends Component {
   state = {
     username: '',
     password: '',
+    likes: null,
   };
 
   registerUser = (event) => {
@@ -16,11 +17,12 @@ class RegisterForm extends Component {
       payload: {
         username: this.state.username,
         password: this.state.password,
+        likes: this.state.likes,
       },
     });
     this.props.dispatch({
-      type: 'FETCH_USERS'
-    })
+      type: 'FETCH_USERS',
+    });
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -28,6 +30,10 @@ class RegisterForm extends Component {
       [propertyName]: event.target.value,
     });
   };
+
+  reloadPage = () => {
+    window.location.reload();
+  }
 
   render() {
     return (
@@ -63,7 +69,20 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <label htmlFor="votes">
+          # of Votes:
+            <input
+              type="number"
+              name="votes"
+              placeholder="If empty, default is 30"
+              value={this.state.likes}
+              required
+              onChange={this.handleInputChangeFor('likes')}
+            />
+          </label>
+        </div>
+        <div>
+          <input className="btn" type="submit" name="submit" value="Register" onClick={this.reloadPage}/>
         </div>
       </form>
     );

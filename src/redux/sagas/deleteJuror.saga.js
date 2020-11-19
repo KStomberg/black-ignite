@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-//Detetes jurror from DB
+//Deletes juror from DB
 function* deleteJuror(action){
     console.log('in deleteJuror', action.payload);
     let id = action.payload.id;
