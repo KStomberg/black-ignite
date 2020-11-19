@@ -164,7 +164,7 @@ function Homepage() {
                     openDrawer={openDrawer} 
                     setOpenDrawer={setOpenDrawer}
                 />
-                <p className="drawerP">Sign Up</p>
+                <p className="drawerP">Sign Up Here</p>
             </div>
         </div>
     );

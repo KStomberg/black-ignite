@@ -60,7 +60,7 @@ class JurorTalkSubmission extends Component {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Your out of votes!',
+        text: 'You\'re out of likes!',
         footer: '<a href>You have just loved too many things...</a>',
       });
     } else {
