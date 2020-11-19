@@ -109,6 +109,7 @@ function SignUpForm() {
     const uploadOptions = {}
 
     
+
     return (
         <div className="signUp">
             <Grid
