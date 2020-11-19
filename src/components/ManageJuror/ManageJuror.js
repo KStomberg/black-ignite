@@ -36,8 +36,10 @@ deleteJuror = (user) => {
     if (result.value) {
       Swal.fire(
         'Juror Deleted',
-        'success'
-      )
+        'success',
+      ).then(() => {
+        window.location.reload();
+      })
   console.log(`this is our user`, user);
   let objectToSend = {
     id: user.id
