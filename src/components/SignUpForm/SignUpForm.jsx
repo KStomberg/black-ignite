@@ -110,6 +110,7 @@ function SignUpForm() {
         server: 'http://localhost:5000'
     }
 
+    
     return (
         <div className="signUp">
             <Grid
