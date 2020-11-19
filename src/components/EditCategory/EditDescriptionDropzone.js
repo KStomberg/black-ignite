@@ -31,18 +31,14 @@ state = {
     const uploadOptions = {server: 'http://localhost:5000'}
     const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
     const dropZoneStyle = {
-      height: '200px',
-      width: '200px',
+      height: '150px',
+      width: '150px',
       border: '2px dashed',
       borderRadius: '4px',
       borderColor: '#246399',
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover'
-
-      
     }
     return (
       <>
@@ -56,7 +52,7 @@ state = {
             style={dropZoneStyle}
             />
             <LinearProgress
-              className="progressBar"
+              className="editProgressBar"
               variant="determinate" 
               value={this.state.uploadPercentage} />
         </>
