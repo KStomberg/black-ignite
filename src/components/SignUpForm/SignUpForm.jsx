@@ -110,6 +110,7 @@ function SignUpForm() {
 
     
 
+    
     return (
         <div className="signUp">
             <Grid
