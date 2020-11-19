@@ -6,7 +6,9 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   //delete a specific user based on client delete in manageJuror.js
   console.log('made it to our delete router', req.params)
-  const queryText = `DELETE FROM "user" WHERE "id" = $1;`;
+  const queryText = `UPDATE "user" 
+  SET "is_deleted" = TRUE
+  WHERE "id" = $1;`;
   pool.query(queryText, [req.params.id])
     .then( (result) => {
         console.log(result.rows);

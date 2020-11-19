@@ -70,13 +70,17 @@ deleteJuror = (user) => {
             <thead>
             <tr>
               <th>Username</th>
+              <th>Remaining Votes</th>
               <th>Delete Juror</th>
             </tr>
           </thead>
           <tbody>
             {this.props.store.users.map((user, i )=>
-               <tr key={i}><td key={user.id}>{user.username}</td>
-               <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td></tr>)}
+               <tr key={i}>
+                  <td key={user.id}>{user.username}</td>
+                  <td key={user.id}>{user.likes}</td>
+                  <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td>
+               </tr>)}
           </tbody>
         </table>
         </div>

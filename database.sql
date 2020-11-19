@@ -9,6 +9,7 @@ CREATE TABLE "user"
     "username" VARCHAR(1000) NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
     "authLevel" VARCHAR(256) NOT NULL,
+    "is_deleted" BOOLEAN DEFAULT false,
     "likes" INT DEFAULT 30
 );
 --create database called "Black_Ignite"
