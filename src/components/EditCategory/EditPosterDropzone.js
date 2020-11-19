@@ -57,7 +57,7 @@ class PosterDropzone extends Component {
             onProgress={this.onUploadProgress}
           />
         <LinearProgress 
-          className="progressBar"
+          className="editProgressBar"
           variant="determinate" 
           value={this.state.uploadPercentage} />
       </>
