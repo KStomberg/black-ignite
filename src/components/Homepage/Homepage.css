@@ -59,3 +59,9 @@
 .drawerDiv {
     margin-bottom: 40px;
 }
+
+.drawerP {
+    background-color: #EDAC3A;
+    margin: 0;
+    padding-top: 10px;
+}

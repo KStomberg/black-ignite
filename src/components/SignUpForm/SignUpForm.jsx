@@ -1,13 +1,36 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {Grid} from '@material-ui/core';
+import {Grid, IconButton} from '@material-ui/core';
+import DoneIcon from '@material-ui/icons/Done';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import moment from 'moment'
 import './SignUpForm.css';
 
+const useStyles = makeStyles({
+    checkmarkIcon: {
+        color: '#EDAC3A',
+        backgroundColor: '#221F1F',
+        marginLeft: 5,
+        height: 10,
+        width: 10,
+        '&:hover': {
+            color: '#EDAC3A',
+            backgroundColor: '#221F1F',
+            cursor: 'default',
+            marginLeft: 5
+        }
+    },
+    checkmark: {
+        width: 9,
+        height: 9,
+        fontWeight: 'bold'
+    }
+})
+
 function SignUpForm() {
-    const [category, setCategory] = useState();
+    const [category, setCategory] = useState('');
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [instagram, setInstagram] = useState('');
@@ -20,6 +43,7 @@ function SignUpForm() {
     const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
     const history = useHistory();
+    const classes = useStyles();
 
     useEffect(() => {
         dispatch({type: 'FETCH_ALL_CATEGORIES'});
@@ -72,7 +96,8 @@ function SignUpForm() {
         maxWidth: 270,
         width: 270,
         maxHeight: 'fitContent',
-        height: 90
+        height: 90,
+        display: 'inline-block'
     }
 
     const handleFinishedUpload = async info => {
@@ -112,13 +137,21 @@ function SignUpForm() {
                                     required
                                 >
                                     {selectedCategory === {} ?
-                                        <option value="" disabled selected>Select your Option</option> :
+                                        <option value='' disabled selected>Select your Option</option> :
                                         <option value={selectedCategory.id} selected>{selectedCategory.title}</option>
                                     }
                                     {categories.map(category =>
                                         <option value={category.id}>{category.title}</option>
                                     )}
                                 </select>
+
+                                {/* Checkmark */}
+                                {selectedCategory === '' ?
+                                <></> :
+                                <IconButton className={classes.checkmarkIcon}>
+                                    <DoneIcon className={classes.checkmark}/>
+                                </IconButton>
+                                }
                             </Grid>
                         </Grid>
 
@@ -137,6 +170,14 @@ function SignUpForm() {
                                     onChange={e => setFullName(e.target.value)}
                                     required
                                 />
+
+                                {/* Checkmark */}
+                                {fullName === '' ?
+                                <></> :
+                                <IconButton className={classes.checkmarkIcon}>
+                                    <DoneIcon className={classes.checkmark}/>
+                                </IconButton>
+                                }
                             </Grid>
                         </Grid>
 
@@ -155,6 +196,14 @@ function SignUpForm() {
                                     onChange={e => setEmail(e.target.value)}
                                     required
                                 />
+
+                                {/* Checkmark */}
+                                {email === '' ?
+                                <></> :
+                                <IconButton className={classes.checkmarkIcon}>
+                                    <DoneIcon className={classes.checkmark}/>
+                                </IconButton>
+                                }
                             </Grid>
                         </Grid>
 
@@ -242,13 +291,23 @@ function SignUpForm() {
                                 <label for="video" className="inputDesc">*my intro video</label>
                             </Grid>
                             <Grid item>
-                                <DropzoneS3Uploader
-                                    onFinish={handleFinishedUpload}
-                                    accept="image/*,audio/*,video/*"
-                                    upload={uploadOptions}
-                                    s3Url={s3Url}
-                                    style={dropzoneStyles}
-                                />
+                                <span>
+                                    <DropzoneS3Uploader
+                                        onFinish={handleFinishedUpload}
+                                        accept="image/*,audio/*,video/*"
+                                        upload={uploadOptions}
+                                        s3Url={s3Url}
+                                        style={dropzoneStyles}
+                                    />
+                                </span>
+                                {fileUrl === '' ?
+                                <></> :
+                                <div className="dropzoneCheckmark">
+                                    <IconButton className={classes.checkmarkIcon}>
+                                        <DoneIcon className={classes.checkmark}/>
+                                    </IconButton>
+                                </div>
+                                }
                             </Grid>
                         </Grid>
 
@@ -265,8 +324,8 @@ function SignUpForm() {
                         </Grid>
 
                         {category === '' || fullName === '' || email === '' || fileUrl === '' ?
-                            <input type="submit" value="submit" className="submitBtn disabled" disabled/> :
-                            <input type="submit" value="submit" className="submitBtn"/>
+                            <input type="submit" value="submit" className="submitBtnForm disabled" disabled/> :
+                            <input type="submit" value="submit" className="submitBtnForm"/>
                         }
                     </form>
                 </Grid>
