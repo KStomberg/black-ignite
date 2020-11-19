@@ -9,9 +9,7 @@ class JurorTalkSubmission extends Component {
   formStatusChecker = (currentForm) => {
     console.log('currentForm:', currentForm);
     if (currentForm === false) {
-      return <button 
-      className="btn btn_asLink" onClick={this.buttonClicked}>
-       Submitted Form</button>;
+      return <button className="submitBtn" onClick={this.buttonClicked}>Submitted Form</button>;
     } else {
       return <p>Form Submitted!</p>;
     }
@@ -62,7 +60,7 @@ class JurorTalkSubmission extends Component {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Your out of likes!',
+        text: 'Your out of votes!',
         footer: '<a href>You have just loved too many things...</a>',
       });
     } else {
@@ -96,9 +94,8 @@ class JurorTalkSubmission extends Component {
         </div>
         
         <div className="jurorLikeDiv">
-        <p>{submission.like} Jurors like this!</p>
-        <button className="btn btn_asLink" 
-        onClick={this.likeSubmission}>Like</button>
+        <p>{submission.like} Jurors voted for this!</p>
+        <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
         </div>
       </div>
     );

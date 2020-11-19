@@ -34,7 +34,7 @@ class Ranking extends Component {
               <th>Twitter</th>
               <th>Comments</th>
               <th>Video url</th>
-              <th>Likes:</th>
+              <th>Votes:</th>
             </tr>
           </thead>
           <tbody>
