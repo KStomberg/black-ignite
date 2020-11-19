@@ -45,7 +45,7 @@ class JurorTalkCategory extends Component {
               <ArrowDropDownIcon 
                 className="arrow"
                 onClick={this.toggleDisplay}/> 
-              <h1 className="submissionTitle">{this.props.title} {JSON.stringify(submissionsForThisCategory.length)}</h1>
+              <h1 className="submissionTitle">{this.props.title}</h1>
             </div>
             <div className="submissionItem" id={this.props.id}>
               {submissionsForThisCategory.map((submission) => {
