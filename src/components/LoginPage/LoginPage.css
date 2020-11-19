@@ -1,0 +1,22 @@
+
+@font-face {
+    font-family: 'VTC-Martin-Regular';
+    src: local('VTC-Martin-Regular'), url(../../components/Fonts/VTC-Martin-Regular.otf) format('otf');
+  }
+.loginH2 {
+    font-family: 'VTC-Martin-Regular';
+    font-size: 100px;
+    margin-top: 0;
+    margin-bottom:20px;
+}
+.loginLabel {
+    font-family: 'VTC-Martin-Regular';
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom:20px;
+}
+@media only screen and (max-width: 600px) {
+    .loginLogo{
+        width: 90vw
+    }
+}

@@ -63,7 +63,7 @@ function Homepage() {
     return (
         <div className="homepage">
             <img src="/circle_logo.png" alt="companyLogo" width="80px"/>
-            <h1 className="title">Speak at Black Ignite!</h1>
+            <h1 className="homepageTitle">Speak at Black Ignite!</h1>
             <span className="website" onClick={() => window.open("https://blackignite.com/")}>blackignite.com</span>
             <IconButton className={classes.btn} onClick={() => window.open("https://www.instagram.com/black.ignite/?hl=en")}>
                 <InstagramIcon className={classes.iconBtn} />
@@ -164,6 +164,7 @@ function Homepage() {
                     openDrawer={openDrawer} 
                     setOpenDrawer={setOpenDrawer}
                 />
+                <p className="drawerP">Sign Up</p>
             </div>
         </div>
     );

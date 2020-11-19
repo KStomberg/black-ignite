@@ -12,6 +12,10 @@
     margin-bottom: 15px;
 }
 
+.homepageTitle {
+    margin-bottom: 5px;
+}
+
 .selectInput {
     width: 270px;
     height: 38px;
@@ -48,7 +52,7 @@
     font-size: 20px;
 }
 
-.submitBtn {
+.submitBtnForm {
     color: #EDAC3A;
     background: #221F1F;
     width: 150px;
@@ -76,4 +80,10 @@
 
 .rdsu-image{
     display: none;
+}
+
+.dropzoneCheckmark {
+    float: right;
+    height: 90px;
+    line-height: 90px;
 }

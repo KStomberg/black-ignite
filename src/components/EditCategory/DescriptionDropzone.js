@@ -39,11 +39,10 @@ state = {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundImage: 'url(/highres_blackignite_logo.png)',
+      backgroundImage: 'url(/upload-background-image.png)',
       backgroundPosition: 'center',
-      backgroundSize: 'cover'
-
-      
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat'
     }
     return (
       <>
