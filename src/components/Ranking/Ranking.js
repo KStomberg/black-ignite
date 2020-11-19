@@ -29,7 +29,7 @@ class Ranking extends Component {
             <tr>
               <th>Full Name</th>
               <th>Email</th>
-              <th>Intagram</th>
+              <th>Instagram</th>
               <th>LinkedIn</th>
               <th>Twitter</th>
               <th>Comments</th>
