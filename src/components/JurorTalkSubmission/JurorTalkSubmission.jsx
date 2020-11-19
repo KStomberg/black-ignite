@@ -9,7 +9,9 @@ class JurorTalkSubmission extends Component {
   formStatusChecker = (currentForm) => {
     console.log('currentForm:', currentForm);
     if (currentForm === false) {
-      return <button onClick={this.buttonClicked}>Submitted Form</button>;
+      return <button 
+      className="btn btn_asLink" onClick={this.buttonClicked}>
+       Submitted Form</button>;
     } else {
       return <p>Form Submitted!</p>;
     }
@@ -95,7 +97,8 @@ class JurorTalkSubmission extends Component {
         
         <div className="jurorLikeDiv">
         <p>{submission.like} Jurors like this!</p>
-        <button onClick={this.likeSubmission}>Like</button>
+        <button className="btn btn_asLink" 
+        onClick={this.likeSubmission}>Like</button>
         </div>
       </div>
     );
