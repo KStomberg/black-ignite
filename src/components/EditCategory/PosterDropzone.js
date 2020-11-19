@@ -42,10 +42,10 @@ class PosterDropzone extends Component {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundImage: 'url(/highres_blackignite_logo.png)',
+      backgroundImage: 'url(/upload-background-image.png)',
       backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      zIndex: 1
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat'
     }
    
     return (
