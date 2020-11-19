@@ -28,8 +28,8 @@ state = {
       })
     }
   render() {
-    const uploadOptions = {server: 'http://localhost:5000'}
-    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
+    const uploadOptions = {}
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
     const dropZoneStyle = {
       height: '150px',
       width: '150px',

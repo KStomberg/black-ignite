@@ -31,8 +31,8 @@ class PosterDropzone extends Component {
     })
   }
   render() {
-    const uploadOptions = {server: 'http://localhost:5000'}
-    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
+    const uploadOptions = {}
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
     const dropZoneStyle = {
       height: '150px',
       width: '150px',
@@ -52,7 +52,7 @@ class PosterDropzone extends Component {
             s3Url={s3Url}
             accept="image/*,audio/*,video/*"
             // maxSize={1024 * 1024 * 5}
-            //upload={uploadOptions}
+            upload={uploadOptions}
             style={dropZoneStyle}
             onProgress={this.onUploadProgress}
           />

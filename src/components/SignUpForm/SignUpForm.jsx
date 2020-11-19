@@ -105,11 +105,10 @@ function SignUpForm() {
         await setDate(moment().format('MMMM Do YYYY, h:mm:ss a'));
     }
 
-    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
-    const uploadOptions = {
-        server: 'http://localhost:5000'
-    }
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
+    const uploadOptions = {}
 
+    
     return (
         <div className="signUp">
             <Grid
