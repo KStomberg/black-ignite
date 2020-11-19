@@ -6,7 +6,7 @@ class RegisterForm extends Component {
   state = {
     username: '',
     password: '',
-    likes: null,
+    likes: 30,
   };
 
   registerUser = (event) => {
@@ -31,9 +31,7 @@ class RegisterForm extends Component {
     });
   };
 
-  reloadPage = () => {
-    window.location.reload();
-  }
+
 
   render() {
     return (
@@ -74,7 +72,7 @@ class RegisterForm extends Component {
             <input
               type="number"
               name="votes"
-              placeholder="If empty, default is 30"
+              placeholder="Please enter # of votes"
               value={this.state.likes}
               required
               onChange={this.handleInputChangeFor('likes')}
@@ -82,7 +80,7 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" onClick={this.reloadPage}/>
+          <input className="btn" type="submit" name="submit" value="Register" />
         </div>
       </form>
     );
