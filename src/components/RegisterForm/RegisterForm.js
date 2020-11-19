@@ -31,9 +31,7 @@ class RegisterForm extends Component {
     });
   };
 
-  reloadPage = () => {
-    window.location.reload();
-  }
+
 
   render() {
     return (
@@ -82,7 +80,7 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" onClick={this.reloadPage}/>
+          <input className="btn" type="submit" name="submit" value="Register" />
         </div>
       </form>
     );

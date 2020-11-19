@@ -14,7 +14,7 @@ class ManageJuror extends Component {
   state = {
     heading: 'Manage Juror',
   };
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.dispatch({
       type: 'FETCH_USERS'
     })
@@ -37,9 +37,7 @@ deleteJuror = (user) => {
       Swal.fire(
         'Juror Deleted',
         'success',
-      ).then(() => {
-        window.location.reload();
-      })
+      )
   console.log(`this is our user`, user);
   let objectToSend = {
     id: user.id
@@ -72,7 +70,6 @@ deleteJuror = (user) => {
             <thead>
             <tr>
               <th>Username</th>
-              <th>Remaining Votes</th>
               <th>Delete Juror</th>
             </tr>
           </thead>
@@ -80,7 +77,6 @@ deleteJuror = (user) => {
             {this.props.store.users.map((user, i )=>
                <tr key={i}>
                   <td key={user.id}>{user.username}</td>
-                  <td key={user.id}>{user.likes}</td>
                   <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td>
                </tr>)}
           </tbody>
