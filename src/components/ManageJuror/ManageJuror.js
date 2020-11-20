@@ -6,10 +6,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import Swal from 'sweetalert2'
 import ButtonAppBar from '../AppBar/AppBar';
 import './ManageJuror.css';
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace
-// the component name TemplateClass with the name for the new
-// component.
+
 class ManageJuror extends Component {
   state = {
     heading: 'Manage Juror',
@@ -22,11 +19,7 @@ class ManageJuror extends Component {
       type: 'FETCH_USERS'
     })
   }
-  // componentDidUpdate() {
-  //   this.props.dispatch({
-  //     type: 'FETCH_USERS'
-  //   })
-  // }
+
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,

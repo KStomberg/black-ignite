@@ -63,7 +63,7 @@ class CategoryMenu extends Component{
         return (
             <div>
               <div className="title">
-              <h2 className="likes">Likes</h2>
+              <h2 className="likes">Votes</h2>
               <Button className="menu" aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
               Categories▾
                 </Button>
