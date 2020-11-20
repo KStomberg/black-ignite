@@ -129,22 +129,34 @@ function SignUpForm() {
                                 <label for="category" className="inputDesc">*talk category I'm interested in</label>
                             </Grid>
                             <Grid item>
-                                <select 
-                                    id="category" 
-                                    name="category" 
-                                    placeholder="Category Name" 
-                                    className="selectInput" 
-                                    onChange={e => setCategory(e.target.value)} 
-                                    required
-                                >
-                                    {selectedCategory === {} ?
-                                        <option value='' disabled selected>Select your Option</option> :
+                                {selectedCategory === {} ?
+                                    <select 
+                                        id="category" 
+                                        name="category" 
+                                        placeholder="Category Name" 
+                                        className="selectInput" 
+                                        onChange={e => setCategory(e.target.value)} 
+                                        required
+                                    >
+                                        {categories.map(category =>
+                                            <option value={category.id}>{category.title}</option>
+                                        )}
+                                    </select> :
+                                    <select 
+                                        id="category" 
+                                        name="category" 
+                                        placeholder="Category Name" 
+                                        className="selectInput" 
+                                        value={selectedCategory.id}
+                                        onChange={e => setCategory(e.target.value)} 
+                                        required
+                                    >
                                         <option value={selectedCategory.id} selected>{selectedCategory.title}</option>
-                                    }
-                                    {categories.map(category =>
-                                        <option value={category.id}>{category.title}</option>
-                                    )}
-                                </select>
+                                        {categories.map(category =>
+                                            <option value={category.id}>{category.title}</option>
+                                        )}
+                                    </select>
+                                }
 
                                 {/* Checkmark */}
                                 {selectedCategory === '' ?
@@ -324,7 +336,7 @@ function SignUpForm() {
                             </Grid>
                         </Grid>
 
-                        {category === '' || fullName === '' || email === '' || fileUrl === '' ?
+                        {fullName === '' || email === '' || fileUrl === '' ?
                             <input type="submit" value="submit" className="submitBtnForm disabled" disabled/> :
                             <input type="submit" value="submit" className="submitBtnForm"/>
                         }
