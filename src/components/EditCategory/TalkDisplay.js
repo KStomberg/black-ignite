@@ -15,11 +15,7 @@ class TalkDisplay extends Component {
     description: '',
     poster: '',
   };
-  componentDidMount() {
-    this.props.dispatch({
-        type: 'FETCH_ALL_TALKS'
-    })
-  }
+
   componentDidUpdate() {
     this.props.dispatch({
       type: 'FETCH_ALL_TALKS'

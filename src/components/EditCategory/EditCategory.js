@@ -4,8 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import TalkDisplay from './TalkDisplay';
 import './EditCategory.css';
 import ButtonAppBar from '../AppBar/AppBar';
-import Switch from '@material-ui/core/Switch';
-import EditTalkDisplay from './EditTalkDisplay';
 import Grid from '@material-ui/core/Grid';
 import PosterDropzone from './PosterDropzone';
 import DescriptionDropzone from './DescriptionDropzone'

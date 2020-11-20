@@ -5,6 +5,8 @@ import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './EditCategory.css';
 
+
+
 class DescriptionDropzone extends Component {
 state = {
     descriptionUrl: '',
@@ -22,14 +24,14 @@ state = {
         console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
         this.props.setEditedDescriptionState(this.state.descriptionUrl);
     }
-    onUploadProgress = (percent) => { console.log(percent) 
+    onUploadProgress = (percent) => { 
       this.setState({
         uploadPercentage: percent
       })
     }
   render() {
-    const uploadOptions = {server: 'http://localhost:5000'}
-    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
+    const uploadOptions = {}
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
     const dropZoneStyle = {
       height: '150px',
       width: '150px',
@@ -50,6 +52,7 @@ state = {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
+            onProgress={this.onUploadProgress}
             />
             <LinearProgress
               className="editProgressBar"

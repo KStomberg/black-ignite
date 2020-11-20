@@ -18,7 +18,11 @@ class EditDialogue extends Component {
     id: this.props.talk.id,
     isOpen: this.props.sendEdit
   };
-
+componentDidMount() {
+  this.props.dispatch({
+    type: 'FETCH_ALL_TALKS'
+  })
+}
   handleChange = (e) => {
     this.setState({
       title: e.target.value
@@ -47,6 +51,7 @@ setEditedPosterState = (poster) => {
       type: 'EDIT_CATEGORY',
       payload: editObjectToSend
     })
+  this.componentDidMount();
   }
 
   render() {
@@ -67,14 +72,12 @@ setEditedPosterState = (poster) => {
               <h2 className="talkH2">Talk Poster</h2>
               <EditPosterDropzone 
                 value={this.state.poster} 
-                //setOurPosterState={this.props.setOurPosterState}
                 setEditedPosterState={this.setEditedPosterState}/>
             </div>
           <div className="dropzone">
             <h2 className="talkH2">Talk Description</h2>
             <EditDescriptionDropzone 
               value={this.state.description}
-              //setOurDescriptionState={this.props.setOurDescriptionState}
               setEditedDescriptionState={this.setEditedDescriptionState}/>
           </div>
         </div>

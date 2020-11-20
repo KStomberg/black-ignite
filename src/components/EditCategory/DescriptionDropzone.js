@@ -4,7 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './EditCategory.css';
-
 class DescriptionDropzone extends Component {
 state = {
     descriptionUrl: '',
@@ -28,8 +27,8 @@ state = {
       })
     }
   render() {
-    const uploadOptions = {server: 'http://localhost:5000'}
-    const s3Url = `http://black-ignite-example.s3.amazonaws.com`;
+    const uploadOptions = {}
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
     const dropZoneStyle = {
       height: '200px',
       width: '200px',
@@ -54,11 +53,12 @@ state = {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
+            onProgress={this.onUploadProgress}
             />
             <LinearProgress
               className="progressBar"
               variant="determinate" 
-              value={this.state.uploadPercentage} />
+              value={this.state.uploadPercentage}  />
         </>
     );
   }
