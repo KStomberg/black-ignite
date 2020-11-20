@@ -37,14 +37,12 @@
   margin-top: 2px;
 }
 
-.submissionPara{
-  font-size: 18px;
-  margin-top: 5px;
-  margin-bottom: 0;
-
 
 .subInfoP {
   margin: 5px 0;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
 .invisible {

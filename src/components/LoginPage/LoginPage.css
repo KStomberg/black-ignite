@@ -1,17 +1,11 @@
 
-@font-face {
-    font-family: 'VTC-Martin-Regular';
-    src: local('VTC-Martin-Regular'), url(../../components/Fonts/VTC-Martin-Regular.otf) format('otf');
-  }
 .loginH2 {
-    font-family: 'VTC-Martin-Regular';
-    font-size: 100px;
+    font-size: 80px;
     margin-top: 0;
     margin-bottom:20px;
 }
 .loginLabel {
-    font-family: 'VTC-Martin-Regular';
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 0;
     margin-bottom:20px;
 }
