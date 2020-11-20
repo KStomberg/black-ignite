@@ -65,7 +65,7 @@ class CategoryMenu extends Component{
               <div className="title">
               <h2 className="likes">Likes</h2>
               <Button className="menu" aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-              All the Categories▾
+              Categories▾
                 </Button>
                 </div>
               <Menu
@@ -84,7 +84,7 @@ class CategoryMenu extends Component{
 
                 {talk.title} </MenuItem>
                 ))}
-                <MenuItem onClick={this.getAllRankings} >All Talks</MenuItem>
+                <MenuItem onClick={this.getAllRankings} >All Categories</MenuItem>
               </Menu>
             </div>
           );

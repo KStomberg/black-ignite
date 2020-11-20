@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
+import {Grid} from '@material-ui/core';
 
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
   formStatusChecker = (currentForm) => {
     console.log('currentForm:', currentForm);
-    if (currentForm === false) {
-      return <button className="submitBtn" onClick={this.buttonClicked}>Submitted Form</button>;
+    if (this.props.store.user.authLevel === 'ADMIN') {
+      if (currentForm === false) {
+        return <button className="submitBtn" onClick={this.buttonClicked}>Submitted Form</button>;
+      } else {
+        return <p className="submissionPara">Form Submitted!</p>;
+      }
     } else {
-      return <p>Form Submitted!</p>;
+      return;
     }
   };
 
@@ -84,18 +89,80 @@ class JurorTalkSubmission extends Component {
         </video>
         </div>
         <div className="submissionInfo">
-        <p>{submission.name}</p>
-        {this.formStatusChecker(submission.formStatus)}
-        <p>{submission.email}</p>
-        <p>{submission.instagram}</p>
-        <p>{submission.linkedin}</p>
-        <p>{submission.twitter}</p>
-        <p>{submission.comment}</p>
-        </div>
-        
-        <div className="jurorLikeDiv">
-        <p>{submission.like} Jurors voted for this!</p>
-        <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+            spacing={5}
+          >
+            <Grid item>
+              <Grid 
+                container
+                direction="column"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                <Grid item>
+                  <p className="subInfoP">Name: {submission.name}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP">Email: {submission.email}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP">Comments: {submission.comment}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP">{submission.like} Jurors voted for this!</p>
+                </Grid>
+                <Grid item>
+                  {this.formStatusChecker(submission.formStatus)}
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Grid 
+                container
+                direction="column"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                <Grid item>
+                  <p className="subInfoP">Instagram: {submission.instagram}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP">LinkedIn:{submission.linkedin}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP">Twitter: {submission.twitter}</p>
+                </Grid>
+                <Grid item>
+                  <p className="subInfoP invisible">text</p>
+                </Grid>
+                <Grid item>
+                  <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
+                </Grid>
+              </Grid>
+            </Grid>
+            {/* <Grid item>
+              <Grid
+                container
+                direction="column"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                <Grid item>
+                  <p className="subInfoP">{submission.like} Jurors voted for this!</p>
+                </Grid>
+                <Grid item>
+                  {this.formStatusChecker(submission.formStatus)}
+                </Grid>
+                <Grid item>
+                  <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
+                </Grid>
+              </Grid>
+            </Grid> */}
+          </Grid>
         </div>
       </div>
     );
