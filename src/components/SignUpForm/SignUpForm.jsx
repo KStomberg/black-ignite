@@ -160,7 +160,7 @@ function SignUpForm() {
                                         name="category" 
                                         placeholder="Category Name" 
                                         className="selectInput" 
-                                        value={selectedCategory.id}
+                                        //value={selectedCategory.id}
                                         onChange={e => setCategory(e.target.value)} 
                                         required
                                     >
