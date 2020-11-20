@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import moment from 'moment'
+import LinearProgress from '@material-ui/core/LinearProgress';
 import './SignUpForm.css';
 
 const useStyles = makeStyles({
@@ -26,8 +27,14 @@ const useStyles = makeStyles({
         width: 9,
         height: 9,
         fontWeight: 'bold'
+    },
+    progressBar: {
+        height: 15,
+        marginTop: 10,
+        borderRadius: 3,
+        width: 270
     }
-})
+});
 
 function SignUpForm() {
     const [category, setCategory] = useState('');
@@ -39,6 +46,7 @@ function SignUpForm() {
     const [comments, setComments] = useState('');
     const [date, setDate] = useState('');
     const [fileUrl, setFileUrl] = useState('');
+    const [uploadPercentage, setUploadPercentage] = useState(0);
     const selectedCategory = useSelector(state => state.description);
     const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
@@ -97,7 +105,11 @@ function SignUpForm() {
         width: 270,
         maxHeight: 'fitContent',
         height: 90,
-        display: 'inline-block'
+        display: 'inline-block',
+        backgroundImage: 'url(./upload-background-image.png)',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat'
     }
 
     const handleFinishedUpload = async info => {
@@ -108,9 +120,10 @@ function SignUpForm() {
     const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
     const uploadOptions = {}
 
-    
+    const onUploadProgress = (percent) => { 
+        setUploadPercentage(percent);
+    }
 
-    
     return (
         <div className="signUp">
             <Grid
@@ -311,6 +324,7 @@ function SignUpForm() {
                                         upload={uploadOptions}
                                         s3Url={s3Url}
                                         style={dropzoneStyles}
+                                        onProgress={onUploadProgress}
                                     />
                                 </span>
                                 {fileUrl === '' ?
@@ -323,6 +337,12 @@ function SignUpForm() {
                                 }
                             </Grid>
                         </Grid>
+
+                        <LinearProgress
+                            className={classes.progressBar}
+                            variant="determinate"
+                            value={uploadPercentage} 
+                        />
 
                         <Grid
                             container
