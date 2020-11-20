@@ -42,6 +42,10 @@ class PosterDropzone extends Component {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
+      backgroundImage: 'url(/upload-image-white-background.png)',
+      backgroundPosition: 'center',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat'
     }
    
     return (

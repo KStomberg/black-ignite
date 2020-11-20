@@ -42,7 +42,7 @@ class PosterDropzone extends Component {
       display: 'flex',
       flexWrap: 'wrap',
       cursor: 'pointer',
-      backgroundImage: 'url(/upload-background-image.png)',
+      backgroundImage: 'url(/upload-image-orange-background.png)',
       backgroundPosition: 'center',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat'
