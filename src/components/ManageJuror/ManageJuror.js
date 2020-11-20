@@ -13,8 +13,11 @@ import './ManageJuror.css';
 class ManageJuror extends Component {
   state = {
     heading: 'Manage Juror',
+    username: '',
+    password: '',
+    likes: 30
   };
-  componentDidUpdate() {
+  componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_USERS'
     })
@@ -24,6 +27,27 @@ class ManageJuror extends Component {
   //     type: 'FETCH_USERS'
   //   })
   // }
+  handleInputChangeFor = (propertyName) => (event) => {
+    this.setState({
+      [propertyName]: event.target.value,
+    });
+  };
+  registerUser = (event) => {
+    event.preventDefault();
+
+    this.props.dispatch({
+      type: 'REGISTER',
+      payload: {
+        username: this.state.username,
+        password: this.state.password,
+        likes: this.state.likes,
+      },
+    });
+    this.props.dispatch({
+      type: 'FETCH_USERS',
+    });
+    this.componentDidMount();
+  }; // end registerUser
 deleteJuror = (user) => {
   Swal.fire({
     title: 'Are you sure?',
@@ -58,26 +82,74 @@ deleteJuror = (user) => {
       )
     }
   })
+  this.componentDidMount();
 }
   render() {
     return (
       <div >
         <ButtonAppBar />
         <h2>{this.state.heading}</h2>
-        <RegisterForm />
+        <form className="formPanel" onSubmit={this.registerUser}>
+        <h2>Add A Juror</h2>
+        {this.props.store.errors.registrationMessage && (
+          <h3 className="alert" role="alert">
+            {this.props.store.errors.registrationMessage}
+          </h3>
+        )}
+        <div>
+          <label htmlFor="username">
+            Username:
+            <input
+              type="text"
+              name="username"
+              value={this.state.username}
+              required
+              onChange={this.handleInputChangeFor('username')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Password:
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              required
+              onChange={this.handleInputChangeFor('password')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="votes">
+          # of Votes:
+            <input
+              type="number"
+              name="votes"
+              placeholder="Please enter # of votes"
+              value={this.state.likes}
+              required
+              onChange={this.handleInputChangeFor('likes')}
+            />
+          </label>
+        </div>
+        <div>
+          <input className="btn" type="submit" name="submit" value="Register" />
+        </div>
+      </form>
         <div className="manageJurorDiv">
           <table className="manageJurorTable">
-            <thead>
-            <tr>
-              <th>Username</th>
+            <thead className="manageJurorTH">
+            <tr className="manageJurorTR">
+              <th className="manageJurorTH">Username</th>
               <th>Delete Juror</th>
             </tr>
           </thead>
           <tbody>
             {this.props.store.users.map((user, i )=>
-               <tr key={i}>
-                  <td key={user.id}>{user.username}</td>
-                  <td><button  onClick={()=> this.deleteJuror(user)}>Delete</button></td>
+               <tr key={i} className="manageJurorTR">
+                  <td key={user.id} className="manageJurorTD">{user.username}</td>
+                  <td className="manageJurorTD"><button  onClick={()=> this.deleteJuror(user)} className="btn" id="deleteBtn">Delete</button></td>
                </tr>)}
           </tbody>
         </table>

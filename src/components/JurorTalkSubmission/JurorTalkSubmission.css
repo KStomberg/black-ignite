@@ -35,3 +35,8 @@
   display: block;
   margin: auto;
 }
+.submissionPara{
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}

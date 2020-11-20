@@ -56,12 +56,12 @@ class JurorTalkSubmission extends Component {
     let submissionId = this.props.id;
     let remainingLikes = this.props.remainingLikes;
     console.log('Like button clicked!', submissionId);
-    if (remainingLikes <= 0) {
+    if (remainingLikes === 0) {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'You\'re out of likes!',
-        footer: '<a href>You have just loved too many things...</a>',
+        footer: 'You have just loved too many things...',
       });
     } else {
       this.props.dispatch({
@@ -84,17 +84,17 @@ class JurorTalkSubmission extends Component {
         </video>
         </div>
         <div className="submissionInfo">
-        <p>{submission.name}</p>
+        <p className="submissionPara">{submission.name}</p>
         {this.formStatusChecker(submission.formStatus)}
-        <p>{submission.email}</p>
-        <p>{submission.instagram}</p>
-        <p>{submission.linkedin}</p>
-        <p>{submission.twitter}</p>
-        <p>{submission.comment}</p>
+        <p className="submissionPara">{submission.email}</p>
+        <p className="submissionPara">{submission.instagram}</p>
+        <p className="submissionPara">{submission.linkedin}</p>
+        <p className="submissionPara">{submission.twitter}</p>
+        <p className="submissionPara">{submission.comment}</p>
         </div>
         
         <div className="jurorLikeDiv">
-        <p>{submission.like} Jurors voted for this!</p>
+        <p className="submissionPara">{submission.like} Jurors voted for this!</p>
         <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
         </div>
       </div>
