@@ -34,4 +34,13 @@
   font-weight: bold;
   display: block;
   margin: auto;
+  margin-top: 2px;
+}
+
+.subInfoP {
+  margin: 5px 0;
+}
+
+.invisible {
+  color: #EDAC3A;
 }
