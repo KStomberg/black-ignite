@@ -61,12 +61,12 @@ class JurorTalkSubmission extends Component {
     let submissionId = this.props.id;
     let remainingLikes = this.props.remainingLikes;
     console.log('Like button clicked!', submissionId);
-    if (remainingLikes <= 0) {
+    if (remainingLikes === 0) {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'You\'re out of likes!',
-        footer: '<a href>You have just loved too many things...</a>',
+        footer: 'You have just loved too many things...',
       });
     } else {
       this.props.dispatch({
@@ -89,6 +89,7 @@ class JurorTalkSubmission extends Component {
         </video>
         </div>
         <div className="submissionInfo">
+
           <Grid
             container
             direction="row"
@@ -144,24 +145,6 @@ class JurorTalkSubmission extends Component {
                 </Grid>
               </Grid>
             </Grid>
-            {/* <Grid item>
-              <Grid
-                container
-                direction="column"
-                justify="flex-start"
-                alignItems="flex-start"
-              >
-                <Grid item>
-                  <p className="subInfoP">{submission.like} Jurors voted for this!</p>
-                </Grid>
-                <Grid item>
-                  {this.formStatusChecker(submission.formStatus)}
-                </Grid>
-                <Grid item>
-                  <button className="submitBtn" onClick={this.likeSubmission}>Vote</button>
-                </Grid>
-              </Grid>
-            </Grid> */}
           </Grid>
         </div>
       </div>

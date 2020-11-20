@@ -32,8 +32,9 @@ class JurorView extends Component {
     return (
       <div>
         <div id="topicContainer">
-          <div className="likesDiv">
-            <h1 className="likesHeader">You have {remainingLikes} likes remaining</h1>
+          <div className="likesDiv">{remainingLikes >= 0 ?  <h1 className="likesHeader">You have {remainingLikes} likes remaining</h1>:
+           <h1 className="likesHeader">You have 0 likes remaining</h1>}
+           
           </div>
           <div className="submissionHeader">
           <h1 className="submissionH1">Submissions</h1>

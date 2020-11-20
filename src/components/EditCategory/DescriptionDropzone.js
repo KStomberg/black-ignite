@@ -4,7 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './EditCategory.css';
-
 class DescriptionDropzone extends Component {
 state = {
     descriptionUrl: '',
@@ -54,11 +53,12 @@ state = {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
+            onProgress={this.onUploadProgress}
             />
             <LinearProgress
               className="progressBar"
               variant="determinate" 
-              value={this.state.uploadPercentage} />
+              value={this.state.uploadPercentage}  />
         </>
     );
   }

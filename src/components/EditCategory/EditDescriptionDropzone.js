@@ -5,6 +5,8 @@ import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './EditCategory.css';
 
+
+
 class DescriptionDropzone extends Component {
 state = {
     descriptionUrl: '',
@@ -22,7 +24,7 @@ state = {
         console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
         this.props.setEditedDescriptionState(this.state.descriptionUrl);
     }
-    onUploadProgress = (percent) => { console.log(percent) 
+    onUploadProgress = (percent) => { 
       this.setState({
         uploadPercentage: percent
       })
@@ -50,6 +52,7 @@ state = {
             // maxSize={1024 * 1024 * 5}
             upload={uploadOptions}
             style={dropZoneStyle}
+            onProgress={this.onUploadProgress}
             />
             <LinearProgress
               className="editProgressBar"
