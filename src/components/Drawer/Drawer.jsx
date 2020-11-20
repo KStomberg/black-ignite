@@ -19,12 +19,17 @@ const useStyles = makeStyles({
         height: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 0
+        margin: 0,
     },
     iconBtn: {
         marginTop: 5,
         color: '#EDAC3A',
-        backgroundColor: '#221F1F'
+        backgroundColor: '#221F1F',
+        '&:hover': {
+            color: '#EDAC3A',
+            backgroundColor: '#221F1F',
+            transform: 'scale(1.1)'
+        }
     },
     cancelBtn: {
         fontSize: 35,
@@ -38,6 +43,9 @@ const useStyles = makeStyles({
     },
     drawer: {
         backgroundColor: '#EDAC3A'
+    },
+    swipeableDrawer: {
+        backgroundImage: 'linear-gradient(bottom, #EDAC3A 50%, #ffffff 50%)'
     }
 });
 
@@ -52,6 +60,7 @@ export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     
     return (
         <div className={classes.drawer}>
+            <div className={classes.swipeableDrawer}>
             <IconButton className={classes.iconBtn}>
                 <h1 onClick={toggleDrawer} className={classes.btn}>+</h1>
             </IconButton>
@@ -66,6 +75,7 @@ export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
                     <SignUpForm />
                 </div>
             </SwipeableDrawer>
+            </div>
         </div>
     );
 }
