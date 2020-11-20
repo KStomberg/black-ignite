@@ -20,4 +20,5 @@ class TemplateClass extends Component {
   }
 }
 
+
 export default connect(mapStoreToProps)(TemplateClass);
