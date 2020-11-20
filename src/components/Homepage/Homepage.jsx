@@ -159,13 +159,13 @@ function Homepage() {
                 </Dialog>
             </div>
 
-            <div className="drawerDiv">
+            <footer className="drawerDiv">
                 <Drawer
                     openDrawer={openDrawer} 
                     setOpenDrawer={setOpenDrawer}
                 />
                 <p className="drawerP">Sign Up Here</p>
-            </div>
+            </footer>
         </div>
     );
 }
