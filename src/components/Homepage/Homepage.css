@@ -69,10 +69,8 @@
 }
 
 .drawerDiv {
-    margin-bottom: 10px;
-    position: relative;
-    left: 0;
-    bottom: 0;
+    position: absolute;
+    height: 100px;
     width: 100%;
 }
 
@@ -81,6 +79,7 @@
     margin: 0;
     padding-top: 10px;
     font-size: 20px;
+    padding-bottom: 10px;
 }
 
 .dialogP {
