@@ -5,7 +5,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleMenu() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const user = useSelector(state => state.user)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -57,6 +57,8 @@ export default function SimpleMenu() {
         onClose={handleClose}
         className={classes.menu}
       >
+         {user.authLevel === 'ADMIN' ?
+       <>
         <Link to="/managejuror" className={classes.link}>
           <MenuItem onClick={handleClose} className={classes.menuItem}>
             Manage Juror
@@ -68,6 +70,9 @@ export default function SimpleMenu() {
         <Link to="/ranking" className={classes.link}>
           <MenuItem className={classes.menuItem}>Ranking</MenuItem>
         </Link>
+        </>
+         :<></>
+         }
         <Link to="/juror" className={classes.link}>
           <MenuItem className={classes.menuItem}>Submissions</MenuItem>
         </Link>
@@ -79,6 +84,7 @@ export default function SimpleMenu() {
             Log Out
           </MenuItem>
         </Link>
+        
       </Menu>
     </div>
   );
