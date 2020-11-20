@@ -75,7 +75,7 @@
 }
 
 .rdsu-progress {
-    color: red;
+    display: none;
 }
 
 .rdsu-image{

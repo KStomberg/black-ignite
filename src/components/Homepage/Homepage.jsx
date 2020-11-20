@@ -79,7 +79,7 @@ function Homepage() {
                 {categories.map(category =>
                     <span>
                         <Link key={category.id} onClick={() => getDescription(category.id)}>
-                            <img src={category.image_url} width="200px" className="talkImg" alt={category.title} />
+                            <img src={category.image_url} width="200px" height="200px" className="talkImg" alt={category.title} />
                         </Link>
                     </span>
                 )}
@@ -110,7 +110,7 @@ function Homepage() {
                                             <Grid
                                                 container
                                                 direction="row"
-                                                // justify="space-between"
+                                                justify="space-between"
                                                 alignItems="flex-start"
                                             >
                                                 <Grid item>
@@ -134,7 +134,7 @@ function Homepage() {
                                             </Grid>
                                         </Grid>
                                         <Grid item>
-                                            <p >
+                                            <p className="dialogP">
                                                 ---------------------------
                                             </p>
                                         </Grid>
