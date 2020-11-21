@@ -60,7 +60,7 @@ function SignUpForm() {
         evt.preventDefault();
 
         const objectToSend = {
-            category: selectedCategory.id,
+            category: Number(selectedCategory.id),
             fullName: fullName,
             email: email,
             instagram: instagram,
@@ -149,7 +149,7 @@ function SignUpForm() {
                                 </select>
 
                                 {/* Checkmark */}
-                                {selectedCategory === '' ?
+                                {selectedCategory.id === undefined ?
                                 <></> :
                                 <IconButton className={classes.checkmarkIcon}>
                                     <DoneIcon className={classes.checkmark}/>
