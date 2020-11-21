@@ -69,13 +69,13 @@ setEditedPosterState = (poster) => {
                 value={this.state.title} 
                 onChange={this.handleChange}/>
             <div className="dropzone">
-              <h2 className="talkH2">Talk Poster</h2>
+              <h2 className="talkH2">Category Poster</h2>
               <EditPosterDropzone 
                 value={this.state.poster} 
                 setEditedPosterState={this.setEditedPosterState}/>
             </div>
           <div className="dropzone">
-            <h2 className="talkH2">Talk Description</h2>
+            <h2 className="talkH2">Category Description</h2>
             <EditDescriptionDropzone 
               value={this.state.description}
               setEditedDescriptionState={this.setEditedDescriptionState}/>

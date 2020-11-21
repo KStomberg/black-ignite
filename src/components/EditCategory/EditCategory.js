@@ -55,18 +55,18 @@ this.componentDidMount();
       return (
        <div className="talkGallery">
           <ButtonAppBar/>
-          <h2>Add A Talk</h2>
+          <h2>Add A Category</h2>
           <div className="createTalkForm">
-          <label>Talk Title: </label>
+          <label>Category Title: </label>
             <input type="text" value={this.state.title}
               onChange={(event)=>this.handleChange(event)} placeholder="Title"/>
               <div className="dropzones">
                 <div className="dropzone">
-                  <h2 className="talkH2">Talk Poster</h2>
+                  <h2 className="talkH2">Category Poster</h2>
                   <PosterDropzone setOurPosterState={this.setOurPosterState}/>
                 </div>
                 <div className="dropzone">
-                  <h2 className="talkH2">Talk Description</h2>
+                  <h2 className="talkH2">Category Description</h2>
                   <DescriptionDropzone setOurDescriptionState={this.setOurDescriptionState}/>
                 </div>
               </div>
