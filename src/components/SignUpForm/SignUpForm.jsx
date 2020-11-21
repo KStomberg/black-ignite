@@ -37,7 +37,6 @@ const useStyles = makeStyles({
 });
 
 function SignUpForm() {
-    const [category, setCategory] = useState('');
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [instagram, setInstagram] = useState('');
@@ -60,34 +59,20 @@ function SignUpForm() {
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        let objectToSend;
-        if (category === undefined) {
-            objectToSend = {
-                category: selectedCategory.id,
-                fullName: fullName,
-                email: email,
-                instagram: instagram,
-                linkedIn: linkedIn,
-                twitter: twitter,
-                comments: comments,
-                date: date,
-                fileUrl: fileUrl
-            }
+        const objectToSend = {
+            category: selectedCategory.id,
+            fullName: fullName,
+            email: email,
+            instagram: instagram,
+            linkedIn: linkedIn,
+            twitter: twitter,
+            comments: comments,
+            date: date,
+            fileUrl: fileUrl
         }
-        else {
-            objectToSend = {
-                category: Number(category),
-                fullName: fullName,
-                email: email,
-                instagram: instagram,
-                linkedIn: linkedIn,
-                twitter: twitter,
-                comments: comments,
-                date: date,
-                fileUrl: fileUrl
-            }
-        }
+
         console.log("objectToSend:", objectToSend);
+        console.log('selectedCategory', selectedCategory.id);
 
         dispatch({
             type: 'CREATE_SUBMISSION',
@@ -142,34 +127,26 @@ function SignUpForm() {
                                 <label for="category" className="inputDesc">*talk category I'm interested in</label>
                             </Grid>
                             <Grid item>
-                                {selectedCategory === {} ?
-                                    <select 
-                                        id="category" 
-                                        name="category" 
-                                        placeholder="Category Name" 
-                                        className="selectInput" 
-                                        onChange={e => setCategory(e.target.value)} 
-                                        required
-                                    >
-                                        {categories.map(category =>
-                                            <option value={category.id}>{category.title}</option>
-                                        )}
-                                    </select> :
-                                    <select 
-                                        id="category" 
-                                        name="category" 
-                                        placeholder="Category Name" 
-                                        className="selectInput" 
-                                        //value={selectedCategory.id}
-                                        onChange={e => setCategory(e.target.value)} 
-                                        required
-                                    >
-                                        <option value={selectedCategory.id} selected>{selectedCategory.title}</option>
-                                        {categories.map(category =>
-                                            <option value={category.id}>{category.title}</option>
-                                        )}
-                                    </select>
-                                }
+                                <select 
+                                    id="category" 
+                                    name="category" 
+                                    placeholder="Category Name" 
+                                    className="selectInput" 
+                                    value={selectedCategory.id}
+                                    onChange={e => dispatch({
+                                        type: 'SET_DESCRIPTION',
+                                        // payload is my new category (aka "description")
+                                        payload: {
+                                            id: e.target.value
+                                        }
+                                    })} 
+                                    required
+                                >
+                                    <option value='' selected disabled>Choose a Category</option>
+                                    {categories.map(category =>
+                                        <option value={category.id}>{category.title}</option>
+                                    )}
+                                </select>
 
                                 {/* Checkmark */}
                                 {selectedCategory === '' ?
