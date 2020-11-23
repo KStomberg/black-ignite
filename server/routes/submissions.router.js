@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
-
+//get all submissions
 router.get('/', rejectUnauthenticated, (req, res) => {
   let queryString = `SELECT * FROM "submission" ORDER BY "id" DESC;`;
   pool
@@ -17,7 +17,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-
+//post into our submission table
 router.post('/', (req, res) => {
   let queryString = `INSERT INTO "submission" ("category_id", "full_name", "email", "instagram", "linkedin", "twitter", "comments", "time_stamp", "video_url")
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
@@ -41,8 +41,8 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
 });
-
-router.get('/:id', (req, res) => {
+// grab submission at specific id
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   let queryString = `SELECT * FROM "submission" WHERE "id" = $1;`;
   pool
     .query(queryString, [req.params.id])
@@ -54,8 +54,8 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
-
-router.put('/:id', (req, res) => {
+//update the form status to be sent on click
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('hit update submission put', req.params);
   let queryString = `UPDATE "submission" SET "form_status" = true WHERE "id" = $1;`;
   pool
