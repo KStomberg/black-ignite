@@ -6,7 +6,6 @@ import Homepage from '../Homepage/Homepage';
 import EditCategory from '../EditCategory/EditCategory';
 import ManageJuror from '../ManageJuror/ManageJuror';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterForm from '../RegisterForm/RegisterForm';
 import Ranking from '../Ranking/Ranking';
 import JurorPage from '../JurorPage/JurorPage';
 import SignUpFormConfirmation from '../SignUpForm/SignUpFormConfirmation';
@@ -44,13 +43,6 @@ function App() {
             exact
             path="/managejuror"
             component={ManageJuror}
-          />
-
-          {/* Logged in shows InfoPage, else shows LoginPage */}
-          <Route
-            exact
-            path="/register"
-            component={RegisterForm}
           />
 
           {/* Login page */}
