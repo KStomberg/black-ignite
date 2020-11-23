@@ -43,6 +43,8 @@ router.get('/unauthenticated/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+//grabbing specific talk from category table
 router.get('/:id', (req, res) => {
     console.log(`in our talks router.get`, req.params.id);
     queryText = `SELECT * FROM "category" 
@@ -55,7 +57,7 @@ router.get('/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
-
+//update a talk with the correct information from /edittalk view
 router.put('/edit', rejectUnauthenticated, (req, res) => {
     console.log(`in our talks router.get`, req.body);
     queryText = `UPDATE "category" SET "title" = $1, "description_url" = $2, "image_url" = $3
