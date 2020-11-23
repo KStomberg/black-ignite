@@ -47,8 +47,7 @@ class TalkDisplay extends Component {
     let objectToSend = {
       id: talk.id
     }
-    console.log(objectToSend)
-
+ 
     this.props.dispatch({
       type: 'DELETE_TALK',
       payload: objectToSend
@@ -72,13 +71,11 @@ class TalkDisplay extends Component {
     let objectToSend = {
       id: talk.id
     }
-    console.log(objectToSend)
   
     this.props.dispatch({
       type: 'DELETE_TALK',
       payload: objectToSend
     })
-    // For more information about handling dismissals please visit
     // https://sweetalert2.github.io/#handling-dismissals
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal.fire(

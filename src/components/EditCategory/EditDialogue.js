@@ -45,7 +45,6 @@ setEditedPosterState = (poster) => {
     poster: this.state.poster,
     id: this.state.id
     }
-    console.log('made it into our edit submit', editObjectToSend)
    
     this.props.dispatch({
       type: 'EDIT_CATEGORY',

@@ -25,7 +25,7 @@ class PosterDropzone extends Component {
           console.log(`this.state.posterUrl`, this.state.posterUrl);
           this.props.setOurPosterState(this.state.posterUrl);
   }
-  onUploadProgress = (percent) => { console.log(percent) 
+  onUploadProgress = (percent) => { 
     this.setState({
       uploadPercentage: percent
     })
