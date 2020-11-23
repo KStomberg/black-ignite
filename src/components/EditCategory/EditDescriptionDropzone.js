@@ -21,7 +21,6 @@ state = {
         this.setState({
         descriptionUrl: info.fileUrl
         });
-        console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
         this.props.setEditedDescriptionState(this.state.descriptionUrl);
     }
     onUploadProgress = (percent) => { 

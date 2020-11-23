@@ -8,8 +8,8 @@ function* submissionsSaga() {
   yield takeLatest('UPDATE_FORM_STATUS', updateFormStatus);
   yield takeLatest('FETCH_ALL_CATEGORIES', fetchAllCategories);
 }
-
-function* fetchAllCategories(action) {
+//fetch all categories from DB
+function* fetchAllCategories() {
   try {
     let res = yield axios.get('/api/talks/unauthenticated');
 
@@ -21,8 +21,8 @@ function* fetchAllCategories(action) {
     console.error('ERROR in submissions sage', err);
   }
 }
-
-function* fetchSubmissions(action) {
+//fetch all submissions from DB
+function* fetchSubmissions() {
   try {
     let response = yield axios.get('/api/submissions');
 
@@ -34,10 +34,10 @@ function* fetchSubmissions(action) {
     console.error('ERROR in submissions saga:', err);
   }
 }
-
+//POST new submission to DB
 function* createSubmission(action) {
   try {
-    console.log('action:', action);
+   
     yield axios({
       method: 'POST',
       url: '/api/submissions',
@@ -47,16 +47,14 @@ function* createSubmission(action) {
     console.error('ERROR in submissions saga:', err);
   }
 }
-
+//fetch the dropdown stuff
 function* fetchDescription(action) {
   try {
-    console.log('action.payload is:', action.payload);
+    
     let res = yield axios({
       method: 'GET',
       url: `/api/talks/unauthenticated/${action.payload}`,
     });
-
-    console.log('res.data:', res.data);
     yield put({
       type: 'SET_DESCRIPTION',
       payload: res.data,
@@ -67,7 +65,7 @@ function* fetchDescription(action) {
 }
 
 function* updateFormStatus(action) {
-  console.log('action.payload of updateFormStatus', action.payload);
+ 
   try {
     yield axios({
       method: 'PUT',

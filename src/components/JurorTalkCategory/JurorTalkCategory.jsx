@@ -16,7 +16,6 @@ class JurorTalkCategory extends Component {
   }
 
   getSubmission = () => {
-    console.log('Fetching submissions');
 
     this.props.dispatch({
       type: 'FETCH_SUBMISSIONS',
@@ -24,13 +23,13 @@ class JurorTalkCategory extends Component {
   };
 
   toggleDisplay = () => {
-    console.log('toggleDisplay clicked!');
+
     this.setState({ isToggled: !this.state.isToggled });
-    console.log(this.state.isToggled);
+
   };
 
   render() {
-    console.log('this.props for JurorTalkCategory', this.props);
+
     let submissionsForThisCategory = this.props.store.submissions.filter(
       (submission) => submission.category_id === this.props.topicId
     );

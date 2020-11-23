@@ -38,7 +38,7 @@ class JurorTalkSubmission extends Component {
         );
         this.submitForm();
       } else if (
-        /* Read more about handling dismissals below */
+        
         result.dismiss === Swal.DismissReason.cancel
       ) {
         Swal.fire('Cancelled', 'No changes were made', 'error');
@@ -60,7 +60,6 @@ class JurorTalkSubmission extends Component {
   likeSubmission = () => {
     let submissionId = this.props.id;
     let remainingLikes = this.props.remainingLikes;
-    console.log('Like button clicked!', submissionId);
     if (remainingLikes === 0) {
       return Swal.fire({
         icon: 'error',
@@ -78,7 +77,6 @@ class JurorTalkSubmission extends Component {
   };
 
   render() {
-    console.log('this.props for JurorTalkSubmission', this.props);
     let submission = this.props;
 
     return (

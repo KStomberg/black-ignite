@@ -71,9 +71,6 @@ function SignUpForm() {
             fileUrl: fileUrl
         }
 
-        console.log("objectToSend:", objectToSend);
-        console.log('selectedCategory', selectedCategory.id);
-
         dispatch({
             type: 'CREATE_SUBMISSION',
             payload: objectToSend

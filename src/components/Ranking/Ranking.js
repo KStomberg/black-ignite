@@ -6,8 +6,7 @@ import './Ranking.css';
 import CategoryMenu from '../CategoryMenu.js/CategoryMenu';
 
 class Ranking extends Component {
-    state = {
-    }
+  
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ALL_RANKINGS'
@@ -16,8 +15,6 @@ class Ranking extends Component {
     }
 
     render(){
-        console.log('this.props.store.rankings',this.props.store.rankings)
-        JSON.stringify(this.props.store.rankings)
         return (
             <div>
                 <ButtonAppBar />
