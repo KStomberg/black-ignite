@@ -27,6 +27,7 @@
 
 .textbox {
     width: 260px;
+    font-family: 'Inter', sans-serif;
     border: medium solid #221F1F;
     border-radius: 6px;
     font-size: 18px;
