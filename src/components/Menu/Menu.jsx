@@ -1,33 +1,33 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menu: {
     '& .MuiPaper-root': {
-      backgroundColor: '#010101',
-    },
+      backgroundColor: '#010101'
+    }
   },
-
   menuItem: {
     color: '#fff',
     backgroundColor: '#010101',
     '&:hover': {
-      backgroundColor: '#010101',
-    },
+      backgroundColor: '#010101'
+    }
   },
   link: {
     textDecoration: 'none',
-    color: '#fff',
-  },
+    color: '#fff'
+  }
 }));
+
 export default function SimpleMenu() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
