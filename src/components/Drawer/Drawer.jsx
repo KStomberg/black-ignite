@@ -1,18 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import clsx from 'clsx';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, List, SwipeableDrawer, IconButton} from '@material-ui/core';
+import {Button, SwipeableDrawer, IconButton} from '@material-ui/core';
 import SignUpForm from '../SignUpForm/SignUpForm';
-import './Drawer.css'
+import './Drawer.css';
+
 const useStyles = makeStyles({
-    list: {
-        width: 250,
-        backgroundColor: '#EDAC3A'
-    },
-    fullList: {
-        width: 'auto',
-        backgroundColor: '#EDAC3A'
-    },
     btn: {
         display: 'flex',
         width: 30,
@@ -20,16 +12,6 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 0,
-    },
-    iconBtn: {
-        marginTop: 5,
-        color: '#EDAC3A',
-        backgroundColor: '#221F1F',
-        '&:hover': {
-            color: '#EDAC3A',
-            backgroundColor: '#221F1F',
-            transform: 'scale(1.1)'
-        }
     },
     cancelBtn: {
         fontSize: 35,
@@ -44,6 +26,24 @@ const useStyles = makeStyles({
     drawer: {
         backgroundColor: '#EDAC3A'
     },
+    fullList: {
+        width: 'auto',
+        backgroundColor: '#EDAC3A'
+    },
+    iconBtn: {
+        marginTop: 5,
+        color: '#EDAC3A',
+        backgroundColor: '#221F1F',
+        '&:hover': {
+            color: '#EDAC3A',
+            backgroundColor: '#221F1F',
+            transform: 'scale(1.1)'
+        }
+    },
+    list: {
+        width: 250,
+        backgroundColor: '#EDAC3A'
+    },
     swipeableDrawer: {
         backgroundImage: 'linear-gradient(bottom, #EDAC3A 50%, #ffffff 50%)'
     }
@@ -52,7 +52,6 @@ const useStyles = makeStyles({
 // See Swipeable-Drawer from Material-UI at https://material-ui.com/components/drawers/
 export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     const classes = useStyles();
-
 
     const toggleDrawer = () => {
         setOpenDrawer(!openDrawer);
