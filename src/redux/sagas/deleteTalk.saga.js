@@ -4,7 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 //"soft deletes" talks from the DB
 function* deleteTalk(action){
-    console.log('in deleteTalk', action.payload);
+    
     let id = action.payload.id;
     yield axios.delete(`/api/delete/talk/${id}`);
 
