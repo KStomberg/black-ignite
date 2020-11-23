@@ -92,7 +92,6 @@ function Homepage() {
                     open={openDialog}
                     TransitionComponent={Transition}
                     keepMounted
-                    // onClose={handleClose}
                     aria-labelledby="alert-dialog-slide-title"
                     aria-describedby="alert-dialog-slide-description"
                     className={classes.dialog}
@@ -103,8 +102,6 @@ function Homepage() {
                                     <Grid
                                         container
                                         direction="column"
-                                        // justify="center"
-                                        // alignItems="flex-start"
                                     >
                                         <Grid item>
                                             <Grid
@@ -126,7 +123,6 @@ function Homepage() {
                                                 container
                                                 direction="row"
                                                 justify="center"
-                                                // alignItems="flex-start"
                                             >
                                                 <Grid item>
                                                     <img src={desc.description_url} className="descImg"/>

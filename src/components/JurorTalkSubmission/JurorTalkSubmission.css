@@ -1,26 +1,25 @@
 .submissionContainer {
- /* display: flex;
- flex-wrap: wrap;
- justify-content: left; */
  padding-left: 20px;
  padding-bottom: 5px;
 }
+
 #submissionVideo{
   height: 400px;
   width: 500px;
 }
+
 @media only screen and (max-width: 600px) {
   #submissionVideo{
     height: 200px;
     width: 300px;
   }
+
   .submissionContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-right: 20px;
    }
-   
 }
 
 .submitBtn {
@@ -37,7 +36,6 @@
   margin-top: 2px;
 }
 
-
 .subInfoP {
   margin: 5px 0;
   font-size: 18px;
@@ -47,5 +45,4 @@
 
 .invisible {
   color: #EDAC3A;
-
 }

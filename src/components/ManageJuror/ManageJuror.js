@@ -15,10 +15,10 @@ class ManageJuror extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_USERS'
-    })
+    });
   }
+
   deleteJuror = (user) => {
-    
     Swal.fire({
       title: 'Are you sure?',
       text: 'this will permanently delete this juror',
@@ -31,12 +31,10 @@ class ManageJuror extends Component {
         Swal.fire(
           'Juror Deleted',
           'success',
-        )
-
+        );
     let objectToSend = {
       id: user.id
     }
-
     this.props.dispatch({
       type: 'DELETE_JUROR',
       payload: objectToSend
@@ -140,10 +138,10 @@ class ManageJuror extends Component {
           </thead>
           <tbody>
             {this.props.store.users.map((user, i )=>
-               <tr key={i} className="manageJurorTR">
-                  <td key={user.id} className="manageJurorTD">{user.username}</td>
-                  <td className="manageJurorTD"><button  onClick={()=> this.deleteJuror(user)} className="btn" id="deleteBtn">Delete</button></td>
-               </tr>)}
+              <tr key={i} className="manageJurorTR">
+                <td key={user.id} className="manageJurorTD">{user.username}</td>
+                <td className="manageJurorTD"><button  onClick={()=> this.deleteJuror(user)} className="btn" id="deleteBtn">Delete</button></td>
+              </tr>)}
           </tbody>
         </table>
         </div>

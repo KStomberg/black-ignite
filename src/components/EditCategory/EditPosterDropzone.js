@@ -5,30 +5,30 @@ import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import './EditCategory.css';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace
-// the component name TemplateClass with the name for the new
-// component.
 class PosterDropzone extends Component {
- state = {
-     posterUrl: '',
-     uploadPercentage: 0,
-}
+  state = {
+    posterUrl: '',
+    uploadPercentage: 0
+  }
+
   handleFinishedUpload = async(info) => {
     this.dataToSend(info);
-   }
-  dataToSend  = async(info) => {
-      await
-          this.setState({
-              posterUrl: info.fileUrl
-          });
-          this.props.setEditedPosterState(this.state.posterUrl);
+  
   }
+  dataToSend  = async(info) => {
+    await
+      this.setState({
+        posterUrl: info.fileUrl
+      });
+      this.props.setEditedPosterState(this.state.posterUrl);
+  }
+
   onUploadProgress = (percent) => { 
     this.setState({
       uploadPercentage: percent
-    })
+    });
   }
+
   render() {
     const uploadOptions = {}
     const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
@@ -46,23 +46,21 @@ class PosterDropzone extends Component {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat'
     }
-   
     return (
       <>
-        
         <DropzoneS3Uploader
-            onFinish={this.handleFinishedUpload}
-            s3Url={s3Url}
-            accept="image/*,audio/*,video/*"
-            // maxSize={1024 * 1024 * 5}
-            upload={uploadOptions}
-            style={dropZoneStyle}
-            onProgress={this.onUploadProgress}
-          />
+          onFinish={this.handleFinishedUpload}
+          s3Url={s3Url}
+          accept="image/*,audio/*,video/*"
+          upload={uploadOptions}
+          style={dropZoneStyle}
+          onProgress={this.onUploadProgress}
+        />
         <LinearProgress 
           className="editProgressBar"
           variant="determinate" 
-          value={this.state.uploadPercentage} />
+          value={this.state.uploadPercentage}
+        />
       </>
     );
   }

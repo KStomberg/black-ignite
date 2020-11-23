@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
 import {Grid} from '@material-ui/core';
-
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
@@ -38,7 +37,6 @@ class JurorTalkSubmission extends Component {
         );
         this.submitForm();
       } else if (
-        
         result.dismiss === Swal.DismissReason.cancel
       ) {
         Swal.fire('Cancelled', 'No changes were made', 'error');
@@ -48,8 +46,6 @@ class JurorTalkSubmission extends Component {
 
   submitForm = () => {
     let submissionId = this.props.id;
-    console.log('Submission to update', submissionId, this.props);
-    console.log('Submission to update', submissionId);
 
     this.props.dispatch({
       type: 'UPDATE_FORM_STATUS',
@@ -78,7 +74,6 @@ class JurorTalkSubmission extends Component {
 
   render() {
     let submission = this.props;
-
     return (
       <div className="submissionContainer" id={this.props.key}>
         <div className="videoDiv">
@@ -87,7 +82,6 @@ class JurorTalkSubmission extends Component {
         </video>
         </div>
         <div className="submissionInfo">
-
           <Grid
             container
             direction="row"
