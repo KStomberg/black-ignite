@@ -57,6 +57,7 @@ input {
     height: 15px;
     margin-top: 10px;
     border-radius: 3px;
+    width: 200px;
 }
 .MuiLinearProgress-root.editProgressBar{
     height: 15px;
