@@ -67,14 +67,14 @@ export default function SimpleMenu() {
         <Link to="/edittalk" className={classes.link}>
           <MenuItem className={classes.menuItem}>Add Category</MenuItem>
         </Link>
-        <Link to="/ranking" className={classes.link}>
-          <MenuItem className={classes.menuItem}>Ranking</MenuItem>
-        </Link>
         </>
          :<></>
          }
         <Link to="/juror" className={classes.link}>
           <MenuItem className={classes.menuItem}>Submissions</MenuItem>
+        </Link>
+        <Link to="/ranking" className={classes.link}>
+          <MenuItem className={classes.menuItem}>Ranking</MenuItem>
         </Link>
         <Link to="/login" className={classes.link}>
           <MenuItem
