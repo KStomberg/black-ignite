@@ -18,8 +18,8 @@ Before you get started, make sure you have the following software installed on y
 
 Create a new database called `Black_Ignite` and insert the code from the `database.sql` table.
 
-# Sign Up Form View
-<img src="https://gyazo.com/60eb85328d6508fca06ec457a4b8f513" align="right"
+## Sign Up Form View
+<img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="right"
      alt="Speaker sign-up form view" width="120" height="178">
 
 
