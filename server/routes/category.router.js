@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-
+// get all talks from category table where DELETED is false
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(`in our talks router.get`, req.body);
     queryText = `SELECT * FROM "category" 
@@ -16,7 +16,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     })
 });
-
+//grab all talks for speakers who do NOT login to the application
+//displays all talks at /user
 router.get('/unauthenticated', (req, res) => {
     console.log(`in our talks router.get`);
     queryText = `SELECT * FROM "category" 
