@@ -50,31 +50,31 @@ Directory Structure:
 <img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
      alt="Speaker sign-up form view" width="700" height="500">
 
-    After either clicking the + arrow, or alternativley clicking a talk on the main page and selecting "Sign up to speak" it will bring you to the Sign Up Form, here you can enter in your information, and upload your video to the Amazon S3 server. Upon clicking the submit button, that data will be posted to the database, and viewed from the Juror page.
+    After either clicking the + arrow, or alternatively clicking a talk on the main page and selecting "Sign up to speak" it will bring you to the Sign Up Form, here you can enter in your information, and upload your video to the Amazon S3 server. Upon clicking the submit button, that data will be posted to the database, and viewed from the Juror page.
 
 ## Juror Page
 <img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
      alt="Speaker sign-up form view" width="700" height="500">
 
-     Sample Text
+     On this page, a Juror account created by the Manage Juror page, can view the submitted applications, watch the supplied video, and vote on submissions they like, using the number of votes given to them at the creation of the account. They can see all information supplied by the user, and how many votes the submission has received by all the Jurors. Admins can also see a "Submitted Form" button, which will help with record keeping if an admin has reached out to a applicant yet.
      
 ## Ranking Page
 <img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
      alt="Speaker sign-up form view" width="700" height="500">
 
-     Sample Text
+     On the Ranking page, an Admin can see all submissions ordered by descending number of votes, or all submissions of a specific topic ordered by descending votes. It also shows all information the applicant submitted, and a link to download the video hosted on Amazon S3 servers.
 
 ## Edit Talks
 <img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
      alt="Speaker sign-up form view" width="700" height="500">
 
-     Sample Text
+     Here an Admin can edit all submitted talks, by replacing the Title, Front image, description image, or description text. The Admin can also delete an existing talk, or add a new one. These deleted talks are "Soft deleted" meaning they can be retrieved by accessing the database if it was done in error.
      
 ## Manage Juror
 <img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
      alt="Speaker sign-up form view" width="700" height="500">
 
-     Sample Text
+     On this page, the Admin can create new Juror accounts, delete existing Juror accounts, and view the number of remaining votes each existing Juror has.
      
 ## Deployment
 
