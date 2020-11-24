@@ -126,7 +126,7 @@ class JurorTalkSubmission extends Component {
                   <p className="subInfoP">Instagram: {submission.instagram}</p>
                 </Grid>
                 <Grid item>
-                  <p className="subInfoP">LinkedIn:{submission.linkedin}</p>
+                  <p className="subInfoP">LinkedIn: {submission.linkedin}</p>
                 </Grid>
                 <Grid item>
                   <p className="subInfoP">Twitter: {submission.twitter}</p>
