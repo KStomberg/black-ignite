@@ -53,6 +53,7 @@ const useStyles = makeStyles({
 export default function SwipeableTemporaryDrawer({openDrawer, setOpenDrawer}) {
     const classes = useStyles();
 
+    // Toggling drawer open/close
     const toggleDrawer = () => {
         setOpenDrawer(!openDrawer);
     };

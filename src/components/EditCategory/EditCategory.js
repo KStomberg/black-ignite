@@ -42,6 +42,7 @@ class EditCategory extends Component {
     });
   }
 
+  // Editing a category (aka PUT)
   onSubmit = () => {
     let categoryTosend = {
       title: this.state.title,

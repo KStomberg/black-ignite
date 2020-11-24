@@ -59,6 +59,7 @@ class TalkDisplay extends Component {
   }
 
   deleteTalk = (talk) => {
+    // See: https://sweetalert2.github.io/
     Swal.fire({
       title: 'Are you sure?',
       text: 'this will permanently delete this talk',
@@ -89,6 +90,7 @@ class TalkDisplay extends Component {
     });
   }
 
+  // See: https://material-ui.com/components/dialogs/
   render() {
     return (
       <div className="talkDiv">

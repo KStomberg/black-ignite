@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     }
 });
 
+// Zoom transition, see: https://material-ui.com/components/transitions/
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom direction="in" ref={ref} {...props} />;
 });

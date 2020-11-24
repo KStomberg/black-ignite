@@ -47,6 +47,7 @@ class EditDialogue extends Component {
       id: this.state.id
     }
 
+    // Editing category dispatch
     this.props.dispatch({
       type: 'EDIT_CATEGORY',
       payload: editObjectToSend
@@ -55,6 +56,7 @@ class EditDialogue extends Component {
     this.componentDidMount();
   }
 
+  // See Material-UI for Dialogs: https://material-ui.com/components/dialogs/
   render() {
     return (
       <Dialog

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import './JurorItem.css'
 
+// Material-UI drawer, see: https://material-ui.com/components/drawers/
 export default function SwipeableTemporaryDrawer() {
     const classes = useStyles();
     const [state, setState] = React.useState({

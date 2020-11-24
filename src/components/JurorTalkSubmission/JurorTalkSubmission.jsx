@@ -19,6 +19,7 @@ class JurorTalkSubmission extends Component {
     }
   };
 
+  // See swal at: https://sweetalert2.github.io/#usage
   buttonClicked = () => {
     return Swal.fire({
       title: 'Are you sure?',
@@ -53,6 +54,7 @@ class JurorTalkSubmission extends Component {
     });
   };
 
+  // See swal at: https://sweetalert2.github.io/#usage
   likeSubmission = () => {
     let submissionId = this.props.id;
     let remainingLikes = this.props.remainingLikes;

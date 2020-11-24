@@ -15,10 +15,12 @@ class PosterDropzone extends Component {
     uploadPercentage: 0
   }
 
+  // Calling dataToSend function with info
   handleFinishedUpload = async(info) => {
     this.dataToSend(info);
   }
 
+  // Setting local state with file url path
   dataToSend  = async(info) => {
     await
       this.setState({
@@ -27,6 +29,7 @@ class PosterDropzone extends Component {
       this.props.setOurPosterState(this.state.posterUrl);
   }
   
+  // Upload progression
   onUploadProgress = (percent) => { 
     this.setState({
       uploadPercentage: percent

@@ -11,10 +11,12 @@ class DescriptionDropzone extends Component {
     uploadPercentage: 0,
   }
 
+  // Upload file url calling dataToSend function
   handleFinishedUpload = async(info) => {
     this.dataToSend(info);
   }
 
+  // Setting local state to fileUrl
   dataToSend  = async(info) => {
     await
       this.setState({
@@ -23,6 +25,7 @@ class DescriptionDropzone extends Component {
       this.props.setEditedDescriptionState(this.state.descriptionUrl);
   }
 
+  // Progression of upload
   onUploadProgress = (percent) => { 
     this.setState({
       uploadPercentage: percent

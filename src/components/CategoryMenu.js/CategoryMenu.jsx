@@ -16,6 +16,7 @@ class CategoryMenu extends Component{
     this.getTalk();
   }
 
+  // GET request to fetch all talks
   getAllRankings = () => {
     this.setState({
       open: !this.state.open,
@@ -45,6 +46,7 @@ class CategoryMenu extends Component{
     this.setState({ anchorEl: null })
   };
 
+  // Fetching rankings
   sendTalk = (talk) => {
     let categoryIdToSend = {
       talkId: talk.id
@@ -59,13 +61,14 @@ class CategoryMenu extends Component{
     });
   }
 
+  // See Material-UI for Menus: https://material-ui.com/components/menus/
   render() {
     return (
       <div>
         <div className="title">
           <h2 className="likes">Votes</h2>
           <Button className="menu" aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-          Categories▾
+            Categories▾
           </Button>
         </div>
         <Menu
