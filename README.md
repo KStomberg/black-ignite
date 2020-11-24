@@ -49,8 +49,8 @@ Directory Structure:
     After either clicking the + arrow, or alternatively clicking a talk on the 
     main page and selecting "Sign up to speak" it will bring you to the Sign Up Form, 
     here you can enter in your information, and upload your video to the Amazon S3 server. 
-     Upon clicking the submit button, that data will be posted to the database, and 
-     viewed from the Juror page.
+    Upon clicking the submit button, that data will be posted to the database, and 
+    viewed from the Juror page.
 
 ## Juror Page
 <img src="https://i.gyazo.com/827790dbdbca2a707ee3cc6b291afa46.png" align="center"
@@ -79,8 +79,8 @@ Directory Structure:
      ![gif of the edit talk](https://i.gyazo.com/68d5b019fff2c46a4e0dacbc02e760f8.gif)
 
      Here an Admin can edit all submitted talks, by replacing the Title,
-      Front image, description image, or description text
-     . The Admin can also delete an existing talk, or add a new one. These 
+     Front image, description image, or description text.
+     The Admin can also delete an existing talk, or add a new one. These 
      deleted talks are "Soft deleted" meaning they 
      can be retrieved by accessing the database if it was done in error.
      
