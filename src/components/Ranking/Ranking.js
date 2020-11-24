@@ -39,8 +39,8 @@ class Ranking extends Component {
                             <tr key={ranking.id}>
                                 <td>{ranking.full_name}</td>
                                 <td><a className="emailDiv" href="mailto:">{ranking.email}</a></td>
-                                <td>{ranking.instagram}Instagram</td>
-                                <td>{ranking.linkedin} LinkedIn Account</td>
+                                <td>{ranking.instagram}</td>
+                                <td>{ranking.linkedin}</td>
                                 <td>{ranking.twitter}</td>
                                 <td>{ranking.comments}</td>
                                 <td><a className="emailDiv"href={ranking.video_url}>Video Links</a></td>
