@@ -115,7 +115,7 @@ function Homepage() {
                                                     <h1 className="descTitle">{desc.title}!</h1>
                                                 </Grid>
                                                 <Grid item>
-                                                    <button onClick={handleClose}>✖</button>
+                                                    <button className="XBtn" onClick={handleClose}>✖</button>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
