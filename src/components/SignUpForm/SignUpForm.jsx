@@ -161,7 +161,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="fullName" className="inputDesc" onClick={() => setFullName('Ethan Kavanagh')}>*your full name</label>
+                                <label for="fullName" className="inputDesc">*your full name</label>
                             </Grid>
                             <Grid item>
                                 <input
@@ -188,7 +188,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="email" className="inputDesc" onClick={() => setEmail('ethanmkavanagh@gmail.com')}>*your email address</label>
+                                <label for="email" className="inputDesc">*your email address</label>
                             </Grid>
                             <Grid item>
                                 <input
@@ -215,7 +215,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="email" className="inputDesc" onClick={() => setInstagram('@ethankavanagh')}>what's your Instagram @</label>
+                                <label for="email" className="inputDesc">what's your Instagram @</label>
                             </Grid>
                             <Grid item>
                                 <input
@@ -233,7 +233,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="linkedin" className="inputDesc" onClick={() => setLinkedIn('https://www.linkedin.com/in/ethan-kavanagh-4372311b7/')}>link to your Linkedin profile</label>
+                                <label for="linkedin" className="inputDesc">link to your Linkedin profile</label>
                             </Grid>
                             <Grid item>
                                 <input
@@ -251,7 +251,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="twitter" className="inputDesc" onClick={() => setTwitter('@ethankavanagh')}>your Twitter</label>
+                                <label for="twitter" className="inputDesc">your Twitter</label>
                             </Grid>
                             <Grid item>
                                 <input
@@ -269,7 +269,7 @@ function SignUpForm() {
                             align-items="flex-start"
                         >
                             <Grid item>
-                                <label for="comments" className="inputDesc" onClick={() => setComments('I think this talk is awesome, and I hope you enjoy it!')}>comments</label>
+                                <label for="comments" className="inputDesc">comments</label>
                             </Grid>
                             <Grid item>
                                 <textarea
