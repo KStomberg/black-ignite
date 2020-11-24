@@ -1,4 +1,3 @@
-
 import React, {useEffect} from 'react';
 import './App.css';
 import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
@@ -7,12 +6,10 @@ import Homepage from '../Homepage/Homepage';
 import EditCategory from '../EditCategory/EditCategory';
 import ManageJuror from '../ManageJuror/ManageJuror';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterForm from '../RegisterForm/RegisterForm';
-import Ranking from '../Ranking/Ranking'
-import JurorPage from '../JurorPage/JurorPage'
+import Ranking from '../Ranking/Ranking';
+import JurorPage from '../JurorPage/JurorPage';
 import SignUpFormConfirmation from '../SignUpForm/SignUpFormConfirmation';
 import {useDispatch} from 'react-redux';
-
 
 function App() {
   const dispatch = useDispatch();
@@ -20,12 +17,11 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, []);
         
-   
   return (
     <Router>
       <div className="App">
         <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+          {/* Visiting localhost:3000 will redirect to localhost:3000/user */}
           <Redirect exact from="/" to="/user" />
 
           {/* User view */}
@@ -35,42 +31,42 @@ function App() {
             component={Homepage}
           />
          
-            <ProtectedRoute
-              // logged in shows EditCategory else shows LoginPage
-              exact
-              path="/edittalk"
-              component={EditCategory}
-            />
-            <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
-              exact
-              path="/managejuror"
-              component={ManageJuror}
-            />
-            <Route
-              // logged in shows InfoPage else shows LoginPage
-              exact
-              path="/register"
-              component={RegisterForm}
-            />
-            <Route 
-              exact
-              path="/login"
-              component={LoginPage}
-            />
+          {/* Logged in shows EditCategory, else shows LoginPage */}
+          <ProtectedRoute
+            exact
+            path="/edittalk"
+            component={EditCategory}
+          />
 
-            <ProtectedRoute
-              exact
-              path="/ranking"
-              component={Ranking}
-            />
+          {/* Logged in shows InfoPage, else shows LoginPage */}
+          <ProtectedRoute
+            exact
+            path="/managejuror"
+            component={ManageJuror}
+          />
 
+          {/* Login page */}
+          <Route 
+            exact
+            path="/login"
+            component={LoginPage}
+          />
+
+          {/* Ranking page */}
+          <ProtectedRoute
+            exact
+            path="/ranking"
+            component={Ranking}
+          />
+
+          {/* Juror page */}
           <ProtectedRoute
             exact
             path="/juror"
             component={JurorPage}
           />
 
+          {/* SignUp Confirmation page */}
           <Route 
             exact
             path="/user/confirmation"

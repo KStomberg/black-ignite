@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 //Deletes juror from DB
 function* deleteJuror(action){
-    console.log('in deleteJuror', action.payload);
+  
     let id = action.payload.id;
     yield axios.delete(`/api/delete/${id}`);
 

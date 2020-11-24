@@ -8,8 +8,8 @@ function* likesSaga() {
 }
 
 //Fetches likes DB to see all likes a user has made, and on what submission
-function* fetchLikes(action) {
-  console.log('in fetch likes saga');
+function* fetchLikes() {
+  
   try {
     let response = yield axios.get(`/api/likes/`);
 
@@ -23,8 +23,8 @@ function* fetchLikes(action) {
 }
 
 //Fetches maximum likes a user can have
-function* fetchMaxLikesSaga(action) {
-  console.log('in fetch max likes saga');
+function* fetchMaxLikesSaga() {
+  
   try {
     let response = yield axios.get(`/api/likes/max/`);
 
@@ -39,7 +39,7 @@ function* fetchMaxLikesSaga(action) {
 
 //Adds a like to the submission, subtracts a like from the users max likes
 function* updateLikes(action) {
-  console.log('action.payload of updateLikes');
+ 
   try {
     yield axios({
       method: 'PUT',
@@ -55,12 +55,5 @@ function* updateLikes(action) {
   }
 }
 
-
-// function* fetchMaxAllowedLikes(action) {
-//   console.log('in fetch max allowed likes saga');
-//   try{
-//     let response = yield axios.get(`/api/userlikes`)
-//   }
-// }
 
 export default likesSaga;

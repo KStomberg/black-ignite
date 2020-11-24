@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     }
 });
 
+// Zoom transition, see: https://material-ui.com/components/transitions/
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom direction="in" ref={ref} {...props} />;
 });
@@ -92,7 +93,6 @@ function Homepage() {
                     open={openDialog}
                     TransitionComponent={Transition}
                     keepMounted
-                    // onClose={handleClose}
                     aria-labelledby="alert-dialog-slide-title"
                     aria-describedby="alert-dialog-slide-description"
                     className={classes.dialog}
@@ -103,8 +103,6 @@ function Homepage() {
                                     <Grid
                                         container
                                         direction="column"
-                                        // justify="center"
-                                        // alignItems="flex-start"
                                     >
                                         <Grid item>
                                             <Grid
@@ -117,7 +115,7 @@ function Homepage() {
                                                     <h1 className="descTitle">{desc.title}!</h1>
                                                 </Grid>
                                                 <Grid item>
-                                                    <button onClick={handleClose}>✖</button>
+                                                    <button className="XBtn" onClick={handleClose}>✖</button>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -126,7 +124,6 @@ function Homepage() {
                                                 container
                                                 direction="row"
                                                 justify="center"
-                                                // alignItems="flex-start"
                                             >
                                                 <Grid item>
                                                     <img src={desc.description_url} className="descImg"/>

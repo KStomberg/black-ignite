@@ -1,10 +1,8 @@
-import { object } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import RegisterForm from '../RegisterForm/RegisterForm';
 import Swal from 'sweetalert2'
-import ButtonAppBar from '../AppBar/AppBar';
+import AppBar from '../AppBar/AppBar';
 import './ManageJuror.css';
 
 class ManageJuror extends Component {
@@ -17,7 +15,41 @@ class ManageJuror extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_USERS'
+    });
+  }
+
+  deleteJuror = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'this will permanently delete this juror',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete',
+      cancelButtonText: 'No, keep this Juror'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Juror Deleted',
+          'success',
+        );
+    let objectToSend = {
+      id: user.id
+    }
+    this.props.dispatch({
+      type: 'DELETE_JUROR',
+      payload: objectToSend
     })
+  
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Juror not deleted'
+        )
+      }
+    })
+    this.componentDidMount();
   }
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -25,6 +57,7 @@ class ManageJuror extends Component {
       [propertyName]: event.target.value,
     });
   };
+
   registerUser = (event) => {
     event.preventDefault();
 
@@ -41,46 +74,11 @@ class ManageJuror extends Component {
     });
     this.componentDidMount();
   }; // end registerUser
-deleteJuror = (user) => {
-  Swal.fire({
-    title: 'Are you sure?',
-    text: 'this will permanently delete this juror',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Yes, delete',
-    cancelButtonText: 'No, keep this Juror'
-  }).then((result) => {
-    if (result.value) {
-      Swal.fire(
-        'Juror Deleted',
-        'success',
-      )
-  console.log(`this is our user`, user);
-  let objectToSend = {
-    id: user.id
-  }
-  console.log(objectToSend)
 
-  this.props.dispatch({
-    type: 'DELETE_JUROR',
-    payload: objectToSend
-  })
-
-    // For more information about handling dismissals please visit
-    // https://sweetalert2.github.io/#handling-dismissals
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-      Swal.fire(
-        'Cancelled',
-        'Juror not deleted'
-      )
-    }
-  })
-  this.componentDidMount();
-}
   render() {
     return (
       <div >
-        <ButtonAppBar />
+        <AppBar />
         <h2>{this.state.heading}</h2>
         <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Add A Juror</h2>
@@ -140,10 +138,10 @@ deleteJuror = (user) => {
           </thead>
           <tbody>
             {this.props.store.users.map((user, i )=>
-               <tr key={i} className="manageJurorTR">
-                  <td key={user.id} className="manageJurorTD">{user.username}</td>
-                  <td className="manageJurorTD"><button  onClick={()=> this.deleteJuror(user)} className="btn" id="deleteBtn">Delete</button></td>
-               </tr>)}
+              <tr key={i} className="manageJurorTR">
+                <td key={user.id} className="manageJurorTD">{user.username}</td>
+                <td className="manageJurorTD"><button  onClick={()=> this.deleteJuror(user)} className="btn" id="deleteBtn">Delete</button></td>
+              </tr>)}
           </tbody>
         </table>
         </div>

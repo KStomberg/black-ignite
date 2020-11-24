@@ -4,28 +4,34 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './EditCategory.css';
+
 class DescriptionDropzone extends Component {
-state = {
+  state = {
     descriptionUrl: '',
     uploadPercentage: 0,
+  }
 
-}
+  // File Uploading function, calling dataToSend function with info on the file
   handleFinishedUpload = async(info) => {
     this.dataToSend(info);
-   }
-    dataToSend  = async(info) => {
+  }
+
+  // setting url state to file path
+  dataToSend  = async(info) => {
     await
-        this.setState({
-        descriptionUrl: info.fileUrl
-        });
-        console.log(`this.state.descriptionUrl`, this.state.descriptionUrl);
-        this.props.setOurDescriptionState(this.state.descriptionUrl);
-    }
-    onUploadProgress = (percent) => { console.log(percent) 
       this.setState({
-        uploadPercentage: percent
-      })
-    }
+        descriptionUrl: info.fileUrl
+      });
+      this.props.setOurDescriptionState(this.state.descriptionUrl);
+  }
+
+  // Upload progress on url progression
+  onUploadProgress = (percent) => {
+    this.setState({
+      uploadPercentage: percent
+    });
+  }
+
   render() {
     const uploadOptions = {}
     const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
@@ -43,23 +49,23 @@ state = {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat'
     }
+
     return (
       <>
-         <DropzoneS3Uploader
-            onFinish={this.handleFinishedUpload}
-            s3Url={s3Url}
-            
-            accept="image/*,audio/*,video/*"
-            // maxSize={1024 * 1024 * 5}
-            upload={uploadOptions}
-            style={dropZoneStyle}
-            onProgress={this.onUploadProgress}
-            />
-            <LinearProgress
-              className="progressBar"
-              variant="determinate" 
-              value={this.state.uploadPercentage}  />
-        </>
+        <DropzoneS3Uploader
+          onFinish={this.handleFinishedUpload}
+          s3Url={s3Url}
+          accept="image/*,audio/*,video/*"
+          upload={uploadOptions}
+          style={dropZoneStyle}
+          onProgress={this.onUploadProgress}
+        />
+        <LinearProgress
+          className="progressBar"
+          variant="determinate" 
+          value={this.state.uploadPercentage}  
+        />
+      </>
     );
   }
 }

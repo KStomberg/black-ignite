@@ -5,13 +5,11 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-
-router.put('/:id', async (req, res) => {
+//change the amount of votes a juror has every time they hit the vote button
+router.put('/:id', rejectUnauthenticated, async (req, res) => {
     try {
-      console.log('hit update likes put', req.params.id);
       let queryString = `UPDATE "submission" SET "likes" = "likes" + 1 WHERE "id" = $1 RETURNING "id";`;
       let result = await pool.query(queryString, [req.params.id]);
-      console.log(result.rows.map((submission) => submission.id));
       let submissionId = Number(result.rows.map((submission) => submission.id));
       let queryStringTwo = `UPDATE "user" SET "likes" = "likes" - 1 WHERE "id" = $1;`;
       await pool.query(queryStringTwo, [req.user.id]);
@@ -22,9 +20,9 @@ router.put('/:id', async (req, res) => {
       console.error(err);
     }
   });
-  
-  router.get('/', (req, res) => {
-    console.log('hit get likes', req.user.id);
+  //get the amount of likes a user has
+  router.get('/', rejectUnauthenticated, (req, res) => {
+
     let queryString = `SELECT * FROM "like" WHERE "user_id" = $1;`;
     pool
       .query(queryString, [req.user.id])
@@ -36,15 +34,15 @@ router.put('/:id', async (req, res) => {
         res.sendStatus(500);
       });
   });
+//how many likes they have at most (assigned when making user)
+  router.get('/max/', rejectUnauthenticated, (req, res) => {
 
-  router.get('/max/', (req, res) => {
-    console.log('hit get max likes', req.user.id);
     let queryString = `	SELECT "likes" FROM "user" WHERE "id" = $1;`;
     pool 
       .query(queryString, [req.user.id])
       .then((results) => {
           res.send(results.rows[0]);
-          console.log(results.rows[0]);
+
       })
       .catch((err) => {
         console.error('/likes GET/likes/user/ failed', err);

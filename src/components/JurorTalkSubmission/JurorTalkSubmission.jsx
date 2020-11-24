@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
 import {Grid} from '@material-ui/core';
-
 import './JurorTalkSubmission.css';
 
 class JurorTalkSubmission extends Component {
@@ -20,6 +19,7 @@ class JurorTalkSubmission extends Component {
     }
   };
 
+  // See swal at: https://sweetalert2.github.io/#usage
   buttonClicked = () => {
     return Swal.fire({
       title: 'Are you sure?',
@@ -38,7 +38,6 @@ class JurorTalkSubmission extends Component {
         );
         this.submitForm();
       } else if (
-        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         Swal.fire('Cancelled', 'No changes were made', 'error');
@@ -48,8 +47,6 @@ class JurorTalkSubmission extends Component {
 
   submitForm = () => {
     let submissionId = this.props.id;
-    console.log('Submission to update', submissionId, this.props);
-    console.log('Submission to update', submissionId);
 
     this.props.dispatch({
       type: 'UPDATE_FORM_STATUS',
@@ -57,10 +54,10 @@ class JurorTalkSubmission extends Component {
     });
   };
 
+  // See swal at: https://sweetalert2.github.io/#usage
   likeSubmission = () => {
     let submissionId = this.props.id;
     let remainingLikes = this.props.remainingLikes;
-    console.log('Like button clicked!', submissionId);
     if (remainingLikes === 0) {
       return Swal.fire({
         icon: 'error',
@@ -78,9 +75,7 @@ class JurorTalkSubmission extends Component {
   };
 
   render() {
-    console.log('this.props for JurorTalkSubmission', this.props);
     let submission = this.props;
-
     return (
       <div className="submissionContainer" id={this.props.key}>
         <div className="videoDiv">
@@ -89,7 +84,6 @@ class JurorTalkSubmission extends Component {
         </video>
         </div>
         <div className="submissionInfo">
-
           <Grid
             container
             direction="row"
@@ -132,7 +126,7 @@ class JurorTalkSubmission extends Component {
                   <p className="subInfoP">Instagram: {submission.instagram}</p>
                 </Grid>
                 <Grid item>
-                  <p className="subInfoP">LinkedIn:{submission.linkedin}</p>
+                  <p className="subInfoP">LinkedIn: {submission.linkedin}</p>
                 </Grid>
                 <Grid item>
                   <p className="subInfoP">Twitter: {submission.twitter}</p>

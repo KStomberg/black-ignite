@@ -16,28 +16,22 @@ class JurorTalkCategory extends Component {
   }
 
   getSubmission = () => {
-    console.log('Fetching submissions');
-
     this.props.dispatch({
       type: 'FETCH_SUBMISSIONS',
     });
   };
 
   toggleDisplay = () => {
-    console.log('toggleDisplay clicked!');
     this.setState({ isToggled: !this.state.isToggled });
-    console.log(this.state.isToggled);
   };
 
   render() {
-    console.log('this.props for JurorTalkCategory', this.props);
     let submissionsForThisCategory = this.props.store.submissions.filter(
       (submission) => submission.category_id === this.props.topicId
     );
     let remainingLikes = this.props.remainingLikes;
     let getLikeFunction = this.props.getLikeFunction;
     return (
-      
       <>
         {this.state.isToggled ? 
           <div>

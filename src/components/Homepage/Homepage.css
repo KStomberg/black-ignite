@@ -85,3 +85,10 @@
 .dialogP {
     text-align: center;
 }
+
+.XBtn {
+    background-color: transparent;
+    color: #221F1F;
+    border: none;
+    font-size: 20px;
+}

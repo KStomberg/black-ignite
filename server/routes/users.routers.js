@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-
+//grabbing all users of JUROR auth
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(`in our users router.get`);
     queryText = `SELECT * FROM "user" WHERE "is_deleted" = false AND "authLevel" = 'JUROR' ORDER BY "id" DESC;`;

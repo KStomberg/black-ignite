@@ -12,22 +12,18 @@ class JurorView extends Component {
   }
 
   getTalk = () => {
-    console.log('Fetching talks');
-
     this.props.dispatch({
       type: 'FETCH_ALL_TALKS',
     });
   };
 
   getLike = () => {
-    console.log('fetching max likes');
     this.props.dispatch({
       type: 'FETCH_MAX_LIKES',
     });
   };
 
   render() {
-    console.log('this.props for jurorPage', this.props);
     let remainingLikes = this.props.store.likes.likes;
     return (
       <div>

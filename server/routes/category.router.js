@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-
+// get all talks from category table where DELETED is false
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(`in our talks router.get`, req.body);
     queryText = `SELECT * FROM "category" 
@@ -16,7 +16,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     })
 });
-
+//grab all talks for speakers who do NOT login to the application
+//displays all talks at /user
 router.get('/unauthenticated', (req, res) => {
     console.log(`in our talks router.get`);
     queryText = `SELECT * FROM "category" 
@@ -42,6 +43,8 @@ router.get('/unauthenticated/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+//grabbing specific talk from category table
 router.get('/:id', (req, res) => {
     console.log(`in our talks router.get`, req.params.id);
     queryText = `SELECT * FROM "category" 
@@ -54,7 +57,7 @@ router.get('/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
-
+//update a talk with the correct information from /edittalk view
 router.put('/edit', rejectUnauthenticated, (req, res) => {
     console.log(`in our talks router.get`, req.body);
     queryText = `UPDATE "category" SET "title" = $1, "description_url" = $2, "image_url" = $3

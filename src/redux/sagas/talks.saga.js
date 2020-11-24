@@ -3,8 +3,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 //Fetches all talks/categories from DB, sends to props
-function* fetchTalks(action) {
-    console.log(`in our fetchTalks saga`);
+function* fetchTalks() {
+
   try {
     let response = yield axios.get(`/api/talks`);
     yield put({ type: 'SET_TALKS', payload: response.data});
@@ -15,10 +15,10 @@ function* fetchTalks(action) {
 
 //Fetches info on specific talk, sends to props
 function* fetchCategory(action) {
-  console.log(`in our fetchCategory saga`, action.payload.talkId);
+
 try {
   let response = yield axios.get(`/api/talks/${action.payload.talkId}`);
-  console.log(response);
+
   yield put({ type: 'SET_TALK', payload: response.data});
 } catch (error) {
   console.log('Talks GET request failed', error);

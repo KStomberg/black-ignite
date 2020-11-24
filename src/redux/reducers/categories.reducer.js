@@ -1,12 +1,12 @@
 const categoriesReducer = (state = [], action) => {
-    switch (action.type) {
-      case 'SET_CATEGORIES':
-        return action.payload;
-      default:
-        return state;
-    }
-  };
+  switch (action.type) {
+    case 'SET_CATEGORIES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
-  // user will be on the redux state at:
-  // state.user
-  export default categoriesReducer;
+// user will be on the redux state at:
+// state.user
+export default categoriesReducer;
