@@ -73,7 +73,6 @@ Directory Structure:
 ## Edit Talks
 ![Screenshot](public/createNewCategory.png)
 
-     ![gif of the edit talk](https://i.gyazo.com/68d5b019fff2c46a4e0dacbc02e760f8.gif)
 
      Here an Admin can edit all submitted talks, by replacing the Title,
      Front image, description image, or description text.
