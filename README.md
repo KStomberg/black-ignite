@@ -43,8 +43,8 @@ Directory Structure:
 - `server/` contains the Express App
 
 ## Sign Up Form View
-<img src="https://i.gyazo.com/60eb85328d6508fca06ec457a4b8f513.png" align="center"
-     alt="Sign up form view">
+![Screenshot](public/userPage.png)
+![Screenshot](public/signupForm.png)
 
     After either clicking the + arrow, or alternatively clicking a talk on the 
     main page and selecting "Sign up to speak" it will bring you to the Sign Up Form, 
@@ -53,8 +53,7 @@ Directory Structure:
     viewed from the Juror page.
 
 ## Juror Page
-<img src="https://i.gyazo.com/827790dbdbca2a707ee3cc6b291afa46.png" align="center"
-     alt="Juror page view">
+![Screenshot](public/submissions.png)
 
      On this page, a Juror account created by the Manage Juror page, can view the submitted 
      applications, watch the supplied video, and vote on submissions they like, using 
@@ -64,8 +63,7 @@ Directory Structure:
      will help with record keeping if an admin has reached out to a applicant yet.
      
 ## Ranking Page
-<img src="https://i.gyazo.com/5a1c334d76f4ab9c7a68e80038912d29.png" align="center"
-     alt="Ranking page view">
+![Screenshot](public/ranking.png)
 
      On the Ranking page, an Admin can see all submissions ordered by descending number 
      of votes, or all submissions of a specific topic ordered by descending votes. It also 
@@ -73,8 +71,7 @@ Directory Structure:
      the video hosted on Amazon S3 servers.
 
 ## Edit Talks
-<img src="https://i.gyazo.com/7acebbf660e7603489352cc3623f9639.png" align="center"
-     alt="edit talks view">
+![Screenshot](public/createNewCategory.png)
 
      ![gif of the edit talk](https://i.gyazo.com/68d5b019fff2c46a4e0dacbc02e760f8.gif)
 
@@ -85,26 +82,27 @@ Directory Structure:
      can be retrieved by accessing the database if it was done in error.
      
 ## Manage Juror
-<img src="https://i.gyazo.com/e548432d89690cf3ac0e34eef0788568.png" align="center"
-     alt="Manage juror view">
+![Screenshot](public/manageJuror.png)
 
      On this page, the Admin can create new Juror accounts, delete
      existing Juror accounts, and view the number of remaining votes 
      each existing Juror has.
 
 ## Creating a .env file
-<img src="https://i.ibb.co/f4NK9vc/Screen-Shot-2020-11-24-at-9-03-24-AM.png" align="center"
-     alt=".env file setup">
+![Screenshot](public/env.png)
+
+should include all of the pertinent data from your AWS bucket
      
 ## Deployment
 
 1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
+2. Link the Heroku project to the project GitHub Repo
+3. Create an Heroku Postgres database
+4. Connect to the Heroku Postgres database from Postico
+5. Create the necessary tables
+6. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
+7. In the deploy section, select manual deploy
+8. Heroku config for your AWS Bucket via the Heroku cli 
 
 ## Custom domain name setup
 I recommend using this walk through if you want to point it at a specific domain. 
