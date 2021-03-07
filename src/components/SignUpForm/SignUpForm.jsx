@@ -8,6 +8,7 @@ import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import moment from 'moment'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './SignUpForm.css';
+import branch from 'branch-sdk';
 
 const useStyles = makeStyles({
     checkmarkIcon: {
@@ -34,6 +35,12 @@ const useStyles = makeStyles({
         borderRadius: 3,
         width: 270
     }
+});
+
+//Insert your Branch.io key where it says 'Test key here!'
+var options = { no_journeys: true };
+branch.init('Test key here!', options, function(err, data) {
+  console.log(err, data);
 });
 
 function SignUpForm() {
@@ -68,13 +75,42 @@ function SignUpForm() {
             twitter: twitter,
             comments: comments,
             date: date,
-            fileUrl: fileUrl
+            fileUrl: fileUrl,
         }
 
         dispatch({
             type: 'CREATE_SUBMISSION',
             payload: objectToSend
         });
+
+        //Branch.io custom data
+        let event_and_custom_data={
+            "category": `${Number(selectedCategory.id)}`,
+            "fullName": `${fullName}`,
+            "date": `${date}`,
+        }
+
+        //Link to the URL of the uploaded file, used by Branch.io
+        let content_items = [
+            {
+               "fileUrl": `${fileUrl}`
+             }];
+
+
+        //Custom alias for Branch.io
+        let customer_event_alias = `User submitted for category ${Number(selectedCategory.id)}`
+
+        //Logging all data taken by Branch.io to be sent through the API
+        console.log('Inside the Branch event logger, data:', event_and_custom_data, content_items, customer_event_alias);
+
+        //Sends a User lifecycle event to Branch, with the data above. If the error throws a Null, thats a good sign!
+        branch.logEvent(
+            "COMPLETE_REGISTRATION",
+            event_and_custom_data,
+            content_items,
+            customer_event_alias,
+            function(err){console.log(err);}
+        );
 
         history.push('/user/confirmation');
     } // end handleSubmit
